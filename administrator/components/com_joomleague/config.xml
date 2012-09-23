@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<params group="JL_SETTINGS_GROUP_GLOBAL">
+
+		<param name="cfg_edit_club_info_update_notify" type="radio"
+			default="0" label="JL_SETTINGS_EDIT_CLUB_NOTIFY_CLUBADMINS_TITLE"
+			description="JL_SETTINGS_EDIT_CLUB_NOTIFY_CLUBADMINS_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="cfg_edit_person_info_update_notify" type="radio"
+			default="0" label="JL_SETTINGS_EDIT_CLUB_PERSON_CLUBADMINS_TITLE"
+			description="JL_SETTINGS_EDIT_CLUB_PERSON_CLUBADMINS_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="cfg_standard_server_offset" type="timezones"
+			default="-01:00" label="JL_SETTINGS_GLOBAL_OFFSET_TITLE" description="JL_SETTINGS_GLOBAL_OFFSET_DESCR">
+		</param>
+
+	</params>
+
+	<params group="JL_SETTINGS_GROUP_SYSTEM">
+
+		<param name="JoomLeague updates" type="list" default="1"
+			label="JL_SETTINGS_UPDATES_TITLE" description="JL_SETTINGS_UPDATES_DESCR">
+			<option value="0">JL_GLOBAL_ON</option>
+			<option value="1">JL_GLOBAL_MANUAL</option>
+			<option value="2">JL_GLOBAL_OFF</option>
+		</param>
+
+		<param name="cfg_drop_joomleague_tables_when_uninstalled" type="radio"
+			default="0" label="JL_SETTINGS_UNINSTALL_TABLES_TITLE" description="JL_SETTINGS_UNINSTALL_TABLES_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_debug_info" type="radio" default="0"
+			label="JL_SETTINGS_SHOW_DEBUG_TITLE" description="JL_SETTINGS_SHOW_DEBUG_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="max_import_time" type="text" default="480"
+			label="JL_SETTINGS_MAX_IMPORT_TIME_TITLE" description="JL_SETTINGS_MAX_IMPORT_TIME_DESCR">
+		</param>
+
+		<param name="max_import_memory" type="text" default="256M"
+			label="JL_SETTINGS_MAX_IMPORT_MEMORY_TITLE" description="JL_SETTINGS_MAX_IMPORT_MEMORY_DESCR">
+		</param>
+
+		<param name="modal_popup_width" type="text" default="900"
+			label="JL_SETTINGS_MODALPOPUP_WIDTH" description="JL_SETTINGS_MODALPOPUP_WIDTH_DESCR">
+		</param>
+		
+		<param name="modal_popup_height" type="text" default="600"
+			label="JL_SETTINGS_MODALPOPUP_HEIGHT" description="JL_SETTINGS_MODALPOPUP_HEIGHT_DESCR">
+		</param>
+
+	</params>
+
+	<params group="JL_SETTINGS_GROUP_FRONTEND">
+
+		<param name="show_footer" type="radio" default="1"
+			label="JL_SETTINGS_SHOW_FOOTER_TITLE" description="JL_SETTINGS_SHOW_FOOTER_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="cfg_google_api_key" type="text" default=""
+			label="JL_SETTINGS_GMAP_APIKEY_TITLE" description="JL_SETTINGS_GMAP_APIKEY_DESCR">
+		</param>
+
+		<param name="force_ranking_cache" type="radio" default="1"
+			label="JL_SETTINGS_FORCE_RANKING_CACHE" description="JL_SETTINGS_FORCE_RANKING_CACHE_DESC">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="usethumblib" type="radio" default="0"
+			label="JL_SETTINGS_USE_SERVERSIDE_THUMBCREATION" description="JL_SETTINGS_USE_SERVERSIDE_THUMBCREATION_DESC">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="thumbformat" type="list" default="PNG"
+			label="JL_SETTINGS_THUMB_FORMAT" description="JL_SETTINGS_THUMB_FORMAT_DESCR">
+			<option value="GIF">GIF</option>
+			<option value="JPG">JPG</option>
+			<option value="PNG">PNG</option>
+		</param>
+
+		<param name="default_itemid" type="text" default=""
+			label="JL_SETTINGS_DEFAULT_ITEMID_TITLE" description="JL_SETTINGS_DEFAULT_ITEMID_DESCR">
+		</param>
+
+	</params>
+
+	<params group="JL_SETTINGS_GROUP_BACKEND"
+		addpath="/administrator/components/com_joomleague/elements">
+
+		<param name="defsportstype" type="sql" default="Soccer"
+			label="JL_SETTINGS_SELECT_DEFAULT_SPORTS_TYPE_LABEL" description="JL_SETTINGS_SELECT_DEFAULT_SPORTS_TYPE_LABEL_DESCR"
+			query="	SELECT	id AS value,
+								name AS defsportstype
+			 			FROM #__joomleague_sports_type
+			 			ORDER BY id, name" />
+
+		<param name="name_format" type="nameformat" default="0"
+			label="JL_SETTINGS_LABEL_NAME_FORMAT" description="JL_SETTINGS_DESCR_NAME_FORMAT">
+		</param>
+
+		<param name="image_max_size" type="text" default="120"
+			label="JL_SETTINGS_MAXIMGSIZE_TITLE" description="JL_SETTINGS_MAXIMGSIZE_DESCR">
+		</param>
+
+		<param name="cfg_be_show_matchdays_order" type="list" default="ASC"
+			label="JL_SETTINGS_MATCHDAY_ORDER_TITLE" description="JL_SETTINGS_MATCHDAY_ORDER_DESCR">
+			<option value="ASC">JL_GLOBAL_ASC</option>
+			<option value="DESC">JL_GLOBAL_DESC</option>
+		</param>
+
+		<param name="cfg_show_seasons_in_project_drop_down" type="radio"
+			default="0" label="JL_SETTINGS_SHOW_SEASON_TITLE" description="JL_SETTINGS_SHOW_SEASON_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="on_prefill_delete_current_match_roster" type="radio"
+			default="0" label="JL_SETTINGS_ON_PREFILL_DELETE_CURRENT_MATCH_ROSTER" description="JL_SETTINGS_ON_PREFILL_DELETE_CURRENT_MATCH_ROSTER_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="use_prefilled_match_roster" type="list"
+			default="0" label="JL_SETTINGS_USE_PREFILLED_MATCH_ROSTER" description="JL_SETTINGS_USE_PREFILLED_MATCH_ROSTER_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_SETTINGS_MATCH_ROSTER_PREFILL_WITH_LAST_MATCH_ROSTER</option>
+			<option value="2">JL_SETTINGS_MATCH_ROSTER_PREFILL_WITH_PROJECTTEAM_PLAYERS</option>
+			<option value="3">JL_SETTINGS_MATCH_ROSTER_PREFILL_ASK</option>
+		</param>
+
+    <param name="cfg_show_roundlist_in_matches_overview" type="radio"
+			default="0" label="JL_SETTINGS_SHOW_ROUNDLIST_IN_MATCHES_TITLE" description="JL_SETTINGS_SHOW_ROUNDLIST_IN_MATCHES_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param name="import_existing_color" type="colorpicker" default="120"
+			label="JL_SETTINGS_IMPORT_EXISTING_COLOR_TITLE" description="JL_SETTINGS_IMPORT_EXISTING_COLOR__DESCR">
+		</param>
+		<param name="import_new_entry_color" type="colorpicker" default="120"
+			label="JL_SETTINGS_IMPORT_NEW_ENTRY_COLOR_TITLE" description="JL_SETTINGS_IMPORT_NEW_ENTRY_COLOR__DESCR">
+		</param>
+		<param name="import_club_existing_color" type="colorpicker" default="120"
+			label="JL_SETTINGS_IMPORT_CLUB_EXISTING_COLOR_TITLE" description="JL_SETTINGS_IMPORT_CLUB_EXISTING_COLOR__DESCR">
+		</param>
+		
+	</params>
+
+	<params group="JL_SETTINGS_GROUP_PLACEHOLDER_IMAGES"
+		description="JL_SETTINGS_PARAMS_DESCR_PLACEHOLDER_IMAGES">
+
+		<param 	name="ph_flags" type="imageselect"
+				default="media/com_joomleague/placeholders/placeholder_flags.png"
+				label="JL_SETTINGS_PARAM_LABEL_PH_FLAGS" 
+				description="JL_SETTINGS_PARAM_DESCR_PH_FLAGS">
+		</param>
+		
+		<param 	name="ph_icon" type="imageselect"
+				default="media/com_joomleague/placeholders/placeholder_21.png"
+				label="JL_SETTINGS_PARAM_LABEL_PH_ICON" 
+				description="JL_SETTINGS_PARAM_DESCR_PH_ICON">
+		</param>
+		
+		<param 	name="ph_logo_small" type="imageselect"
+				default="media/com_joomleague/placeholders/placeholder_small.gif" 
+				label="JL_SETTINGS_PARAM_LABEL_PH_LOGO_SMALL"
+				description="JL_SETTINGS_PARAM_DESCR_PH_LOGO_SMALL">
+		</param>
+		
+		<param 	name="ph_logo_medium" type="imageselect"
+				default="media/com_joomleague/placeholders/placeholder_50.png" 
+				label="JL_SETTINGS_PARAM_LABEL_PH_LOGO_MEDIUM"
+				description="JL_SETTINGS_PARAM_DESCR_PH_LOGO_MEDIUM">
+		</param>
+		
+		<param 	name="ph_logo_big" type="imageselect"
+				default="media/com_joomleague/placeholders/placeholder_150.png"
+				label="JL_SETTINGS_PARAM_LABEL_PH_LOGO_BIG" 
+				description="JL_SETTINGS_PARAM_DESCR_PH_LOGO_BIG">
+		</param>
+
+		<param 	name="ph_player" type="imageselect"
+				default="media/com_joomleague/placeholders/placeholder_150_2.png"
+				label="JL_SETTINGS_PARAM_LABEL_PH_PLAYER" 
+				description="JL_SETTINGS_PARAM_DESCR_PH_PLAYER">
+		</param>
+<!--		
+		<param name="image_450" type="imageselect"
+			default="media/com_joomleague/placeholders/placeholder_450.png"
+			label="JL_SETTINGS_PARAM_LABEL_IMAGE_450" description="JL_SETTINGS_PARAM_DESCR_IMAGE_450">
+		</param>
+		-->		
+		<param 	name="ph_team" type="imageselect"
+				default="media/com_joomleague/placeholders/placeholder_450_2.png"
+				label="JL_SETTINGS_PARAM_LABEL_PH_TEAM" 
+				description="JL_SETTINGS_PARAM_DESCR_PH_TEAM">
+		</param>
+
+	</params>
+
+  <params group="JL_SETTINGS_GROUP_JQUERY">
+  
+  <param name="jl_use_jquery_version" type="radio"
+			default="0" 
+      label="JL_SETTINGS_USE_JQUERY_VERSION_TITLE" 
+      description="JL_SETTINGS_USE_JQUERY_VERSION_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+  <field name="jqueryversionfrontend" type="list" default="1.8" 
+	            	label="JL_SYSTEM_JQUERY_FIELD_JQUERYVERSION_LABEL" 
+	            	description="JL_SYSTEM_JQUERY_FIELD_JQUERYVERSION_DESC">
+                <option value="1.8">JL_SYSTEM_JQUERY_VALUE_LATEST18</option>
+	                <option value="1.7">JL_SYSTEM_JQUERY_VALUE_LATEST17</option>
+	                <option value="1.6">JL_SYSTEM_JQUERY_VALUE_LATEST16</option>
+	                <option value="1.5">JL_SYSTEM_JQUERY_VALUE_LATEST15</option>
+	                <option value="1.4">JL_SYSTEM_JQUERY_VALUE_LATEST14</option>
+	                <option value="1.3">JL_SYSTEM_JQUERY_VALUE_LATEST13</option>
+
+	            </field>
+	            <field name="jquerysubversionfrontend" type="text" default="" size="2" 
+					label="JL_SYSTEM_JQUERY_FIELD_JQUERYSUBVERSION_LABEL" 
+					description="JL_SYSTEM_JQUERY_FIELD_JQUERYSUBVERSION_DESC" />
+					
+<field name="jqueryuiversionfrontend" type="list" default="1.8" 
+	            	label="JL_SYSTEM_JQUERY_FIELD_JQUERYUIVERSION_LABEL" 
+	            	description="JL_SYSTEM_JQUERY_FIELD_JQUERYUIVERSION_DESC">
+	                <option value="1.8">JL_SYSTEM_JQUERY_VALUE_LATESTUI18</option>
+	                <option value="1.7">JL_SYSTEM_JQUERY_VALUE_LATESTUI17</option>
+
+	            </field>
+	            
+              <field name="jqueryuisubversionfrontend" type="text" default="" size="2" 
+					label="JL_SYSTEM_JQUERY_FIELD_JQUERYUISUBVERSION_LABEL" 
+					description="JL_SYSTEM_JQUERY_FIELD_JQUERYUISUBVERSION_DESC" />					
+  </params>
+  
+</root>

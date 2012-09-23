@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>Joomleague TeamPlayers</name>
+	<creationDate>07/09/2010</creationDate>
+	<author>Ingalb</author>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>vllaznia.tk@gmail.com</authorEmail>
+	<authorUrl>http://www.fkvllaznia.net</authorUrl>
+	<version>1.5.00 alpha</version>
+	<description>
+    <![CDATA[
+    This module shows Player Teams
+    ]]>
+	</description>
+
+	<files>
+		<filename module="mod_joomleague_team_players">mod_joomleague_team_players.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>css</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_team_players.ini
+		</language>
+	</languages>
+
+	<params addpath="/administrator/components/com_joomleague/elements">
+
+		<param 	name="moduleclass_sfx" type="text" default=""
+				label="MODULE CLASS SUFFIX" 
+				description="MODULE CLASS SUFFIX DESC" />
+
+		<param type="project" name="p" label="PROJECT LABEL"
+				description="PROJECT LABEL DESC" />
+
+		<param 	name="team" type="dependsql" default="0"
+				depends="p" task="projectteamsoptions" 		
+				label="TEAM ID LABEL"
+				description="TEAM ID LABEL DESC" />
+			
+		<param 	name="show_project_name" type="radio" default="0"
+				label="SHOW PROJECT NAME" 
+				description="SHOW PROJECT NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_team_name" type="radio" default="0"
+				label="SHOW TEAM NAME" 
+				description="SHOW TEAM NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_player_link" type="radio" default="1"
+				label="SHOW PLAYER LINK" 
+				description="SHOW PLAYER LINK DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_player_flag" type="radio" default="1"
+				label="SHOW PLAYER FLAG"
+				description="SHOW PLAYER FLAG DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="name_format" type="nameformat" 
+				label="JL_FES_PLAYER_PARAM_LABEL_NAME_FORMAT" 
+				description="JL_FES_PLAYER_PARAM_DESCR_NAME_FORMAT" />
+		
+	</params>
+	<params group="advanced">
+		<param 	name="cache" type="list" default="1" 
+				label="CACHING"
+				description="CACHING DESC">
+			<option value="1">USE GLOBAL</option>
+			<option value="0">NO CACHING</option>
+		</param>
+		<param 	name="cache_time" type="text" default="900" 
+				label="CACHE TIME"
+				description="CACHE TIME DESC" />
+	</params>
+</install>
+ 

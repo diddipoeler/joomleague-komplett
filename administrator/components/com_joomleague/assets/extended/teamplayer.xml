@@ -1,0 +1,30 @@
+<model>
+	<params group="JL_EXT_EXTENDED_PREFERENCES" addpath="/administrator/components/com_joomleague/elements">
+	
+		<param 	name="JL_EXT_TEAMPLAYER_OCCUPATION" type="text" 
+				label="JL_EXT_TEAMPLAYER_OCCUPATION"
+				description="Occupation">
+		</param>
+		
+		<param 	name="JL_EXT_TEAMPLAYER_HEIGTH" type="text" 
+				label="JL_EXT_TEAMPLAYER_HEIGTH"
+				description="Heigth">
+		</param>
+		
+		<param 	name="JL_EXT_TEAMPLAYER_WEIGHT" type="text" 
+				label="JL_EXT_TEAMPLAYER_WEIGHT"
+				description="Weight">
+		</param>
+		
+		<param 	name="JL_EXT_TEAMPLAYER_DATE_SINCE" type="calendar" 
+				label="JL_EXT_TEAMPLAYER_DATE_SINCE"
+				description="Player since">
+		</param>
+		
+		<param 	name="JL_EXT_TEAMPLAYER_DATE_UNTIL" type="calendar"
+				label="JL_EXT_TEAMPLAYER_DATE_UNTIL"
+				description="Player until">
+		</param>
+		
+	</params>
+</model>

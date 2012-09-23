@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="extension" version="1.0.0">
+	<name>DFBNET</name>
+	<author>diddipoeler</author>
+	<creationDate>2011-04-27</creationDate>
+	<copyright>Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>diddipoeler@arcor.de</authorEmail>
+	<authorUrl>www.fussballineuropa.de</authorUrl>
+	<version>1.0.0</version>
+	<description>Joomleague-Extension DFBNET CSV-Import</description>
+	<logo>dfbnet-logo.gif</logo>
+	<updatelink></updatelink>
+</install>

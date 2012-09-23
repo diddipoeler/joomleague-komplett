@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+
+<install type="component" version="1.6.0-nathalie" method="upgrade">
+
+	<name>JoomLeague</name>
+	<creationDate>2012</creationDate>
+	<author>JoomLeague Developers</author>
+	<authorEmail>andone@mfga.at</authorEmail>
+	<authorUrl>http://www.joomleague.net</authorUrl>
+	<copyright>(C) 2005-2012 JoomLeague.net. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>1.6.0-nathalie</version>
+	<description>League Management component for Joomla 1.5x - Release 1.6.0-nathalie</description>
+
+  <installfile>install.joomleague.all.php</installfile>
+	<uninstallfile>uninstall.joomleague.php</uninstallfile>
+
+  <files folder="languages">
+		<folder>modules</folder>
+	</files>
+	
+	<!-- Site Main File Copy Section -->
+	<files folder="components/com_joomleague">
+		<filename>LICENSE.txt</filename>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>joomleague.html.php</filename>
+		<filename>joomleague.php</filename>
+		<filename>joomleague.core.php</filename>
+		<filename>router.php</filename>
+
+		<folder>assets</folder>
+		<folder>controllers</folder>
+		<folder>extensions</folder>
+		<folder>settings</folder>
+		<folder>help</folder>
+		<folder>helpers</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+
+	<!-- Site Main Language File Copy Section -->
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.com_joomleague.ini</language>
+	</languages>
+
+	<!-- Site Main Media File Copy Section -->
+	<media destination="com_joomleague" folder="media/com_joomleague">
+		<filename>index.html</filename>
+		<folder>clubs</folder>
+		<folder>event_icons</folder>
+		<folder>flags</folder>
+		<folder>jl_images</folder>
+		<folder>jl_person_playground</folder>
+		<folder>persons</folder>
+		<folder>placeholders</folder>
+		<folder>playgrounds</folder>
+    <folder>rosterground</folder>
+		<folder>projects</folder>
+		<folder>sportstypes</folder>
+		<folder>statistics</folder>
+		<folder>teams</folder>
+		<folder>dfbnet-matchreport</folder>
+		<folder>treebracket</folder>
+	</media>
+
+	<!--  Install Database Section -->
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+			<file driver="mysql">sql/install.mysql.nonutf8.sql</file>
+		</sql>
+	</install>
+
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu view="projects" img="components/com_joomleague/assets/images/joomleague_icon.png">Joomleague</menu>
+			<!--
+			<submenu>
+				<menu view="projects" img="components/com_joomleague/assets/images/projects.png">Project list</menu>
+				<menu view="persons" img="components/com_joomleague/assets/images/players.png">Persons list</menu>
+				<menu view="predictions" img="components/com_joomleague/assets/images/prediction.png">Predictions</menu>
+			</submenu>
+			-->
+
+		<!-- Administration Main File Copy Section -->
+		<!-- Note the folder attribute: This attribute describes the folder
+			 to copy FROM in the package to install therefore files copied
+			 in this section are copied from /admin/ in the package
+
+		<files folder="administrator">
+			<filename>mod_joomleague_adminpanel_icon/mod_joomleague_adminpanel_icon.xml</filename>
+			<filename>mod_joomleague_adminpanel_icon/mod_joomleague_adminpanel_icon.php</filename>
+		</files>
+		-->
+		<files folder="administrator/components/com_joomleague">
+
+			<filename>admin.joomleague.php</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>defines.php</filename>
+			<filename>index.html</filename>
+
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>elements</folder>
+			<folder>help</folder>
+			<folder>helpers</folder>
+			<folder>install</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>statistics</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+
+		</files>
+
+		
+
+		<!-- Admin Main Language File Copy Section -->
+		<languages folder="administrator/language">
+			<language tag="en-GB">en-GB/en-GB.com_joomleague.ini</language>
+		</languages>
+		<!-- -->
+
+	</administration>
+
+  <modules>
+		<module module="mod_joomleague_birthday" client="site" />
+		<module module="mod_joomleague_calendar" client="site" />
+		<module module="mod_joomleague_eventsranking" client="site" />
+		<module module="mod_joomleague_liveticker" client="site" />
+		<module module="mod_joomleague_logo" client="site" />
+		<module module="mod_joomleague_navigation_menu" client="site" />
+		<module module="mod_joomleague_nextmatch_ext" client="site" />
+		<module module="mod_joomleague_playgroundplan" client="site" />
+		<module module="mod_joomleague_randomplayer" client="site" />
+		<module module="mod_joomleague_ranking" client="site" />
+		<module module="mod_joomleague_results" client="site" />
+		<module module="mod_joomleague_sports_type_statistics" client="site" />
+		<module module="mod_joomleague_statranking" client="site" />
+		<module module="mod_joomleague_team_players" client="site" />
+		<module module="mod_joomleague_teamstats_ranking" client="site" />
+		<module module="mod_joomleague_ticker" client="site" />
+	  <module module="mod_joomleague_statistik" client="site" />
+	</modules>
+	
+	<plugins>
+		<plugin plugin="joomleague" group="comments" />
+		<plugin plugin="joomleague" group="joomleague_person" />
+		<plugin plugin="joomleague" group="search" />
+	</plugins>	
+
+</install>

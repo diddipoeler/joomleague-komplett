@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>Joomleague Result Ticker</name>
+	<author>Joomleague Developers</author>
+	<creationDate>2009-04-16</creationDate>
+	<copyright>GNU/GPL</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>jippej@hotmail.com</authorEmail>
+	<authorUrl>-</authorUrl>
+	<version>1.5.2b</version>
+	<description>Show results in a ticker style</description>
+
+	<files>
+		<filename module="mod_joomleague_ticker">mod_joomleague_ticker.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>js</folder>
+		<folder>css</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_ticker.ini
+		</language>
+		<language tag="de-DE">language/de-DE/de-DE.mod_joomleague_ticker.ini
+		</language>
+	</languages>
+	<params addpath="/administrator/components/com_joomleague/elements">
+		<param name="p" type="projects" label="LABEL PROJECT"
+			description="PROJECTID" />
+
+		<param name="usefavteams" type="radio" default="0"
+			label="LABEL USE FAV TEAMS" description="DESC USE FAV TEAMS">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+
+		<param name="teamid" type="teams" label="LABEL TEAM"
+			description="TEAMID" />
+
+		<param name="round" type="dependsql" default="0" depends="p"
+			task="roundsoptions" label="Round" description="Which Round?" />
+
+		<param name="daysback" type="text" default="14" label="LABEL DAYS BACK"
+			description="DESC DAYS BACK" />
+
+		<param name="showproject" type="radio" default="1"
+			label="LABEL SHOW PROJECT" description="DESC SHOW PROJECT">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+
+		<param name="refresh" type="radio" default="0" label="LABEL REFRESH"
+			description="DESC REFRESH">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+
+		<param name="minute" type="text" default="120" label="LABEL MINUT NUMBER"
+			description="DESC MINUT NUMBER" />
+
+		<param name="ordering" type="radio" default="asc" label="Ordering"
+			description="ordering of results">
+			<option value="asc">ASC</option>
+			<option value="desc">DESC</option>
+		</param>
+
+		<param name="showdate" type="radio" default="1" label="LABEL SHOW DATE"
+			description="DESC SHOW DATE">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+
+		<param name="matchstatus" type="list" default="4"
+			label="LABEL MATCH STATUS" description="DESC MATCH STATUS">
+			<option value="0">ENDED</option>
+			<option value="1">ENDED OR LIVE</option>
+			<option value="2">LIVE OR UPCOMING</option>
+			<option value="3">UPCOMING</option>
+			<option value="4">ALL MATCHES</option>
+		</param>
+
+		<param name="dateformat" type="text" default="%a., %d. %b. %Y"
+			label="LABEL DATE FORMAT" description="DESC DATE FORMAT" />
+
+		<param name="offset" type="text" default="0" label="Timezone Offset "
+			description="Timezone offset" />
+
+		<param name="results" type="text" default="10" label="LABEL RESULTS NUMBER"
+			description="DESC RESULTS NUMBER" />
+
+		<param name="team_separator" type="text" default="vs"
+			label="LABEL TEAM SEPARATOR" description="DESC TEAM SEPARATOR" />
+
+		<param name="result_separator" type="text" default=":"
+			label="LABEL RESULTS SEPARATOR" description="DESC RESULTS SEPARATOR" />
+
+		<param name="urlformat" type="list" default="" label="LABEL URL FORMAT"
+			description="DESC URL FORMAT">
+			<option value="0">NO URL</option>
+			<option value="1">URL SHOW ROUND</option>
+			<option value="2">URL MATCH REPORT</option>
+			<option value="3">URL TEAM SCHEDULE</option>
+		</param>
+
+		<param name="itemid" type="text" default="" label="LABEL ITEMID"
+			description="DESC ITEMID" />
+
+		<param name="teamformat" type="list" default="" label="LABEL TEAM FORMAT"
+			description="DESC TEAM FORMAT">
+			<option value="0">LONG NAME</option>
+			<option value="1">MIDDLE NAME</option>
+			<option value="2">SHORT NAME</option>
+			<option value="3">TEAM ICON</option>
+			<option value="4">ICON LONG NAME</option>
+			<option value="5">ICON MIDDLE NAME</option>
+			<option value="6">ICON SHORT NAME</option>
+			<option value="7">ICON ABOVE LONG NAME</option>
+			<option value="8">ICON ABOVE MIDDLE NAME</option>
+			<option value="9">ICON ABOVE SHORT NAME</option>
+		</param>
+
+		<param name="outline" type="list" default="" label="LABEL OUTLINE"
+			description="DESC OUTLINE">
+			<option value="0">DOUBLE LINE</option>
+			<option value="1">MIDDLE</option>
+			<option value="2">RIGHT</option>
+		</param>
+
+		<param name="mode" type="list" default="" label="LABEL MODE"
+			description="DESC MODE">
+			<option value="T">TICKER</option>
+			<option value="L">LIST</option>
+			<option value="V">VERTICAL SCROLL</option>
+			<option value="H">HORIZONTAL SCROLL</option>
+		</param>
+
+		<param name="@spacer" type="spacer" default="" label=""
+			description="" />
+
+		<param name="tickerpause" type="text" default="3" label="LABEL PAUSE TIME"
+			description="DESC PAUSE TIME" />
+
+		<param name="@spacer" type="spacer" default="" label=""
+			description="" />
+
+		<param name="scrollspeed" type="text" default="2"
+			label="LABEL SCROLLSPEED" description="DESC SCROLLSPEED" />
+
+		<param name="scrollpause" type="radio" default="1"
+			label="LABEL SCROLLPAUSE" description="DESC SCROLLPAUSE">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+
+		<param name="height" type="text" default="50" label="LABEL TICKER HEIGHT"
+			description="DESC TICKER HEIGHT">
+		</param>
+
+		<param name="width" type="text" default="200" label="LABEL TICKER WIDTH"
+			description="DESC TICKER WIDTH">
+		</param>
+	</params>
+
+	<params group="advanced">
+		<param name="cache" type="list" default="1" label="CACHING"
+			description="CACHING DESC">
+			<option value="1">USE GLOBAL</option>
+			<option value="0">NO CACHING</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="CACHE TIME"
+			description="CACHE TIME DESC">
+		</param>
+		<param name="moduleclass_sfx" type="text" default=""
+			label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX">
+		</param>
+	</params>
+</install>

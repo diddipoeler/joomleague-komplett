@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>Joomleague PlaygroundPlan</name>
+	<creationDate>07/16/2010</creationDate>
+	<author>Marco Vaninetti</author>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>martizva@libero.it</authorEmail>
+	<authorUrl>http://www.uscosio.org</authorUrl>
+	<version>1.5.0-a</version>
+	<description>
+    <![CDATA[
+    This module shows upcoming matches for selected playgrounds. In order to have this module working in ticker mode you should have installed mootols.
+    ]]>
+	</description>
+
+
+	<files>
+		<filename module="mod_joomleague_playgroundplan">mod_joomleague_playgroundplan.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_playgroundplan.ini
+		</language>
+	</languages>
+	<params addpath="/administrator/components/com_joomleague/elements">
+		<param 	name="projects" type="projects" default=""
+				label="PROJECT ID LABEL" 
+				description="PROJECT ID LABEL DESC" />
+
+		<param 	name="playground" type="playgrounds" default=""
+				label="PLAYGROUND ID LABEL" 
+				description="PLAYGROUND ID LABEL DESC" />
+			
+		<param 	name="show_project_name" type="list" default="0"
+				label="SHOW PROJECT NAME" 
+				description="SHOW PROJECT NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_league_name" type="list" default="1"
+				label="SHOW LEAGUE NAME" 
+				description="SHOW LEAGUE NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_playground_name" type="list" default="1"
+				label="SHOW PLAYGROUND NAME" 
+				description="SHOW PLAYGROUND NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_playground_link" type="list" default="1"
+				label="SHOW PLAYGROUND LINK" 
+				description="SHOW PLAYGROUND LINK DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="teamformat" type="list" default="middle_name"
+				label="LABEL TEAM FORMAT" 
+				description="TEAM NAME DESC">
+			<option value="name">LONG NAME</option>
+			<option value="middle_name">MIDDLE NAME</option>
+			<option value="short_name">SHORT NAME</option>
+		</param>
+		
+		<param 	name="show_club_logo" type="list" default="1"
+				label="SHOW CLUB LOGO" 
+				description="SHOW CLUB LOGO DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="maxmatches" type="text" default="7"
+				label="MAX MATCHES NUMBER" 
+				description="MAX MATCHES NUMBER DESC" />
+
+		<param 	name="dateformat" type="text" default="%A, %d %B" 
+				label="LABEL DATE FORMAT"
+				description="LABEL DATE FORMAT DESC" />
+			
+		<param 	name="timeformat" type="text" default="%H:%M" 
+				label="LABEL TIME FORMAT"
+				description="LABEL TIME FORMAT DESC" />
+			
+		<param 	name="mode" type="list" default="0" 
+				label="LABEL MODE"
+				description="LABEL MODE DESC">
+			<option value="0">TICKER</option>
+			<option value="1">LIST</option>
+		</param>
+	</params>
+	
+	<params group="advanced">
+		<param 	name="cache" type="list" default="1" 
+				label="CACHING"
+				description="CACHING DESC">
+			<option value="1">USE GLOBAL</option>
+			<option value="0">NO CACHING</option>
+		</param>
+		
+		<param 	name="cache_time" type="text" default="900" 
+				label="CACHE TIME"
+				description="CACHE TIME DESC" />
+				
+		<param 	name="moduleclass_sfx" type="text" default="" 
+				label="Module Class Suffix" 
+				description="PARAMMODULECLASSSUFFIX" />				
+	</params>
+	
+</install>
+ 

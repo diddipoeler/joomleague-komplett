@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="JL_XML_RESULTS_LAYOUT_TITLE">
+		<message>
+			<![CDATA[JL_XML_RESULTS_LAYOUT_DESCR]]>
+		</message>
+	</layout>
+	<state>
+		<name>JL_XML_RESULTS_STATE_NAME</name>
+		<description>JL_XML_RESULTS_STATE_DESCR</description>
+		<url addpath="/administrator/components/com_joomleague/elements">
+			<param name="p" type="project" label="JL_XML_SELECT_PROJECT_LABEL"
+				description="JL_XML_SELECT_PROJECT_DESCR">
+			</param>
+			<param name="division" type="dependsql" depends="p"
+				task="projectdivisionsoptions" label="JL_XML_SELECT_DIVISION_LABEL"
+				description="JL_XML_SELECT_DIVISION_DESCR">
+			</param>
+			<param name="r" type="dependsql" depends="p"
+				task="roundsoptions" label="JL_XML_SELECT_ROUND_LABEL"
+				description="JL_XML_SELECT_ROUND_DESCR">
+			</param>
+		</url>
+	</state>
+</metadata>

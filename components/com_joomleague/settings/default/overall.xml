@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templateconfig type="JL_template" version="1.0.0">
+	<name><![CDATA[JL_FES_OVERALL_NAME]]></name>
+	<description><![CDATA[JL_FES_OVERALL_DESCR]]></description>
+
+	<params	group="JL_FES_PARAMS_GROUP_PAGE_ELEMENTS"
+		description="JL_FES_PARAMS_DESCR_PAGE_ELEMENTS">
+
+		<param	name="show_project_heading" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_PROJECT_NAME"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_PROJECT_NAME">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param	name="show_project_country" type="radio" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_PROJECT_COUNTRY"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_PROJECT_COUNTRY">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+    
+    <param	name="show_project_country_info" type="radio" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_PROJECT_COUNTRY_INFO"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_PROJECT_COUNTRY_INFO">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+    
+		<param	name="show_project_picture" type="radio" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_PROJECT_PICTURE"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_PROJECT_PICTURE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="picture_width" type="text" default="50"
+				label="JL_FES_PARAM_LABEL_PROJECT_PICTURE_WIDTH" 
+				description="JL_FES_PARAM_DESCR_PROJECT_PICTURE_WIDTH">
+		</param>
+		
+		<param 	name="picture_height" type="text" default="50"
+				label="JL_FES_PARAM_LABEL_PROJECT_PICTURE_HEIGHT" 
+				description="JL_FES_PARAM_DESCR_PROJECT_PICTURE_HEIGHT">
+		</param>		
+<!--
+		<param	name="project_heading_type" type="list" default="0"
+				label="Type of heading?"
+				description="Select what to display as heading">
+			<option value="0">Project name</option>
+			<option value="1">League name + season name</option>
+			<option value="2">Country code 3 (or flag if existent) + league name + season name</option>
+		</param-->
+
+		<param	name="show_icons" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_ICONS"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_ICONS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="show_print_button" type="radio" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_PRINT_BUTTON"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_PRINT_BUTTON">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<!--param	name="show_pdf_button" type="radio" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_PDF_BUTTON"
+			description="JL_FES_OVERALL_PARAM_DESCR_PDF_BACK_BUTTON">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="show_email_button" type="radio" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_EMAIL_BUTTON"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_EMAIL_BUTTON">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+-->
+		<param	name="show_back_button" type="list" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_BACK_BUTTON"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_BACK_BUTTON">
+			<option value="0">JL_FES_OVERALL_PARAM_OPTION0_BACK_BUTTON</option>
+			<option value="1">JL_FES_OVERALL_PARAM_OPTION1_BACK_BUTTON</option>
+			<option value="2">JL_FES_OVERALL_PARAM_OPTION2_BACK_BUTTON</option>
+		</param>
+
+	</params>
+
+	<params	group="JL_FES_PARAMS_GROUP_OPTIONS"
+		description="JL_FES_PARAMS_DESCR_OPTIONS">	
+			
+		<param	name="seperator" type="text" default="-"
+			label="JL_FES_OVERALL_PARAM_LABEL_WHICH_SEPARATOR"
+			description="JL_FES_OVERALL_PARAM_DESCR_WHICH_SEPARATOR" >
+		</param>
+
+		<param	name="results_below" type="radio" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_RESULTS_BELOW"
+			description="JL_FES_OVERALL_PARAM_DESCR_RESULTS_BELOW">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="use_jl_substitution" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_JL_SUBST_SYSTEM"
+			description="JL_FES_OVERALL_PARAM_DESCR_JL_SUBST_SYSTEM">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="use_jl_events" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_JL_EVENTS_SYSTEM"
+			description="JL_FES_OVERALL_PARAM_DESCR_JL_EVENTS_SYSTEM">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="use_jl_events_required" type="radio" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_JL_EVENTS_REQUIRED"
+			description="JL_FES_OVERALL_PARAM_DESCR_JL_EVENTS_REQUIRED">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+	</params>
+
+	<params	group="JL_FES_PARAMS_GROUP_FRONTEND_EDIT"
+		description="JL_FES_PARAMS_DESCR_FRONTEND_EDIT">
+
+		<param	name="edit_results_below" type="radio" default="0"
+			label="JL_FES_OVERALL_PARAM_LABEL_EDIT_BELOW"
+			description="JL_FES_OVERALL_PARAM_DESCR_EDIT_BELOW">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+	</params>
+
+	<params	group="JL_FES_PARAMS_GROUP_PERSONAL_DATA"
+		description="JL_FES_PARAMS_DESCR_PERSONAL_DATA">
+
+		<param	name="nospam_email" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_PROTECT_EMAIL"
+			description="JL_FES_OVERALL_PARAM_DESCR_PROTECT_EMAIL">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="time_format" type="text" default="%H:%M"
+			label="JL_FES_OVERALL_PARAM_LABEL_TIME_FORMAT"
+			description="JL_FES_OVERALL_PARAM_DESCR_TIME_FORMAT" >
+		</param>
+
+	</params>
+
+  <params	group="JL_FES_PARAMS_GROUP_RSSFEED_DATA"
+		description="JL_FES_PARAMS_DESCR_RSSFEED_DATA">
+
+<param 	name="show_project_rssfeed" type="radio" default="1" 
+				label="JL_FES_PARAM_LABEL_SHOW_PROJECT_RSSFEED" 
+				description="JL_FES_PARAM_DESCR_SHOW_PROJECT_RSSFEED">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+    
+<param name="perFeedItems" type="text" default="5" size="4" label="MOD_JW_SRFR_MAXIMUM_ITEMS_TO_FETCH_PER_FEED" description="MOD_JW_SRFR_SET_THE_MAXIMUM_NUMBER_OF_ITEMS_THAT_WILL_BE_DISPLAYED_PER_RSS_FEED" />
+<param name="totalFeedItems" type="text" default="10" size="4" label="MOD_JW_SRFR_TOTAL_ITEMS_FROM_ALL_FEEDS" description="MOD_JW_SRFR_SET_THE_TOTAL_NUMBER_OF_ITEMS_THAT_WILL_BE_DISPLAYED_FROM_ALL_FEEDS_SO_EVEN_IF_YOU_HAVE_4_FEEDS_DISPLAYING_IN_YOUR_WEBSITE_WITH_10_ITEMS_PER_FEED_AND_YOU_HAVE_SET_TOTAL_ITEMS_FROM_ALL_FEEDS_TO_15_THEN_NO_MORE_THAN_THE_LAST_15_ITEMS_FROM_ALL_FEEDS_WILL_BE_DISPLAYED_THIS_IS_A_NICE_OPTION_TO_HAVE_WHEN_YOU_DONT_WANT_THE_LIST_OF_FEEDS_TO_SPAN_A_MILE_HIGH_IN_YOUR_WEBSITE" />
+<param name="feedTimeout" type="text" default="10" size="4" label="MOD_JW_SRFR_FEED_TIMEOUT_IN_SECONDS" description="MOD_JW_SRFR_SET_THE_TIME_IN_SECONDS_AFTER_WHICH_THE_MODULE_WILL_STOP_REQUESTING_DATA_FROM_PROBLEMATIC_RSS_FEEDS_SUCH_FEEDS_CAN_COME_FROM_SOURCE_SITES_THAT_ARE_EITHER_SLUGGISH_OR_DOWN_IT_IS_SUGGESTED_NOT_TO_EXCEED_30_SECONDS" />
+		<param name="feedItemTitle" type="radio" default="1" label="MOD_JW_SRFR_FEED_ITEM_TITLE" description="MOD_JW_SRFR_DISPLAY_THE_SYNDICATED_ARTICLE_TITLE_OR_NOT">
+			<option value="0">MOD_JW_SRFR_HIDE</option>
+			<option value="1">MOD_JW_SRFR_SHOW</option>
+		</param>
+		<param name="feedItemDate" type="radio" default="1" label="MOD_JW_SRFR_FEED_ITEM_DATE_TIME" description="MOD_JW_SRFR_THIS_IS_USUALLY_THE_PUBLICATION_TIMESTAMP_OF_EACH_SYNDICATED_ARTICLE_ALSO_KNOWN_AS_ARTICLE_CREATION_TIMESTAMP">
+			<option value="0">MOD_JW_SRFR_HIDE</option>
+			<option value="1">MOD_JW_SRFR_SHOW</option>
+		</param>
+		<param name="feedItemDateFormat" type="text" default="j M Y \| g:i a" label="MOD_JW_SRFR_DATE_TIME_FORMAT" description="" />
+		<param name="feedTitle" type="radio" default="1" label="MOD_JW_SRFR_FEED_TITLE_SOURCE_SITE_NAME" description="">
+			<option value="0">MOD_JW_SRFR_HIDE</option>
+			<option value="1">MOD_JW_SRFR_SHOW</option>
+		</param>
+    <param name="feedItemDescription" type="radio" default="1" label="MOD_JW_SRFR_FEED_ITEM_DESCRIPTION" description="">
+			<option value="0">MOD_JW_SRFR_HIDE</option>
+			<option value="1">MOD_JW_SRFR_SHOW</option>
+		</param>
+		<param name="feedItemDescriptionWordlimit" type="text" default="40" size="4" label="MOD_JW_SRFR_WORD_LIMIT_FOR_FEED_ITEM_DESCRIPTION_STRIPS_HTML_TAGS" description="MOD_JW_SRFR_WORD_LIMIT_PERFORMS_COMPLETE_HTML_TAG_STRIPPING_ON_FEED_ITEM_DESCRIPTION_SET_TO_0_TO_DISABLE" />
+<param name="feedItemImageHandling" type="list" default="2" label="MOD_JW_SRFR_IMAGE_HANDLING_WITHIN_FEED_ITEM_DESCRIPTION" description="">
+			<option value="0">MOD_JW_SRFR_HIDE_ALL_IMAGES</option>
+			<option value="1">MOD_JW_SRFR_EXTRACT_FIRST_IMAGE_ONLY_HIDE_OTHERS</option>
+			<option value="2">MOD_JW_SRFR_EXTRACT_AND_RESIZE_FIRST_IMAGE_ONLY_HIDE_OTHERS</option>
+		</param>
+		<param name="feedItemImageResizeWidth" type="text" default="200" size="4" label="MOD_JW_SRFR_IMAGE_RESIZE_WIDTH_PX" description="" />
+		<param name="feedItemImageResampleQuality" type="text" default="80" size="4" label="MOD_JW_SRFR_IMAGE_RESAMPLE_QUALITY" description="" />
+		<param name="feedItemReadMore" type="radio" default="1" label="MOD_JW_SRFR_READ_MORE_LINK" description="">
+			<option value="0">MOD_JW_SRFR_HIDE</option>
+			<option value="1">MOD_JW_SRFR_SHOW</option>
+		</param>
+    		<param name="feedsBlockPreText" type="textarea" default="" label="MOD_JW_SRFR_DESCRIPTION_TEXT_AT_THE_TOP_OF_THE_FEEDS_BLOCK_OPTIONAL" description="" cols="40" rows="4" />
+		<param name="feedsBlockPostText" type="textarea" default="" label="MOD_JW_SRFR_DESCRIPTION_TEXT_AT_THE_BOTTOM_OF_THE_FEEDS_BLOCK_OPTIONAL" description="" cols="40" rows="4" />
+		<param name="feedsBlockPostLink" type="radio" default="0" label="MOD_JW_SRFR_ENABLE_CUSTOM_LINK_AT_THE_BOTTOM_OF_THE_FEEDS_BLOCK" description="">
+			<option value="0">MOD_JW_SRFR_NO</option>
+			<option value="1">MOD_JW_SRFR_YES</option>
+		</param>
+    
+		<param name="feedsBlockPostLinkURL" type="text" default="http://" label="MOD_JW_SRFR_CUSTOM_LINK_URL" description="" />
+		<param name="feedsBlockPostLinkTitle" type="text" default="" label="MOD_JW_SRFR_CUSTOM_LINK_TITLE" description="" />
+		<param name="srfrCacheTime" type="text" default="30" label="MOD_JW_SRFR_CACHE_TIME_IN_MINUTES_FOR_FEED_CONTENT_AND_REMOTE_IMAGES" description="MOD_JW_SRFR_THE_TIME_BEFORE_THE_ACTUAL_REMOTE_CONTENT_BOTH_TEXT_AND_IMAGES_IS_RECACHED_THIS_CACHE_OPTION_IS_ALWAYS_ON" />
+
+		<param name="feedTitle" type="radio" default="1" label="MOD_JW_SRFR_FEED_TITLE_SOURCE_SITE_NAME" description="">
+			<option value="0">MOD_JW_SRFR_HIDE</option>
+			<option value="1">MOD_JW_SRFR_SHOW</option>
+		</param>
+		<param name="feedFavicon" type="radio" default="1" label="MOD_JW_SRFR_FEED_FAVICON" description="">
+			<option value="0">MOD_JW_SRFR_HIDE</option>
+			<option value="1">MOD_JW_SRFR_SHOW</option>
+		</param>
+                            
+    </params>
+</templateconfig>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>JoomLeague Logo</name>
+	<author>Ingalb</author>
+	<authorEmail>vllaznia.tk@gmail.com</authorEmail>
+	<authorUrl>http://www.vllaznia.com</authorUrl>
+	<creationDate>2010-04-14</creationDate>
+	<copyright>Copyright (c) 2009 JoomLeague Developers and Ingalb
+		(vllaznia.tk@gmail.com)</copyright>
+	<license>GNU GPL v3</license>
+	<version>1.5.0-a</version>
+	<description>MOD_JLG_LOGO_MODULE_DESC</description>
+
+	<files>
+		<filename module="mod_joomleague_logo">mod_joomleague_logo.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>languages</folder>
+		<folder>css</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">languages/en-GB/en-GB.mod_joomleague_logo.ini
+		</language>
+	</languages>
+
+	<params addpath="/administrator/components/com_joomleague/elements">
+		<param 	name="p" type="projects"
+				default="" label="PROJECT ID LABEL" 
+				description="PROJECT ID LABEL DESC" />
+				
+		<param 	name="division_id" type="dependsql" 
+				depends="p" task="projectdivisionsoptions" 			
+				label="DIVISION ID LABEL" 
+				description="DIVISION ID LABEL DESC" />
+				
+		<param 	name="limit" type="text" default="10" 
+				label="ROW LIMIT LABEL"
+				description="ROW LIMIT LABEL DESC" />
+				
+		<param 	name="@spacer" type="spacer" default="" 
+				label=""
+				description="" />
+				
+		<param 	name="show_project_name" type="list" default="0"
+				label="SHOW PROJECT NAME" 
+				description="SHOW PROJECT NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="nametype" type="list" default="name" 
+				label="TEAM NAME LABEL"
+				description="TEAM NAME DESC">
+			<option value="short_name">TEAM NAME SHORT</option>
+			<option value="middle_name">TEAM NAME MEDIUM</option>
+			<option value="name">TEAM NAME FULL</option>
+		</param>
+		
+		<param 	name="show_logo" type="list" default="0" 
+				label="SHOW LOGO LABEL"
+				description="SHOW LOGO LABEL DESC">
+			<option value="0">Small Logo</option>
+			<option value="1">Medium Logo</option>
+			<option value="2">Big Logo</option>
+			<option value="3">Team Logo</option>
+			<option value="4">Projectteam Logo</option>
+		</param>
+		
+		<param 	name="teamlink" type="list" default="teaminfo" 
+				label="TEAM LINK LABEL"
+				description="TEAM LINK DESC">
+			<option value="">LINK NO LINK</option>
+			<option value="teaminfo">LINK TEAMINFO</option>
+			<option value="roster">LINK ROSTER</option>
+			<option value="teamplan">LINK TEAMPLAN</option>
+			<option value="clubinfo">LINK CLUBINFO</option>
+			<option value="teamwww">LINK TEAMWWW</option>
+			<option value="clubwww">LINK CLUBWWW</option>
+		</param>
+	</params>
+
+	<params group="advanced">
+		<param 	name="cache" type="list" default="1" 
+				label="CACHING"
+				description="CACHING DESC">
+			<option value="1">USE GLOBAL</option>
+			<option value="0">NO CACHING</option>
+		</param>
+		
+		<param 	name="cache_time" type="text" default="900" 
+				label="CACHE TIME"
+				description="CACHE TIME DESC" />
+				
+		<param 	name="moduleclass_sfx" type="text" default=""
+				label="Module Class Suffix" 
+				description="PARAMMODULECLASSSUFFIX" />
+	
+	</params>
+
+</install>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="JL_XML_MATCHEDIT_LAYOUT_TITLE">
+        <message>
+            <![CDATA[JL_XML_MATCHEDIT_LAYOUT_DESCR]]>
+        </message>
+    </layout>
+    <state>
+        <name>JL_XML_MATCHEDIT_STATE_NAME</name>
+        <description>JL_XML_MATCHEDIT_STATE_DESCR</description>
+		<url addpath="/administrator/components/com_joomleague/elements">
+
+			<param	type="project" name="p" label="JL_XML_SELECT_PROJECT_LABEL"
+					description="JL_XML_SELECT_PROJECT_DESCR" />
+						 	
+			<param	type="dependsql" name="mid" depends="p" task="matchesoptions" label="JL_XML_NEXTMATCH_SELECT_MATCH_LABEL"
+					description="JL_XML_NEXTMATCH_SELECT_MATCH_DESCR"
+					query="SELECT	m.id AS value,
+									CONCAT('(', m.match_date, ') - ', t1.middle_name, ' - ', t2.middle_name) AS mid
+							FROM #__joomleague_match m
+							JOIN #__joomleague_team AS t1 ON m.projectteam1_id=t1.id
+							JOIN #__joomleague_team AS t2 ON m.projectteam2_id=t2.id
+							ORDER BY m.match_date, t1.short_name" />
+		</url>
+    </state>
+</metadata>

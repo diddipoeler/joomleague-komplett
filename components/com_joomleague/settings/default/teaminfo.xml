@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<templateconfig type="JL_template" version="1.0.0">
+	<name><![CDATA[JL_FES_TEAMINFO_NAME]]></name>
+	<description><![CDATA[JL_FES_TEAMINFO_DESCR]]></description>
+	<params group="JL_FES_PARAMS_GROUP_PAGE_ELEMENTS" description="JL_FES_PARAMS_DESCR_PAGE_ELEMENTS">
+
+		<param name="show_projectheader" type="radio" default="1"
+			label="JL_FES_PARAM_LABEL_SHOW_PROJECTHEADER" description="JL_FES_PARAM_DESCR_SHOW_PROJECTHEADER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_sectionheader" type="radio" default="1"
+			label="JL_FES_PARAM_LABEL_SHOW_SECTIONHEADER" description="JL_FES_PARAM_DESCR_SHOW_SECTIONHEADER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+    <param 	name="show_tabs" type="radio" default="2"
+				label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TABS"
+				description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TABS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_SLIDER</option>
+      <option value="2">JL_GLOBAL_TABS</option>
+		</param>
+    
+		<param name="show_teaminfo" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TEAM_INFO_SECTION" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TEAM_INFO_SECTION">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_description" type="radio" default="0"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TEAM_DESCR" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TEAM_DESCR">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_extended" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_EXTENDED" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_EXTENDED">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_history" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_HISTORY" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_HISTORY">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+    <param 	name="show_training" type="radio" default="1" 
+				label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TRAININGDATA" 
+				description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TRAININGDATA">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<!-- <param name="show_team_season_calendar" type="radio" default="1" label="Show 
+			full season calendar" description="Shows all games for competitions belonging to 
+			same season."> <option value="0">JL_GLOBAL_NO</option> <option value="1">JL_GLOBAL_YES</option> 
+			</param> -->
+	</params>
+
+
+	<params group="JL_FES_PARAMS_GROUP_OPTIONS" description="JL_FES_PARAMS_DESCR_OPTIONS">
+
+		<param name="show_club_info" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_CLUB_INFO" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_CLUB_INFO">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_team_info" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TEAM_INFO" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TEAM_INFO">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_picture" type="list" default="team_picture"
+				label="JL_FES_TEAMINFO_SHOW_PICTURE"
+				description="JL_FES_TEAMINFO_SHOW_PICTURE_DESC">
+			<option value="team_picture">JL_FES_TEAMINFO_TEAM_PICTURE</option>
+			<option value="projectteam_picture">JL_FES_TEAMINFO_PROJECTTEAM_PICTURE</option>
+			<option value="logo_small">JL_FES_TEAMINFO_CLUB_LOGO_SMALL</option>
+			<option value="logo_middle">JL_FES_TEAMINFO_CLUB_LOGO_MIDDLE</option>
+			<option value="logo_big">JL_FES_TEAMINFO_CLUB_LOGO_BIG</option>
+		</param>
+
+		<param name="team_picture_width" type="text" default="150"
+			label="JL_FES_PARAM_LABEL_TEAM_PICTURE_WIDTH" description="JL_FES_PARAM_DESCR_TEAM_PICTURE_WIDTH">
+		</param>
+
+		<param name="team_picture_height" type="text" default="150"
+			label="JL_FES_PARAM_LABEL_TEAM_PICTURE_HEIGHT" description="JL_FES_PARAM_DESCR_TEAM_PICTURE_HEIGHT">
+		</param>
+	</params>
+
+	<params group="JL_FES_PARAMS_GROUP_HISTORY_OPTIONS" description="JL_FES_PARAMS_DESCR_HISTORY_OPTIONS">
+
+		<param name="ordering_teams_seasons" type="list" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_ORDERING_TEAMS" description="JL_FES_TEAMINFO_PARAM_DESCR_ORDERING_TEAMS">
+			<option value="0">JL_FES_TEAMINFO_PARAM_OPTION0_ORDERING_TEAMS</option>
+			<option value="1">JL_FES_TEAMINFO_PARAM_OPTION1_ORDERING_TEAMS</option>
+		</param>
+
+		<param name="show_teams_ranking_link" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TEAMS_RANKING_LINK" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TEAMS_RANKING_LINK">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_teams_results_link" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TEAMS_RESULTS_LINK" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TEAMS_RESULTS_LINK">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_teams_teamplan_link" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TEAMS_TEAMPLAN_LINK" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TEAMS_TEAMPLAN_LINK">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_teams_teamstats_link" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TEAMS_TEAMSTATS_LINK" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TEAMS_TEAMSTATS_LINK">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param name="show_teams_roster_link" type="radio" default="1"
+			label="JL_FES_TEAMINFO_PARAM_LABEL_SHOW_TEAMS_ROSTER_LINK" description="JL_FES_TEAMINFO_PARAM_DESCR_SHOW_TEAMS_ROSTER_LINK">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+	</params>
+
+	<params group="JL_FES_PARAMS_GROUP_ADVANCED_OPTIONS" 
+			description="JL_FES_PARAMS_DESCR_ADVANCED_OPTIONS">	
+		
+		<param 	name="style_class1" type="text" default="sectiontableentry1" 
+				label="JL_FES_PARAM_LABEL_STYLE_ODD" 
+				description="JL_FES_PARAM_DESCR_STYLE_ODD">
+		</param>
+		
+		<param 	name="style_class2" type="text" default="sectiontableentry2" 
+				label="JL_FES_PARAM_LABEL_STYLE_EVEN" 
+				description="JL_FES_PARAM_DESCR_STYLE_EVEN">
+		</param>
+		
+	</params>		
+</templateconfig>

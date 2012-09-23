@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>JoomLeague Ranking</name>
+	<author>JoomLeague Developers</author>
+	<authorEmail>info@joomleague.net</authorEmail>
+	<authorUrl>http://www.joomleague.net</authorUrl>
+	<creationDate>2009-08-14</creationDate>
+	<copyright>Copyright (c) 2009 JoomLeague Developers</copyright>
+	<license>GNU GPL v3</license>
+	<version>1.5.0</version>
+	<description>MODULE DESC</description>
+
+	<files>
+		<filename module="mod_joomleague_ranking">mod_joomleague_ranking.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>css</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_ranking.ini
+		</language>
+	</languages>
+
+	<params addpath="/administrator/components/com_joomleague/elements">
+								
+		<param 	name="p" type="project"
+				label="PROJECT ID LABEL" 
+				description="PROJECT ID LABEL DESC" />
+				
+		<param 	name="division_id" type="dependsql" depends="p" 
+				task="projectdivisionsoptions" 
+				label="DIVISION ID LABEL" 
+				description="DIVISION ID LABEL DESC" />
+				
+		<param 	name="limit" type="text" default="5" 
+				label="ROW LIMIT LABEL"
+				description="ROW LIMIT LABEL DESC" />
+
+		<param 	name="visible_team" type="dependsql" default="" 
+				depends="p"
+				task="projectteamsoptions" 
+				label="VISIBLE_TEAM_LABEL"
+				description="VISIBLE_TEAM_DESC" />
+
+		<param 	name="show_project_name" type="list" default="0"
+				label="SHOW PROJECT NAME" 
+				description="SHOW PROJECT NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param 	name="show_ranking_link" type="list" default="1"
+				label="SHOW RANKING LINK" 
+				description="SHOW RANKING LINK DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+				
+				
+		<param 	name="@spacer" type="spacer" default="" 
+				label=""
+				description="" />
+				
+		<param 	name="columns" type="text" default="JL_PLAYED, JL_POINTS"
+				label="COLUMNS LABEL" 
+				description="COLUMNS LABEL DESC" 
+				size="50"/>
+				
+		<param 	name="column_names" type="text" default="MP, PTS"
+				label="COLUMN NAMES LABEL" 
+				description="COLUMN NAMES LABEL DESC" 
+				size="50"/>
+
+		<param 	name="@spacer" type="spacer" default="" 
+				label=""
+				description="" />				
+				
+		<param 	name="nametype" type="list" default="short_name" 
+				label="TEAM NAME LABEL"
+				description="TEAM NAME DESC">
+			<option value="short_name">TEAM NAME SHORT</option>
+			<option value="middle_name">TEAM NAME MEDIUM</option>
+			<option value="name">TEAM NAME FULL</option>
+		</param>
+
+		<param 	name="teamlink" type="list" default="teaminfo" 
+				label="TEAM LINK LABEL"
+				description="TEAM LINK DESC">
+			<option value="none">LINK NO LINK</option>
+			<option value="teaminfo">LINK TEAMINFO</option>
+			<option value="roster">LINK ROSTER</option>
+			<option value="teamplan">LINK TEAMPLAN</option>
+			<option value="clubinfo">LINK CLUBINFO</option>
+		</param>
+
+		<param 	name="show_logo" type="list" default="0" 
+				label="SHOW LOGO LABEL"
+				description="SHOW LOGO LABEL DESC">
+			<option value="0">No</option>
+			<option value="1">Club Logo</option>
+			<option value="2">Country Flag</option>
+		</param>
+
+		<param 	name="show_rank_colors" type="radio" default="0"
+				label="SHOW RANK COLOR LABEL"
+				description="SHOW RANK COLOR LABEL DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param 	name="fav_team_highlight_type" type="radio" default="1"
+				label="FAV TEAM HIGHLIGHT LABEL"
+				description="FAV TEAM HIGHLIGHT LABEL DESC">
+			<option value="1">FAV TEAM HIGHLIGHT LABEL OPTION1</option>
+			<option value="0">FAV TEAM HIGHLIGHT LABEL OPTION0</option>
+		</param>
+
+		<param 	name="fav_team_bold" type="radio" default="0"
+				label="FAV TEAM BOLD LABEL"
+				description="FAV TEAM BOLD LABEL DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+
+		</params>
+
+	<params group="advanced">
+		<param 	name="cache" type="list" default="1" 
+				label="CACHING"
+				description="CACHING DESC">
+			<option value="1">USE GLOBAL</option>
+			<option value="0">NO CACHING</option>
+		</param>
+		
+		<param 	name="cache_time" type="text" default="900" 
+				label="CACHE TIME"
+				description="CACHE TIME DESC">
+		</param>
+		
+		<param 	name="moduleclass_sfx" type="text" default=""
+				label="Module Class Suffix" 
+				description="PARAMMODULECLASSSUFFIX">
+		</param>
+		
+		<param 	name="style_class1" type="text" default="sectiontableentry1"
+				label="JL_MOD_RANKING_PARAM_LABEL_STYLE_ODD"
+				description="JL_MOD_RANKING_PARAM_DESCR_STYLE_ODD">
+		</param>
+			
+		<param 	name="style_class2" type="text" default="sectiontableentry2"
+				label="JL_MOD_RANKING_PARAM_LABEL_STYLE_EVEN"
+				description="JL_MOD_RANKING_PARAM_DESCR_STYLE_EVEN">
+		</param>					
+	</params>
+
+</install>

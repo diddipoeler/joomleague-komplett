@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="JL_XML_EVENTSRANKING_LAYOUT_TITLE">
+		<message>
+			<![CDATA[JL_XML_EVENTSRANKING_LAYOUT_DESCR]]>
+		</message>
+	</layout>
+	<state>
+		<name>JL_XML_EVENTSRANKING_STATE_NAME</name>
+		<description>JL_XML_EVENTSRANKING_STATE_DESCR</description>
+		<url addpath="/administrator/components/com_joomleague/elements" >
+			<param 	name="p" type="project" 
+					label="JL_XML_SELECT_PROJECT_LABEL"
+					description="JL_XML_SELECT_PROJECT_DESCR">
+			</param>
+			<param	name="division" type="dependsql" depends="p" task="projectdivisionsoptions"
+					label="JL_XML_SELECT_DIVISION_LABEL"
+					description="JL_XML_SELECT_DIVISION_DESCR"
+					query="" required="0" >
+			</param>
+			<param	name="tid" type="dependsql" depends="p,division"
+					task="projectteamsbydivisionoptions" label="JL_XML_SELECT_TEAM_LABEL"
+					description="JL_XML_SELECT_TEAM_DESCR" query="">
+			</param>
+			<param	name="evid" type="multidependsql" depends="p" multiple="multiple"
+					task="projecteventsoptions" label="JL_XML_EVENTSRANKING_SELECT_EVENT_LABEL"
+					description="JL_XML_EVENTSRANKING_SELECT_EVENT_DESCR" query="">
+			</param>
+			<param	name="mid" type="dependsql" depends="p" task="matchesoptions" 
+					label="JL_XML_EVENTSRANKING_SELECT_MATCH_LABEL"
+					description="JL_XML_EVENTSRANKING_SELECT_MATCH_DESCR"
+					query="" required="0" >
+			</param>
+		</url>
+	</state>
+</metadata>

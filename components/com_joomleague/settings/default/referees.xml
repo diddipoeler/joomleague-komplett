@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<templateconfig type="JL_template" version="1.0.0">
+	<name><![CDATA[JL_FES_REFEREES_NAME]]></name>
+	<description><![CDATA[JL_FES_REFEREES_DESCR]]></description>
+
+	<params group= "JL_FES_PARAMS_GROUP_PAGE_ELEMENTS" 
+			description="JL_FES_PARAMS_DESCR_PAGE_ELEMENTS">
+
+		<param 	name="show_sectionheader" type="radio" default="1" 
+				label="JL_FES_PARAM_LABEL_SHOW_SECTIONHEADER" 
+				description="JL_FES_PARAM_DESCR_SHOW_SECTIONHEADER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_referees" type="radio" default="1" 
+				label="JL_FES_REFEREES_PARAM_LABEL_SHOW_REFEREES" 
+				description="JL_FES_REFEREES_PARAM_DESCR_SHOW_REFEREES">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+	</params>
+
+	<params group= "JL_FES_PARAMS_GROUP_PERSONOPTIONS" 
+			description="JL_FES_PARAMS_DESCR_PERSONOPTIONS"
+			addpath="/administrator/components/com_joomleague/elements">
+			
+		<param	name="name_format" type="nameformat" default="0"
+				label="JL_FES_REFEREES_PARAM_LABEL_NAME_FORMAT"
+				description="JL_FES_REFEREES_PARAM_DESCR_NAME_FORMAT">
+		</param>
+
+		<param 	name="show_birthday" type="list" default="1" 
+				label="JL_FES_REFEREES_PARAM_LABEL_SHOW_BIRTHDAY" 
+				description="JL_FES_REFEREES_PARAM_DESCR_SHOW_BIRTHDAY">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_FES_REFEREES_PARAM_OPTION1_SHOW_BIRTHDAY</option>
+			<option value="2">JL_FES_REFEREES_PARAM_OPTION2_SHOW_BIRTHDAY</option>
+			<option value="3">JL_FES_REFEREES_PARAM_OPTION3_SHOW_BIRTHDAY</option>
+			<option value="4">JL_FES_REFEREES_PARAM_OPTION4_SHOW_BIRTHDAY</option>
+		</param>
+
+		<param 	name="show_icon" type="radio" default="1" 
+				label="JL_FES_REFEREES_PARAM_LABEL_SHOW_ICON" 
+				description="JL_FES_REFEREES_PARAM_DESCR_SHOW_ICON">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="link_name" type="radio" default="1" 
+				label="JL_FES_REFEREES_PARAM_LABEL_LINK_NAME" 
+				description="JL_FES_REFEREES_PARAM_DESCR_LINK_NAME">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_games_count" type="radio" default="1" 
+				label="JL_FES_REFEREES_PARAM_LABEL_SHOW_GAMES_COUNT" 
+				description="JL_FES_REFEREES_PARAM_DESCR_SHOW_GAMES_COUNT">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+	</params>
+	
+	<params group="JL_FES_PARAMS_GROUP_ADVANCED_OPTIONS" 
+			description="JL_FES_PARAMS_DESCR_ADVANCED_OPTIONS">	
+		
+		<param 	name="style_class1" type="text" default="sectiontableentry1" 
+				label="JL_FES_PARAM_LABEL_STYLE_ODD" 
+				description="JL_FES_PARAM_DESCR_STYLE_ODD">
+		</param>
+		
+		<param 	name="style_class2" type="text" default="sectiontableentry2" 
+				label="JL_FES_PARAM_LABEL_STYLE_EVEN" 
+				description="JL_FES_PARAM_DESCR_STYLE_EVEN">
+		</param>
+		
+	</params>		
+</templateconfig>

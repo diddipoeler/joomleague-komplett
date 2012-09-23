@@ -1,0 +1,24 @@
+  <?xml version="1.0" encoding="utf-8"?>
+  <install version="1.5" type="language" client="both" method="upgrade">
+      <name>Nederlands</name>
+      <tag>nl-NL</tag>
+      <version>1.0</version>
+      <creationDate>2012-03-11</creationDate>
+      <author>Timoline</author>
+      <authorEmail>info@joomleague.net</authorEmail>
+      <authorUrl>http://www.joomleague.net/</authorUrl>
+      <copyright>(C) 2005-2012 JoomLeague.net. All rights reserved.</copyright>
+      <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+      <description>Nederlands vertaling voor Joomleague</description>
+      <administration>
+        <files folder="admin">
+          <filename>nl-NL.com_joomleague.ini</filename>
+        </files>
+      </administration>
+      <site>
+        <files folder="site">
+          <filename>nl-NL.com_joomleague.ini</filename>
+        </files>
+      </site>
+      <params />
+  </install>

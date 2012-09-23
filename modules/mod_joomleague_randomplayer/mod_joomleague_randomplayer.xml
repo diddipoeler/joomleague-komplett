@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>Joomleague RandomPlayer</name>
+	<creationDate>07/04/2010</creationDate>
+	<author>Marco Vaninetti</author>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>martizva@libero.it</authorEmail>
+	<authorUrl>http://www.uscosio.org</authorUrl>
+	<version>1.5.0-a</version>
+	<description>
+    <![CDATA[
+    This module shows a player picture choosen randomly from a selected team and project
+    ]]>
+	</description>
+
+
+	<files>
+		<filename module="mod_joomleague_randomplayer">mod_joomleague_randomplayer.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>css</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_randomplayer.ini
+		</language>
+	</languages>
+
+	<params addpath="/administrator/components/com_joomleague/elements">
+		<param 	name="projects" type="projects" default=""
+				label="PROJECT ID LABEL"
+				description="PROJECT ID LABEL DESC" />
+			
+		<param 	name="teams" type="teams" default="" 
+				label="TEAM ID LABEL"
+				description="TEAM ID LABEL DESC" />
+			
+		<param 	name="show_project_name" type="radio" default="1"
+				label="SHOW PROJECT NAME" 
+				description="SHOW PROJECT NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_team_name" type="radio" default="1"
+				label="SHOW TEAM NAME" 
+				description="SHOW TEAM NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_team_link" type="radio" default="1"
+				label="SHOW TEAM LINK" 
+				description="SHOW TEAM LINK DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_team_picture" type="radio" default="0"
+				label="SHOW TEAM PICTURE" 
+				description="SHOW TEAM PICTURE DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_position_name" type="radio" default="1"
+				label="SHOW POSITION NAME" 
+				description="SHOW POSITION NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_player_link" type="radio" default="1"
+				label="SHOW PLAYER LINK" 
+				description="SHOW PLAYER LINK DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_player_flag" type="radio" default="1"
+				label="SHOW PLAYER FLAG" 
+				description="SHOW PLAYER FLAG DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="name_format" type="nameformat"  
+				label="JL_FES_PLAYER_PARAM_LABEL_NAME_FORMAT" 
+				description="JL_FES_PLAYER_PARAM_DESCR_NAME_FORMAT" />
+		
+		<param 	name="picture_width" type="text" default="0" 
+				label="PICTURE WIDTH"
+				description="PICTURE WIDTH DESC" />
+			
+		<param 	name="picture_height" type="text" default="50"
+				label="PICTURE HEIGHT" 
+				description="PICTURE HEIGHT DESC" />
+
+
+
+		<param 	name="team_picture_width" type="text" default="21" 
+				label="TEAM PICTURE WIDTH"
+				description="TEAM PICTURE WIDTH DESC" />
+			
+		<param 	name="team_picture_height" type="text" default="0"
+				label="TEAM PICTURE HEIGHT" 
+				description="TEAM PICTURE HEIGHT DESC" />
+	</params>
+	
+	<params group="advanced">
+		<param 	name="cache" type="list" default="1" 
+				label="CACHING"
+				description="CACHING DESC">
+			<option value="1">USE GLOBAL</option>
+			<option value="0">NO CACHING</option>
+		</param>
+		
+		<param 	name="cache_time" type="text" default="900" 
+				label="CACHE TIME"
+				description="CACHE TIME DESC" />
+				
+		<param 	name="moduleclass_sfx" type="text" default=""
+				label="MODULE CLASS SUFFIX" 
+				description="MODULE CLASS SUFFIX DESC" />
+				
+	</params>
+</install>
+ 

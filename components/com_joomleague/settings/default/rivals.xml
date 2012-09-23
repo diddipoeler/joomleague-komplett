@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<templateconfig type="JL_template" version="1.0.0">
+	<name><![CDATA[JL_FES_RIVALS_NAME]]></name>
+	<description><![CDATA[JL_FES_RIVALS_DESCR]]></description>
+
+	<params group= "JL_FES_PARAMS_GROUP_PAGE_ELEMENTS" 
+			description="JL_FES_PARAMS_DESCR_PAGE_ELEMENTS">
+			
+		<param 	name="show_projectheader" type="radio" default="1" 
+				label="JL_FES_PARAM_LABEL_SHOW_PROJECTHEADER" 
+				description="JL_FES_PARAM_DESCR_SHOW_PROJECTHEADER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_sectionheader" type="radio" default="1" 
+				label="JL_FES_PARAM_LABEL_SHOW_SECTIONHEADER" 
+				description="JL_FES_PARAM_DESCR_SHOW_SECTIONHEADER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_description" type="radio" default="1" 
+				label="JL_FES_RIVALS_PARAM_LABEL_SHOW_DESCRIPTION" 
+				description="JL_FES_RIVALS_PARAM_DESCR_SHOW_DESCRIPTION">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+	</params>
+
+	<params group="JL_FES_PARAMS_GROUP_ADVANCED_OPTIONS" 
+			description="JL_FES_PARAMS_DESCR_ADVANCED_OPTIONS">	
+		
+		<param 	name="style_class1" type="text" default="sectiontableentry1" 
+				label="JL_FES_PARAM_LABEL_STYLE_ODD" 
+				description="JL_FES_PARAM_DESCR_STYLE_ODD">
+		</param>
+		
+		<param 	name="style_class2" type="text" default="sectiontableentry2" 
+				label="JL_FES_PARAM_LABEL_STYLE_EVEN" 
+				description="JL_FES_PARAM_DESCR_STYLE_EVEN">
+		</param>
+					
+	</params>	
+	
+</templateconfig>

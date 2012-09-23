@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+	<params group="JL_EXT_EXTENDED_PREFERENCES" addpath="/administrator/components/com_joomleague/elements">
+	
+		<param 	name="JL_EXT_PLAYGROUND_NICKNAME" type="text" 
+				label="JL_EXT_PLAYGROUND_NICKNAME"
+				description="Nickname">
+		</param>
+
+<param name="JL_EXT_SIS_PLAYGROUND_NUMBER" type="text" label="JL_EXT_SIS_PLAYGROUND_NUMBER" description="JL_EXT_SIS_DESC_PLAYGROUND_NUMBER" size="100"/>
+		
+	</params>
+</model>

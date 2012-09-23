@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>Joomleague Next Matches ext</name>
+	<creationDate>09/18/2007</creationDate>
+	<author>Joomleague Developers</author>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>carsten@yourlife.de</authorEmail>
+	<authorUrl>http://www.yourlife.de</authorUrl>
+	<version>1.5.01 alpha</version>
+	<description>
+    <![CDATA[
+    This module shows list of upcoming or past matches of projects fav teams or selected ones.
+    You can enable arrows for switching to next / last match inside the module. This feature bases on AJAX - technplogy and requires user's Javascript to be turned on.
+    You can also define a time range in which next matches are shown from the time you call the module 
+    Additionally you can decide if the server offset you set in joomleague's project configuration shall be used or not.
+    The number of recent matches can be limited.
+    See readme.txt included in this package for detailed information!
+        Have phun! ;-)
+    ]]>
+	</description>
+	
+	<files>
+		<filename module="mod_joomleague_nextmatch_ext">mod_joomleague_nextmatch_ext.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>connectors</folder>
+		<folder>elements</folder>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>
+	
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_nextmatch_ext.ini</language>
+	</languages>
+	
+	<params addpath="/modules/mod_joomleague_nextmatch_ext/elements/">
+		<param 	type="mlheading" 
+				label="JLMLLBL1" 
+				description="JLMLDESC1" />
+		
+		<param 	name="template" type="templatelist" default="default_tableless"
+				label="JLMLLBL2" 
+				directory="/modules/mod_joomleague_nextmatch_ext/tmpl"
+				hide_default="1" hide_none="1" details="JLMLDETAILS2" />
+			
+		<param 	name="use_icons" type="folderlist" default="-1" label="JLMLLBL3"
+				directory="/modules/mod_joomleague_nextmatch_ext/assets/images" 
+				hide_default="1" hide_none="0" description="" />
+			
+		<param	name="project" type="projectsmultiple" default="" 
+				label="JLMLLBL4"
+				description="JLMLDESC4" />
+			
+		<param 	name="project_not_used" type="projectsmultiple" default=""
+				label="JLMLLBL5" 
+				description="JLMLDESC5" />
+			
+		<param 	name="order_by_project" type="radio" default="0" 
+				label="JLORDERBYPROJECT"
+				description="JLORDERDESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="nextlast_from_same_project" type="radio" default="1" 
+				label="JLNEXTLASTFROMSAMEPROJECT"
+				description="JLNEXTLASTFROMSAMEPROJECTDESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="use_fav" type="radio" default="0" 
+				label="JLMLLBL6"
+				description="JLMLDESC6">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="teams" type="teamsmultiple" default="" 
+				label="JLMLBL7"
+				description="JLMLDESC7" />
+			
+		<param 	name="limit" type="text" default="1"
+				label="Max count of matches to be shown" 
+				description="" />
+			
+		<param 	name="Itemid" type="jlmlitemid" default=""
+				label="Itemid if you use links" 
+				description="" />
+			
+		<param 	name="show_no_matches_notice" type="radio" default="0"
+				label="Show notice if no match is found according to your settings?"
+				description="If set to 'Yes' the notice configured in the following option will be displayed if no match is found. if set to 'no' and no matches are found module will display nothing!">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="no_matches_notice" type="textarea" default="No upcoming matches!" 			
+				label="Notice if no matches are found:"
+				description="" 
+				cols="25" rows="5"
+			/>
+			
+		<param 	type="mlheading" anchor="jlmllastresults"
+				label="Settings for showing last results of the teams:"
+				description="Here you can set how long last results after match has ended should be displayed" />
+			
+		<param 	name="show_played" type="radio" default="0"
+				label="Do you want to show already played matches"
+				description="if set to yes module starts with last played matches until following period is over">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param 	name="result_add_time" type="text" default="0"
+				label="How long do you want to show results:"
+				description="insert a valid integer ('0' if you don't want to limit next matches dates) value of next option" />
+			
+		<param 	name="result_add_unit" type="list" default="DAY"
+				label="Unit for period set in option before?" 
+				description="">
+			<option value="SECOND">Seconds</option>
+			<option value="MINUTE">Minutes</option>
+			<option value="HOUR">Hours</option>
+			<option value="DAY">Days</option>
+			<option value="WEEK">Weeks</option>
+			<option value="MONTH">Monthes</option>
+			<option value="YEAR">Years</option>
+		</param>
+		
+		<param 	name="upcoming_first" type="radio" default="1"
+				label="JMLUPCFIRSTLBL" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="lastsortorder" type="radio" default="asc"
+				label="JLMLLASTORDERLBL" 
+				description="">
+			<option value="asc">JLMLASC</option>
+			<option value="desc">JLMLDESC</option>
+		</param>
+		
+		<param 	type="mlheading" anchor="jlmlnextmatches" 
+				label="Time in future for next matches"
+				description="if you change these values next matches only in the selected period from now on are shown">Time in future for next matches</param>
+			
+		<param 	name="period_int" type="text" default="0"
+				label="Period for next matches:"
+				description="insert a valid integer ('0' if you don't want to limit next matches dates) value of next option" />
+			
+		<param 	name="period_string" type="list" default="DAY"
+				label="Unit for period set in option before?" 
+				description="">
+			<option value="SECOND">Seconds</option>
+			<option value="MINUTE">Minutes</option>
+			<option value="HOUR">Hours</option>
+			<option value="DAY">Days</option>
+			<option value="WEEK">Weeks</option>
+			<option value="MONTH">Monthes</option>
+			<option value="YEAR">Years</option>
+		</param>
+		
+		<param 	name="team_separator" type="text" default=":"
+				label="This will be used to seperate teams and homescore resp. awayscore"
+				description="" />
+			
+		<param 	type="mlheading" anchor="jlmlheadings" 
+				label="Settings for headings"
+				description="">Settings for headings</param>
+			
+		<param 	name="show_status_notice" type="radio" default="0"
+				label="Do you want to show a heading for already played matches"
+				description="if set to yes module makes a heading for last played matches until following period is over">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="alreadyplayed_notice" type="text" default="LAST MATCHES"
+				label="The heading for already played matches" 
+				description="" />
+			
+		<param 	name="live_notice" type="text" default="LIVE ON AIR"
+				label="The heading for live matches" 
+				description="" />
+			
+		<param 	name="actplaying_notice" type="text" default="NOW PLAYING"
+				label="The heading for live matches" 
+				description="" />
+			
+		<param 	name="upcoming_notice" type="text" default="UPCOMING"
+				label="The heading for upcoming matches" 
+				description="" />
+
+		<param 	name="top_heading_style" type="text" default="contentheading"
+				label="The style class for already played, live and upcoming matches' headings"
+				description="" />
+
+		<param 	name="heading_style" type="text" default="sectiontableheader"
+				label="1st Class for heading"
+				description="if default style doesn't suit you, you can set an individual css class here. You are not advised to leave this blank" />
+			
+		<param 	name="sectiontableentry1" type="text" default="sectiontableentry1"
+				label="1st Class for matches"
+				description="if default style doesn't suit you, you can set an individual css class here. You are not advised to leave this blank" />
+			
+		<param 	name="sectiontableentry2" type="text" default="sectiontableentry2"
+				label="2nd Class for matches"
+				description="if default style doesn't suit you, you can set an individual css class here. You are not advised to leave this blank" />
+			
+		<param 	name="show_project_title" type="radio" default="0"
+				label="Show project name?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="link_project_title" type="radio" default="0"
+				label="Link project name to Joomleague?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="p_link_func" type="list" default="results"
+				label="Link project name to which view of Joomleague?" 
+				description="">
+			<option value="results">Results</option>
+			<option value="ranking">Ranking</option>
+			<option value="resultsrank">Ranking and Results</option>
+		</param>
+		
+		<param 	name="show_matchday_title" type="radio" default="0"
+				label="Show name of matchday?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="link_matchday_title" type="radio" default="0"
+				label="Link matchday title to matchday of Joomleague?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="r_link_func" type="list" default="results"
+				label="Link matchday title to which view of Joomleague?" 
+				description="">
+			<option value="results">Results</option>
+			<option value="ranking">Ranking</option>
+			<option value="resultsrank">Ranking and Results</option>
+		</param>
+		
+		<param 	type="mlheading" anchor="jlmlteams" 
+				label="Teams and picture settings"
+				description="">Teams and picture settings</param>
+			
+		<param 	name="show_picture" type="radio" default="1"
+				label="Show club logo?"
+				description="Show club icon (must be set up at club configuration) above the team name?">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="picture_type" type="list" default="middle" 
+				label="Which logo?"
+				description="Select size of logo">
+			<option value="club_big">Club big Logo</option>
+			<option value="club_middle">Club medium Logo</option>
+			<option value="club_small">Club small Logo</option>
+			<option value="team_picture">Team picture</option>
+			<option value="country">Country flags</option>
+		</param>
+		
+		<param 	name="flagsfolder" type="flagsfolder" default=""
+				label="Choose a folder where your country flags are located:"
+				description="" />
+			
+		<param 	name="xsize" type="text" default="" 
+				label="max. width of images:"
+				description="if pictures are too big for your modules here you can limit width (do not limit width AND height unless you keep proportions)" />
+			
+		<param 	name="new_line_after_logo" type="radio" default="1"
+				label="JLMLNEWLINELOGO" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="ysize" type="text" default="" 
+				label="max. height of images:"
+				description="if pictures are too big for your modules here you can limit height (do not limit width AND height unless you keep proportions)" />
+			
+		<param 	name="show_names" type="radio" default="1" 
+				label="Show team names?"
+				description="Do you want to show team names anyway? Be sure to enable AND set icons correctly if switching to 'No'!)">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="team_names" type="list" default="short_name"
+				label="Use long or shortnames for teams?"
+				description="According to where you want to show this module you can decide whether to use long, middle (not yet supported of regular JoomLeague!) or shortnames">
+			<option value="short_name">Short names</option>
+			<option value="middle_name">Middle names</option>
+			<option value="name">Names</option>
+		</param>
+		
+		<param 	name="link_teams" type="list" default="0"
+				label="Do you want to show links for teams?" 
+				description="You can decide which links should be made below">
+			<option value="0">No link</option>
+			<option value="1">Used teams only</option>
+			<option value="2">All teams</option>
+		</param>
+		
+		<param 	name="team_link_status" type="list" default="none"
+				label="Do you want to hide or show links for teams?" 
+				description="if you hide them they become visible when hovering teamname">
+			<option value="none">Hide links</option>
+			<option value="block">Show links</option>
+		</param>
+		
+		<param 	name="link_team_plan" type="radio" default="0"
+				label="Make a link to team's schedule?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="link_team_plan_text" type="text" default="Schedule"
+				label="Text for link to team schedule?" 
+				description="" />
+			
+		<param 	name="link_team_curve" type="radio" default="0"
+				label="Make a link to team's fever chart?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="link_team_curve_text" type="text" default="Fever Chart"
+				label="Text for link to team's fever chart" 
+				description="" />
+			
+		<param 	name="link_team_teaminfo" type="radio" default="0"
+				label="Make a link to team's info page?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="link_team_teaminfo_text" type="text" default="Team Info"
+				label="Text for link to team's info page" 
+				description="" />
+			
+		<param 	name="link_team_roster" type="radio" default="0"
+				label="Make a link to team's players page?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="link_team_roster_text" type="text" default="Roster"
+				label="Text for link to team's roster page" 
+				description="" />
+			
+		<param 	name="link_team_club" type="radio" default="0"
+				label="Make a link to team's club page?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="link_team_club_text" type="text" default="Club"
+				label="Text for link to team's club page" 
+				description="" />
+			
+		<param 	name="link_team_www" type="radio" default="0"
+				label="Make a link to team's club's webpage?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="link_team_www_text" type="text" default="WWW"
+				label="Text for link to team's club's webpage" 
+				description="" />
+			
+		<param 	type="mlheading" anchor="jlmlmatchinfo" default=""
+				label="Special settings of this module"
+				description="Here you can decide to show a link to season statistics, show former matches or set a message if no matches are found according to your settings">Special settings of this module
+		</param>
+			  
+		<param 	name="use_offset_matches" type="radio" default="0"
+				label="Use time offset set in project configuration for match times?"
+				description="if you choose 'yes' time offset will be added to time display, else time is formatted like entered in database. USE ONLY if YOU HAD TO SET A DIFFERENT OFFSET THAN '0:00' for YOUR LOCAL LEAGUES">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="dateformat" type="text" size="40" default="%a., %d. %b. %Y"
+				label="format of match date (see php's strftime function)"
+				description="" />
+			
+		<param 	name="dateformat_short" type="text" default="%d.%m.%y"
+				label="format of match date used in former matches and local time (see php's strftime function)"
+				description="" />
+			
+		<param 	name="timeformat" type="text" default="%H:%M"
+				label="format of match time (see php's strftime function)"
+				description="" />
+			
+		<param 	name="part_result" type="radio" default="0"
+				label="Show part result(s)?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="part_result_count" type="radio" default="0"
+				label="Number of part result(s)?" 
+				description="">
+			<option value="0">all match parts</option>
+			<option value="-1">number of match parts - 1 (often used for soccer)</option>
+		</param>
+		
+		<param 	name="part_results_separator" type="text" default="-"
+				label="This will be used to seperate part results (if more than one part result is shown):"
+				description="" />
+
+		<param	 name="show_venue" type="radio" default="0" 
+				label="Show the venue?"
+				description="If set to 'Yes' the venue of the match will be shown below result.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="link_venue" type="radio" default="0"
+				label="Link to the venue?" 
+				description="If set to 'Yes' the venue of the match will be shown as link.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="venue_text" type="text" default="Venue:"
+				label="Text before venue is shown:" 
+				description="" />
+			
+		<param name="venue_name" type="list" default="short_name"
+			label="Use long or shortnames for venues?"
+			description="According to where you want to show this module you can decide whether to use long or shortnames">
+			<option value="short_name">Short names</option>
+			<option value="name">Names</option>
+		</param>
+		
+		<param 	name="show_act_report_link" type="radio" default="0"
+				label="Show a link to match report?"
+				description="If set to 'Yes' a link to the match report will be shown if result is given and match report is enabled.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_act_report_text" type="text" default="Show Report"
+				label="Text to link to match report" 
+				description="" />
+				
+		<param 	name="show_statistic_link" type="radio" default="0"
+				label="Show link to JL season Statistic?"
+				description="If set to 'Yes' a link to the season statistic will be shown under the result.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="statistic_link_text" type="text" default="Season statistics"
+				label="Text for link to season statistics:" 
+				description="" />
+		
+		<param 	name="show_match_notice" type="radio" default="1"
+				label="Show match notice if available?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="show_nextmatch_link" type="radio" default="0"
+				label="Show link to Team nextmatch?"
+				description="If set to 'Yes' a link to the team nextmatch will be shown under the result.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="nextmatch_link_text" type="text" default="Nextmatch"
+				label="Text for link to nextmatch:" 
+				description="" />
+							
+		<param type="mlheading" anchor="jlmlajax"
+				label="Settings for AJAX navigation in module">Settings for AJAX navigation in module</param>
+			
+		<param 	name="next_last" type="radio" default="0"
+				label="Enable arrows for switching to next / last match" 
+				description="Try it out...using AJAX technology">
+			<option value="0">No</option>
+			<option value="1">Used teams only</option>
+			<option value="2">All teams</option>
+		</param>
+		
+		<param 	name="icons_for_ajax" type="radio" default="0"
+				label="JLMLUSEICONSAJAXLBL" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="reset_class" type="text" default="inputbox"
+				label="Style class for next/last/reset links:" 
+				description="" />
+			
+		<param 	name="next_text" type="text" default="&gt;&gt;"
+				label="Text for Next-Match-Link:" 
+				description="" />
+			
+		<param 	name="last_text" type="text" default="&lt;&lt;"
+				label="Text for Last-Match-Link:" 
+				description="" />
+			
+		<param 	name="reset_start_match" type="radio" default="0"
+				label="Show link to reset to first shown match?" 
+				description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="reset_text" type="text" default="Reset"
+				label="Text for link to reset to first shown match:" 
+				description="" />
+	</params>
+	
+	<params group="advanced">	
+		<param 	name="moduleclass_sfx" type="text" default="" 
+				label="JLMLLBL0"
+				description="A suffix to be applied to the css class of the module (normally just \'table.moduletable\'), this allows individual module styling" />
+	</params>		
+</install>
+ 

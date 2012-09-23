@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<templateconfig type="JL_template" version="1.0.0">
+	<name><![CDATA[JL_FES_REFEREE_NAME]]></name>
+	<description><![CDATA[JL_FES_REFEREE_DESCR]]></description>
+
+
+	<params group="JL_FES_PARAMS_GROUP_PAGE_ELEMENTS" 
+			description="JL_FES_PARAMS_DESCR_PAGE_ELEMENTS">
+
+		<param 	name="show_sectionheader" type="radio" default="1" 
+				label="JL_FES_PARAM_LABEL_SHOW_SECTIONHEADER" 
+				description="JL_FES_PARAM_DESCR_SHOW_SECTIONHEADER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_info" type="radio" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_REFEREE_INFO" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_REFEREE_INFO">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_extended" type="radio" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_EXTENDED"
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_EXTENDED">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>			
+		
+		<param 	name="show_description" type="radio" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_DESCRIPTION" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_DESCRIPTION">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+
+		<param	name="show_gameshistory" type="radio" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_GAMES_HISTORY"
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_GAMES_HISTORY">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param	name="show_career" type="radio" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_CAREER"
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_CAREER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+	</params>
+
+	<params group="JL_FES_PARAMS_GROUP_PERSONOPTIONS" 
+			description="JL_FES_PARAMS_DESCR_PERSONOPTIONS"
+			addpath="/administrator/components/com_joomleague/elements">
+
+		<param	name="name_format" type="nameformat" default="0"
+				label="JL_FES_REFEREE_PARAM_LABEL_NAME_FORMAT"
+				description="JL_FES_REFEREE_PARAM_DESCR_NAME_FORMAT">
+		</param>
+
+		<param 	name="show_photo" type="radio" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_PHOTO" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_PHOTO">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="picture_width" type="text" default="150"
+				label="JL_FES_PARAM_LABEL_REF_PICTURE_WIDTH" 
+				description="JL_FES_PARAM_DESCR_REF_PICTURE_WIDTH">
+		</param>
+		
+		<param 	name="picture_height" type="text" default="150"
+				label="JL_FES_PARAM_LABEL_REF_PICTURE_HEIGHT" 
+				description="JL_FES_PARAM_DESCR_REF_PICTURE_HEIGHT">
+		</param>
+		
+		<param 	name="show_nationality" type="radio" default="0" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_NATIONALITY" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_NATIONALITY">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>		
+		
+		<param 	name="show_birthday" type="list" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_BIRTHDAY" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_BIRTHDAY">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_FES_REFEREE_PARAM_OPTION1_SHOW_BIRTHDAY</option>
+			<option value="2">JL_FES_REFEREE_PARAM_OPTION2_SHOW_BIRTHDAY</option>
+			<option value="3">JL_FES_REFEREE_PARAM_OPTION3_SHOW_BIRTHDAY</option>
+			<option value="4">JL_FES_REFEREE_PARAM_OPTION4_SHOW_BIRTHDAY</option>
+		</param>
+		
+		<param 	name="show_person_address" type="radio" default="0" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_ADDRESS" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_ADDRESS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>		
+		
+		<param 	name="show_person_phone" type="radio" default="0" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_PERS_PHONE" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_PERS_PHONE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="show_person_mobile" type="radio" default="0" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_PERS_MOBILE" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_PERS_MOBILE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>			
+		
+		<param 	name="show_person_email" type="radio" default="0" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_PERS_EMAIL" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_PERS_EMAIL">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="show_person_website" type="radio" default="0" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_PERS_WEBSITE" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_PERS_WEBSITE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>		
+		
+		<param 	name="show_person_height" type="radio" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_PERS_HEIGHT" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_PERS_HEIGHT">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>	
+
+		<param 	name="show_person_weight" type="radio" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_PERS_WEIGHT" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_PERS_WEIGHT">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>					
+		
+		<param 	name="show_person_regnr" type="radio" default="1" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_PERS_NUMBER" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_PERS_NUMBER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>			
+
+		<param 	name="show_general_description" type="radio" default="0" 
+				label="JL_FES_REFEREE_PARAM_LABEL_SHOW_PERS_DESCRIPTION" 
+				description="JL_FES_REFEREE_PARAM_DESCR_SHOW_PERS_DESCRIPTION">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+	</params>
+	
+	<params group="JL_FES_PARAMS_GROUP_ADVANCED_OPTIONS" 
+			description="JL_FES_PARAMS_DESCR_ADVANCED_OPTIONS">	
+		
+		<param name="games_date_format" type="text" default="%A %B %d" 
+				label="JL_FES_REFEREE_PARAM_LABEL_GAMES_DATE_FORMAT" 
+				description="JL_FES_REFEREE_PARAM_DESCR_GAMES_DATE_FORMAT">
+		</param>
+		
+		<param 	name="style_class1" type="text" default="sectiontableentry1" 
+				label="JL_FES_PARAM_LABEL_STYLE_ODD" 
+				description="JL_FES_PARAM_DESCR_STYLE_ODD">
+		</param>
+		
+		<param 	name="style_class2" type="text" default="sectiontableentry2" 
+				label="JL_FES_PARAM_LABEL_STYLE_EVEN" 
+				description="JL_FES_PARAM_DESCR_STYLE_EVEN">
+		</param>
+		
+	</params>		
+</templateconfig>

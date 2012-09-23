@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>JoomLeague Match Calendar</name>
+	<author>Joomleague Developers</author>
+	<creationDate>September 2009</creationDate>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>carsten@yourlife.de</authorEmail>
+	<authorUrl>http://www.yourlife.de</authorUrl>
+	<version>1.2.2</version>
+	<description>
+	<![CDATA[<p>This module displays a match calendar and/or a list of matches  by year and month. 
+	Use with the joomleague component.<br />
+	Based on Blog Calender reloaded from Juan Padial and original idea from Justo Gonzales de Rivera</a>
+	</p>]]></description>
+	<files>
+		<filename module="mod_joomleague_calendar">mod_joomleague_calendar.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>calendarClass.php</filename>
+		<folder>js</folder>
+		<folder>img</folder>
+		<folder>tmpl</folder>
+		<folder>connectors</folder>
+		<folder>css</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_calendar.ini
+		</language>
+	</languages>
+	<params addpath="/administrator/components/com_joomleague/elements">
+		<param 	name="project_ids" type="projects" default="" 
+				label="JLCLIMITPROJECTSLBL" 
+				description="JLCLIMITPROJECTSDESC">
+		</param>
+				
+		<param 	name="club_ids" type="clubs" default="" 
+				label="JLCLIMITCLUBSLBL"
+				description="JLCLIMITCLUBSDESC">
+		</param>
+		
+		<param 	name="team_ids" type="teams" default="" 
+				label="JLCLIMITTEAMSLBL" 
+				description="JLCLIMITTEAMSDESC">
+		</param>
+
+		<param 	name="cal_start_day" type="radio" default="1"
+				label="JLCCALSTARTDAYLBL" 
+				description="JLCCALSTARTDAYDESC">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+		</param>
+		
+		<param 	name="cal_length_days" type="radio" default="2"
+				label="JLCLENGTHDAYSLBL" 
+				description="JLCLENGTHDAYSDESC">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</param>
+		
+		<param 	type="spacer">
+		</param>
+		
+		<param 	name="joomleague" type="radio" default="joomleague"
+				label="JLCJOOMLEAGUECONNECTORLBL" 
+				description="JLCJOOMLEAGUECONNECTORDESC">
+			<option value="joomleague">JLCNO</option>
+			<option value="joomleague_legacy">joomleague 0.93b</option>
+		</param>
+		
+		<param 	name="custom_prefix" type="text" default=""
+				label="JLCCUSTOMPREFIXLBL" 
+				description="JLCCUSTOMPREFIXDESC">
+		</param>
+
+		<param	name="jlbirthdays" type="radio" default="0"
+				label="JLCSHOWBIRTHDAYSLBL"
+				description="JLCSHOWBIRTHDAYSDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+		
+		<param 	name="jlbirthdaypix" type="radio" default="0"
+				label="JLCSHOWBIRTHDAYSPIXLBL"
+				description="JLCSHOWBIRTHDAYSPIXDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+		
+		<param 	name="linkbirthday" type="radio" default="0"
+				label="JLCLINKBIRTHDAYSLBL"
+				description="">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+		
+		<param 	name="birthday_text" type="text" default="Birthdays"
+				label="JLCBIRTHDAYTEXT"
+				description="JLCBIRTHDAYTEXTDESC">
+		</param>
+		
+		<param 	name="jlmatches" type="radio" default="0" 
+				label="JLCSHOWMATCHESLBL"
+				description="JLCSHOWMATCHESDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+		
+		<param 	name="show_teamslist" type="radio" default="0"
+				label="JLCSHOWTEAMSLISTLBL"
+				description="JLCSHOWTEAMSLISTDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+		
+		<param 	name="teamslist_option" type="text" default="Select Team"
+				label="JLCTEAMLISTDEFAULTLBL" 
+				description="JLCTEAMLISTDEFAULTDESC">
+		</param>
+
+		<param 	name="joomleague_use_favteams" type="radio" default="0"
+				label="JLCUSEJLFAVLBL" 
+				description="JLCUSEJLFAVDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+
+		<param 	name="team_names" type="radio" default="short_name"
+				label="JLCTEAMNAMESLBL"
+				description="JLCTEAMNAMESDESC">
+			<option value="-">JLCNONAMES</option>
+			<option value="short_name">JLCTEAMNAMESOPTION1</option>
+			<option value="middle_name">JLCTEAMNAMESOPTION2</option>
+			<option value="name">JLCTEAMNAMESOPTION3</option>
+		</param>
+		
+		<param 	name="team_logos" type="radio" default="-" 
+				label="JLCLUBLOGOSLBL"
+				description="JLCLUBLOGOSDESC">
+			<option value="-">JLCNONAMES</option>
+			<option value="logo_small">JLCLUBLOGOSOPTION1</option>
+			<option value="logo_middle">JLCLUBLOGOSOPTION2</option>
+			<option value="logo_big">JLCLUBLOGOSOPTION3</option>
+			<option value="logo_country">JLCLUBLOGOSOPTION4</option>
+		</param>
+		
+		<param 	name="logo_height" type="text" default="0" 
+				label="JLCLOGOHEIGHTLBL"
+				description="JLCLOGOHEIGHTDESC">
+		</param>
+		
+		<param type="spacer">
+		</param>
+		
+		<param 	name="livescore" type="radio" default="" 
+				label="JLCLIVESCORELBL"
+				description="JLCLIVESCOREDESC">
+			<option value="">JLCNO</option>
+			<option value="livescore">JLCYES</option>
+		</param>
+		
+		<param 	name="prefix_livescore" type="text" default=""
+				label="JLCLIVESCPREFIXLBL" 
+				description="JLCLIVESCPREFIXDESC">
+		</param>
+		
+		<param 	type="spacer" 
+				label="Configuration for Events-Components">
+		</param>
+		
+		<param 	name="jevents" type="radio" default="0" 
+				label="JLCJEVENTSLBL"
+				description="JLCJEVENTSDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+		
+		<param 	name="jevents_text" type="text" default="JEvents"
+				label="JLCJEVENTSHEADINGLBL"
+				description="JLCJEVENTSHEADINGDESC">
+		</param>
+		
+		<param 	type="spacer">
+		</param>
+		
+		<param 	name="convert" type="radio" default="0" 
+				label="JLCCONVUTFLBL"
+				description="JLCCONVUTFDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+
+		<param 	name="lightbox" type="radio" default="0" 
+				label="JLCUSEBOXLBL"
+				description="JLCUSEBOXDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+		
+		<param 	name="update_module" type="radio" default="1"
+				label="JLCBELOWCALLBL"
+				description="JLCBELOWCALDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+		
+		<param 	name="inject" type="radio" default="0" 
+				label="JLCINJECTLBL"
+				description="JLCINJECTDESC">
+			<option value="0">JLCNO</option>
+			<option value="1">JLCYES</option>
+		</param>
+		
+		<param 	name="inject_container" type="text" default="joomleague"
+				label="JLCINJCONTAINERLBL" 
+				description="JLCINJCONTAINERDESC">
+		</param>
+
+	</params>
+	<params 	group="advanced">
+		<param 	name="cache" type="list" default="1" 
+				label="JLCCACHINGLBL"
+				description="JLCCACHINGDESC">
+			<option value="1">JLCGLOBALS</option>
+			<option value="0">JLCNOCACHING</option>
+		</param>
+		
+		<param 	name="cache_time" type="text" default="900" 
+				label="JLCCACHETIMELBL"
+				description="JLCCACHETIMEDESC">
+		</param>
+		
+		<param 	name="moduleclass_sfx" type="text" default=""
+				label="JLCMODULECLASSSUFFIXLBL" 
+				description="JLCMODULECLASSSUFFIXDESC">
+		</param>
+	</params>
+</install>

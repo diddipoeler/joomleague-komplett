@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+	<params group="JL_EXT_EXTENDED_PREFERENCES" addpath="/administrator/components/com_joomleague/elements">
+	
+		<param name="JL_EXT_PERSON_OCCUPATION" type="text" label="JL_EXT_PERSON_OCCUPATION" description="Occupation" backendonly="1">
+		</param>
+		
+		<param name="JL_EXT_PERSON_PAGER" type="text" label="JL_EXT_PERSON_PAGER" description="Pager" backendonly="0">
+		</param>
+		
+		<param name="JL_EXT_PERSON_FAX" type="text" label="JL_EXT_PERSON_FAX" description="Fax" backendonly="0">
+		</param>
+		
+		<param name="JL_EXT_PERSON_MESSENGER1" type="text" label="JL_EXT_PERSON_MESSENGER1" description="Messenger 1" backendonly="0">
+		</param>
+		
+		<param name="JL_EXT_PERSON_MESSENGER2" type="text" label="JL_EXT_PERSON_MESSENGER2" description="Messenger 2" backendonly="0">
+		</param>
+		
+		<param name="JL_EXT_PERSON_DATE_SINCE" type="calendar" label="JL_EXT_PERSON_DATE_SINCE" description="Clubmember since" backendonly="0">
+		</param>
+		
+		<param name="JL_EXT_PERSON_DATE_UNTIL" type="calendar" label="JL_EXT_PERSON_DATE_UNTIL" description="Clubmember until" backendonly="0">
+		</param>
+		
+		<param name="JL_EXT_PERSON_REASONFORLEAVE" type="textarea" rows="4" cols="50" label="JL_EXT_PERSON_REASONFORLEAVE" description="Reason for leaving Club" backendonly="1">
+		</param>
+		
+		<param cssclass="" name="JL_EXT_PERSON_TWITTER" type="link" label="JL_EXT_PERSON_TWITTER" description="JL_EXT_PERSON_TWITTER_DESCRIPTION" backendonly="">
+		</param>
+		
+		<param cssclass="" name="JL_EXT_PERSON_FACEBOOK" type="link" label="JL_EXT_PERSON_FACEBOOK" description="JL_EXT_PERSON_FACEBOOK_DESCRIPTION" backendonly="">
+		</param>
+		
+		<param cssclass="" name="JL_EXT_PERSON_MSN" type="link" label="JL_EXT_PERSON_MSN" description="JL_EXT_PERSON_MSN_DESCRIPTION" backendonly="">
+		</param>
+		
+		<param cssclass="" name="JL_EXT_PERSON_MYSPACE" type="link" label="JL_EXT_PERSON_MYSPACE" description="JL_EXT_PERSON_MYSPACE_DESCRIPTION" backendonly="">
+		</param>
+		
+		<param cssclass="" name="JL_EXT_PERSON_ICQ" type="link" label="JL_EXT_PERSON_ICQ" description="JL_EXT_PERSON_ICQ_DESCRIPTION" backendonly="">
+		</param>
+
+<param name="JL_EXT_SIS_PERSON_NUMBER" type="text" label="JL_EXT_SIS_PERSON_NUMBER" description="JL_EXT_SIS_DESC_PERSON_NUMBER" size="100"/>
+
+<param name="personpositions" type="multilist" size="40" default="" multiple="multiple" label="JL_EXT_PERSON_POSITIONS"
+ description="Select one or more items from the list.  You can use Ctrl-click to select more than one item.">
+	<option value="">- Positionen -</option>
+  <option value="hp1">Torwart</option>
+  <option value="hp10">Offensives Mittelfeld</option>
+	<option value="hp14">Sturm</option>
+	<option value="hp3l">Innenverteidiger Links</option>
+	<option value="hp3r">Innenverteidiger Rechts</option>
+	<option value="hp5">Rechter Verteidiger</option>
+	<option value="hp6">Defensives Mittelfeld</option>
+	<option value="np12m">Rechtsaussen</option>
+	<option value="np5">Rechter Verteidiger</option>
+	<option value="np6">Defensives Mittelfeld</option>
+	<option value="np7">Zentrales Mittelfeld</option>
+	<option value="np9">Linkes Mittelfeld</option>
+	<option value="np10">Offensives Mittelfeld</option>
+	<option value="np14">Mittelstuermer</option>
+</param>
+		
+	</params>
+</model>

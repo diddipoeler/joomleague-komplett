@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>Joomleague Players/Staff birthday</name>
+	<author>Joomleague Developers</author>
+	<creationDate>2009-07-12</creationDate>
+	<copyright>GNU/GPL</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>timoline@gmail.com</authorEmail>
+	<authorUrl>http://www.joomleague.net</authorUrl>
+	<version>1.5.0-a</version>
+	<description>Display one or more Player or Staff image(s) and a small text when
+		the next birthday comes into a configrable range.</description>
+
+	<files>
+		<filename module="mod_joomleague_birthday">mod_joomleague_birthday.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>css</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_birthday.ini</language>
+	</languages>
+
+	<params addpath="/administrator/components/com_joomleague/elements">	
+		<param 	name="projects" type="projects" default="" 
+				label="SELECT_PROJECTS_LABEL"
+				description="SELECT_PROJECTS_DESCR">
+		</param>		
+				
+		<param 	name="use_fav" type="radio" default="1" 
+				label="USE_FAVORITE_TEAM_LABEL"
+				description="USE_FAVORITE_TEAM_DESCR">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+		
+		<param 	name="teams" type="text" default=""
+				label="SELECT_TEAM_IDS_LABEL"
+				description="SELECT_TEAM_IDS_DESCR">
+		</param>
+		
+		<param 	name="limit" type="text" default="1"
+				label="SELECT_MAX_BIRTHDAYS_LABEL" 
+				description="SELECT_MAX_BIRTHDAYS_DESCR">
+		</param>
+				
+		<param 	name="use_which" type="list" default="0"
+				label="SELECT_PERSON_TYPES_LABEL"
+				description="SELECT_PERSON_TYPES_DESCR">
+			<option value="0">PERSON_TYPE_PLAYERS_AND_STAFF</option>
+			<option value="1">PERSON_TYPE_ONLY_PLAYERS</option>
+			<option value="2">PERSON_TYPE_ONLY_STAFF</option>
+		</param>
+		
+		<param 	name="sort_order" type="list" default="-"
+				label="SORT_ORDER_SAME_DAY_LABEL"
+				description="SORT_ORDER_SAME_DAY_DESCR">
+			<option value="-">SAME_DAY_SORTING_OLDEST_FIRST</option>
+			<option value="+">SAME_DAY_SORTING_YOUNGEST_FIRST</option>
+		</param>
+		
+		<param 	name="maxdays" type="text" default=""
+				label="SELECT_MAX_DAYS_AHEAD_LABEL" 
+				description="SELECT_MAX_DAYS_AHEAD_DESCR">
+		</param>
+		
+		<param 	name="Itemid" type="text" default=""
+				label="SELECT_ITEMID_FOR_LINKS_LABEL" 
+				description="SELECT_ITEMID_FOR_LINKS_DESCR">
+		</param>
+				
+		<param 	name="@spacer" type="spacer" default="" 
+				label="SPACER_LAYOUT_SETTINGS"
+				description="">
+		</param>
+		
+		<param 	name="name_format" type="nameformat"  
+				label="JL_FES_PLAYER_PARAM_LABEL_NAME_FORMAT" 
+				description="JL_FES_PLAYER_PARAM_DESCR_NAME_FORMAT">
+		</param>
+				
+		<param 	name="show_player_flag" type="radio" default="1"
+				label="SHOW_PLAYER_FLAG_LABEL" 
+				description="SHOW_PLAYER_FLAG_DESCR">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>
+		
+		<param 	name="heading_style" type="text" default="sectiontableheader"
+				label="HEADING_STYLE_ODD_LABEL"
+				description="HEADING_STYLE_ODD_DESCR">
+		</param>
+				
+		<param 	name="show_picture" type="radio" default="0"
+				label="SHOW_PLAYER_PICTURE_LABEL" 
+				description="SHOW_PLAYER_PICTURE_DESCR">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+		</param>	
+		
+		<param 	name="picture_width" type="text" default="120"
+				label="SET_PICTURE_WIDTH_LABEL"
+				description="SET_PICTURE_WIDTH_DESCR">
+		</param>
+				
+		<param 	name="@spacer" type="spacer" default=""
+				label="SPACER_CUSTOMIZE_MESSAGES_LABEL" 
+				description="SPACER_CUSTOMIZE_MESSAGES_DESCR">
+		</param>		
+		
+		<param 	name="dayformat" type="text" default="%d. %B %Y"
+				label="DATE_FORMAT_LABEL" 
+				description="DATE_FORMAT_DESCR">
+		</param>	
+		
+		<param 	name="birthdayformat" type="text" default="%d.%m.%Y"
+				label="DATE_OF_BIRTH_FORMAT_LABEL"
+				description="DATE_OF_BIRTH_FORMAT_DESCR">
+		</param>	
+		
+		<param 	name="futuremessage" type="text" default="in %DAYS_TO% days"
+				label="FUTURE_MESSAGE_LABEL"
+				description="FUTURE_MESSAGE_DESCR">
+		</param>
+		
+		<param 	name="todaymessage" type="text" default="TODAY"
+				label="TODAY_MESSAGE_LABEL"
+				description="TODAY_MESSAGE_DESCR">
+		</param>
+			
+		<param 	name="tomorrowmessage" type="text" default="tomorrow"
+				label="TOMORROW_MESSAGE_LABEL"
+				description="TOMORROW_MESSAGE_DESCR">
+		</param>
+			
+		<param 	name="birthdaytext" type="textarea" 
+				default="MESSAGE_FOR_BIRTHDAY_DEFAULT"
+				label="MESSAGE_FOR_BIRTHDAY_LABEL"
+				description="MESSAGE_FOR_BIRTHDAY_DESCR" 
+				cols="25" rows="5">
+		</param>
+			
+		<param 	name="not_found_text" type="textarea" 
+				default="NO_BIRTHDAY_MESSAGE_DEFAULT"
+				label="NO_BIRTHDAY_MESSAGE_LABEL"
+				cols="25" rows="5">
+		</param>
+	</params>
+	
+	<params group="advanced">	
+			<param 	name="moduleclass_sfx" type="text" default=""
+				label="MODULE_CLASS_SUFFIX_LABEL"
+				description="MODULE_CLASS_SUFFIX_DESCR">
+			</param>
+			
+		<param 	name="sectiontableentry1" type="text" default="sectiontableentry1"
+				label="PERSON_STYLE_ODD_LABEL"
+				description="PERSON_STYLE_ODD_DESCR">
+		</param>
+			
+		<param 	name="sectiontableentry2" type="text" default="sectiontableentry2"
+				label="PERSON_STYLE_EVEN_LABEL"
+				description="PERSON_STYLE_EVEN_DESCR">
+		</param>			
+	</params>	
+				
+</install>

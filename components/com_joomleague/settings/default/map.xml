@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<templateconfig type="JL_template" version="1.0.0">
+	<name><![CDATA[JL_FES_MAP_NAME]]></name>
+  <description><![CDATA[JL_FES_MAP_DESCR]]></description>
+
+	<params group= "JL_FES_PARAMS_GROUP_OPTIONS" 
+			description="JL_FES_PARAMS_DESCR_OPTIONS">
+			
+		<param 	name="width" type="text" default="100%" 
+				label="JL_FES_MAP_PARAM_LABEL_WIDTH" 
+				description="JL_FES_MAP_PARAM_DESCR_WIDTH">
+		</param>
+		
+		<param 	name="height" type="text" default="300" 
+				label="JL_FES_MAP_PARAM_LABEL_HEIGHT" 
+				description="JL_FES_MAP_PARAM_DESCR_HEIGHT">
+		</param>
+		
+		<param 	name="map_zoom" type="text" default="13" 
+				label="JL_FES_MAP_PARAM_LABEL_ZOOM" 
+				description="JL_FES_MAP_PARAM_DESCR_ZOOM" >
+		</param>
+		
+		<param 	name="ranking_map_zoom" type="text" default="3" 
+				label="JL_FES_RANKING_MAP_PARAM_LABEL_ZOOM" 
+				description="JL_FES_RANKING_MAP_PARAM_DESCR_ZOOM" >
+		</param>
+		
+    <param 	name="ranking_map_teams" type="text" default="1" 
+				label="JL_FES_RANKING_MAP_TEAMS_PARAM_LABEL_ZOOM" 
+				description="JL_FES_RANKING_MAP_TEAMS_PARAM_DESCR_ZOOM" >
+		</param>
+		
+		<param 	name="default_map_type" type="list" default="G_NORMAL_MAP" 
+				label="JL_FES_MAP_PARAM_LABEL_TYPE" 
+				description="JL_FES_MAP_PARAM_DESCR_TYPE">
+			<option value="TERRAIN">JL_FES_MAP_PARAM_OPTION0_TYPE</option>
+			<option value="SATELLITE">JL_FES_MAP_PARAM_OPTION1_TYPE</option>
+			<option value="HYBRID">JL_FES_MAP_PARAM_OPTION2_TYPE</option>
+		</param>
+		 
+		<param name="map_control" type="list" default="LARGE_PAN_ZOOM" 
+				label="JL_FES_MAP_PARAM_LABEL_ZOOM" 
+				description="JL_FES_MAP_PARAM_DESCR_ZOOM">
+			<option value="NONE">JL_FES_MAP_PARAM_OPTION0_ZOOM</option>
+			<option value="SMALL_ZOOM">JL_FES_MAP_PARAM_OPTION1_ZOOM</option>
+		   	<option value="SMALL_PAN_ZOOM">JL_FES_MAP_PARAM_OPTION2_ZOOM</option>
+		   	<option value="LARGE_PAN_ZOOM">JL_FES_MAP_PARAM_OPTION3_ZOOM</option>
+		</param>
+		 
+		<param 	name="map_icon_color" type="list" default="PACIFICA" 
+				label="JL_FES_MAP_PARAM_LABEL_ICON_COLOUR" 
+				description="JL_FES_MAP_PARAM_DESCR_ICON_COLOUR">
+			<option value="PACIFICA">JL_FES_MAP_PARAM_OPTION0_ICON_COLOUR</option>
+			<option value="YOSEMITE">JL_FES_MAP_PARAM_OPTION1_ICON_COLOUR</option>
+			<option value="MOAB">JL_FES_MAP_PARAM_OPTION2_ICON_COLOUR</option>
+			<option value="GRANITE_PINE">JL_FES_MAP_PARAM_OPTION3_ICON_COLOUR</option>
+			<option value="DESERT_SPICE">JL_FES_MAP_PARAM_OPTION4_ICON_COLOUR</option>
+			<option value="CABO_SUNSET">JL_FES_MAP_PARAM_OPTION5_ICON_COLOUR</option>
+			<option value="TAHITI_SEA">JL_FES_MAP_PARAM_OPTION6_ICON_COLOUR</option>
+			<option value="POPPY">JL_FES_MAP_PARAM_OPTION7_ICON_COLOUR</option>
+			<option value="NAUTICA">JL_FES_MAP_PARAM_OPTION8_ICON_COLOUR</option>
+			<option value="DEEP_JUNGLE">JL_FES_MAP_PARAM_OPTION9_ICON_COLOUR</option>
+			<option value="SLATE">JL_FES_MAP_PARAM_OPTION10_ICON_COLOUR</option>
+		</param>
+		
+		<param 	name="map_icon_style" type="list" default="FLAG" 
+				label="JL_FES_MAP_PARAM_LABEL_ICON_STYLE" 
+				description="JL_FES_MAP_PARAM_DESCR_ICON_STYLE">
+			<option value="FLAG">JL_FES_MAP_PARAM_OPTION0_ICON_STYLE</option>
+			<option value="GT_FLAT">JL_FES_MAP_PARAM_OPTION1_ICON_STYLE</option>
+			<option value="GT_PILLOW">JL_FES_MAP_PARAM_OPTION2_ICON_STYLE</option>
+			<option value="HOUSE">JL_FES_MAP_PARAM_OPTION3_ICON_STYLE</option>
+			<option value="PIN">JL_FES_MAP_PARAM_OPTION4_ICON_STYLE</option>
+			<option value="PUSH_PIN">JL_FES_MAP_PARAM_OPTION5_ICON_STYLE</option>
+			<option value="STAR">JL_FES_MAP_PARAM_OPTION6_ICON_STYLE</option>
+		 </param>
+		 
+		<param 	name="map_type_select" type="radio" default="1" 
+				label="JL_FES_MAP_PARAM_LABEL_TYPE_SELECT" 
+				description="JL_FES_MAP_PARAM_DESCR_TYPE_SELECT">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="map_scale" type="radio" default="1" 
+				label="JL_FES_MAP_PARAM_LABEL_SCALE" 
+				description="JL_FES_MAP_PARAM_DESCR_SCALE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="show_marker" type="radio" default="1" 
+				label="JL_FES_MAP_PARAM_LABEL_MARKER" 
+				description="JL_FES_MAP_PARAM_DESCR_MARKER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="map_inset" type="radio" default="1" 
+				label="JL_FES_MAP_PARAM_LABEL_INSET" 
+				description="JL_FES_MAP_PARAM_DESCR_INSET">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="cont_zoom" type="radio" default="1" 
+				label="JL_FES_MAP_PARAM_LABEL_CONT_ZOOM" 
+				description="JL_FES_MAP_PARAM_DESCR_CONT_ZOOM">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="dblclick_zoom" type="radio" default="1" 
+				label="JL_FES_MAP_PARAM_LABEL_DCLICK_ZOOM" 
+				description="JL_FES_MAP_PARAM_DESCR_DCLICK_ZOOM">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		<param 	name="center_link" type="radio" default="0" 
+				label="JL_FES_MAP_PARAM_LABEL_CENTER_LINK" 
+				description="JL_FES_MAP_PARAM_DESCR_CENTER_LINK">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>     
+	</params>
+</templateconfig>

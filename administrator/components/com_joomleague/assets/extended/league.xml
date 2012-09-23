@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+	<params group="JL_EXT_EXTENDED_PREFERENCES" addpath="/administrator/components/com_joomleague/elements">
+	
+		<param name="JL_EXT_LEAGUE_DESCRIPTION" type="textarea" rows="4" cols="50" label="JL_EXT_LEAGUE_DESCRIPTION" description="JL_EXT_LEAGUE_DESCRIPTION_DESC" backendonly="">
+		</param>
+		
+	</params>
+</model>

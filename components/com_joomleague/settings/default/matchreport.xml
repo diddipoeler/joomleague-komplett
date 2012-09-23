@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<templateconfig type="JL_template" version="1.0.0">
+	<name><![CDATA[JL_FES_MATCHREPORT_NAME]]></name>
+	<description><![CDATA[JL_FES_MATCHREPORT_DESCR]]></description>
+
+	<params group="JL_FES_PARAMS_GROUP_PAGE_ELEMENTS"
+			description="JL_FES_PARAMS_DESCR_PAGE_ELEMENTS">
+
+		<param 	name="show_sectionheader" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_HEADER"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_HEADER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+    <param 	name="show_tabs" type="radio" default="0"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_TABS"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_TABS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_SLIDER</option>
+      <option value="2">JL_GLOBAL_TABS</option>
+		</param>
+    
+		<param 	name="show_result" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_RESULT"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_RESULT">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_details" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_DETAILS"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_DETAILS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_extended" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_EXTENDED"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_EXTENDED">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_roster" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_ROSTER"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_ROSTER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_events" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_EVENTS"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_EVENTS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_stats" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_STATS"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_STATS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_summary" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_SUMMARY"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_SUMMARY">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_timeline" type="radio" default="0"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_TIMELINE"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_TIMELINE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+	</params>
+
+	<params group="JL_FES_PARAMS_GROUP_EVENTSOPTIONS"
+			description="JL_FES_PARAMS_DESCR_EVENTSOPTIONS"
+			addpath="/administrator/components/com_joomleague/elements">
+
+		<param 	name="show_substitutions" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_SUBS"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_SUBS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="use_tabs_events" type="list" default="2"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_USE_TABS"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_USE_TABS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+			<option value="2">JL_FES_MATCHREPORT_PARAM_OPTION2_EVENT_OPTION</option>
+		</param>
+		
+		<param 	name="sort_events_desc" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SORT_DESC"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SORT_DESC">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="show_event_minute" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_EVENT_MINUTE"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_EVENT_MINUTE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="show_event_sum" type="radio" default="0"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_EVENT_SUM"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_EVENT_SUM">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="show_event_notice" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_EVENT_NOTICE"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_EVENT_NOTICE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param	name="event_link_player" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_EVENT_LINK_PLAYER"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_EVENT_LINK_PLAYER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+	</params>
+
+	<params group= "JL_FES_PARAMS_GROUP_MATCHOPTIONS"
+			description="JL_FES_PARAMS_DESCR_MATCHOPTIONS">
+
+		<param 	name="show_match_date" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_MATCH_DATE"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_MATCH_DATE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_match_time" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_MATCH_TIME"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_MATCH_TIME">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_time_suffix" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_ADD_TIME_SUFFIX"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_ADD_TIME_SUFFIX">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_match_number" type="radio" default="0"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_MATCH_NUMBER"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_MATCH_NUMBER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_match_playground" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_MATCH_PLAYGROUND"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_MATCH_PLAYGROUND">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_match_referees" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_MATCH_REFEREES"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_MATCH_REFEREES">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_referee_position" type="radio" default="0"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_REFEREE_POSITION"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_REFEREE_POSITION">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_match_crowd" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_MATCH_CROWD"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_MATCH_CROWD">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+	</params>
+
+	<params group= "JL_FES_PARAMS_GROUP_RESULTSOPTIONS"
+			description="JL_FES_PARAMS_DESCR_RESULTSOPTIONS">
+
+		<param 	name="show_period_result" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_PERIOD_RESULT"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_PERIOD_RESULT">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_overtime_result" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_OVERTIME_RESULT"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_OVERTIME_RESULT">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_shotout_result" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_SHOTOUT_RESULT"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_SHOTOUT_RESULT">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+	</params>
+
+	<params group="JL_FES_PARAMS_GROUP_TEAMOPTIONS"
+			description="JL_FES_PARAMS_DESCR_TEAMOPTIONS">
+    
+    <param 	name="show_only_fav_team" type="radio" default="0"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_ONLY_FAV_TEAM"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_ONLY_FAV_TEAM">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="names" type="list" default="name"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_TYPE_NAME"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_TYPE_NAME">
+			<option value="short_name">JL_FES_MATCHREPORT_PARAM_OPTION0_TYPE_NAME</option>
+			<option value="middle_name">JL_FES_MATCHREPORT_PARAM_OPTION1_TYPE_NAME</option>
+			<option value="name">JL_FES_MATCHREPORT_PARAM_OPTION2_TYPE_NAME</option>
+		</param>
+
+		<param 	name="show_team_logo" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_TEAM_LOGO"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_TEAM_LOGO">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+		<param 	name="show_picture" type="list" default="logo_big"
+				label="JL_FES_MATCHREPORT_SHOW_PICTURE"
+				description="JL_FES_MATCHREPORT_SHOW_PICTURE_DESC">
+			<option value="team_picture">JL_FES_MATCHREPORT_TEAM_PICTURE</option>
+			<option value="projectteam_picture">JL_FES_MATCHREPORT_PROJECTTEAM_PICTURE</option>
+			<option value="logo_small">JL_FES_MATCHREPORT_CLUB_LOGO_SMALL</option>
+			<option value="logo_middle">JL_FES_MATCHREPORT_CLUB_LOGO_MIDDLE</option>
+			<option value="logo_big">JL_FES_MATCHREPORT_CLUB_LOGO_BIG</option>
+		</param>
+
+		<param 	name="team_picture_width" type="text" default="150"
+				label="JL_FES_PARAM_LABEL_TEAM_PICTURE_WIDTH"
+				description="JL_FES_PARAM_DESCR_TEAM_PICTURE_WIDTH">
+		</param>
+
+		<param 	name="team_picture_height" type="text" default="150"
+				label="JL_FES_PARAM_LABEL_TEAM_PICTURE_HEIGHT"
+				description="JL_FES_PARAM_DESCR_TEAM_PICTURE_HEIGHT">
+		</param>
+	</params>
+
+	<params group= "JL_FES_PARAMS_GROUP_PERSONOPTIONS"
+			description="JL_FES_PARAMS_DESCR_PERSONOPTIONS">
+
+		<param	name="name_format" type="nameformat" default="0"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_NAME_FORMAT"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_NAME_FORMAT">
+		</param>
+
+		<param 	name="show_player_profile_link" type="list" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_PLAYER_PROFILE_LINK"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_PLAYER_PROFILE_LINK">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+			<option value="2">JL_FES_MATCHREPORT_FAVTEAM_ONLY</option>
+		</param>
+
+		<param 	name="show_player_picture" type="radio" default="1"
+				label="JL_FES_MATCHREPORT_PARAM_LABEL_SHOW_PLAYER_PICTURE"
+				description="JL_FES_MATCHREPORT_PARAM_DESCR_SHOW_PLAYER_PICTURE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+			<option value="2">JL_FES_MATCHREPORT_PARAM_OPTION2_SHOW_PLAYER_PICTURE</option>
+		</param>
+
+		<param 	name="player_picture_width" type="text" default="40"
+				label="JL_FES_PARAM_LABEL_PLAYER_PICTURE_WIDTH"
+				description="JL_FES_PARAM_DESCR_PLAYER_PICTURE_WIDTH">
+		</param>
+
+		<param 	name="player_picture_height" type="text" default="40"
+				label="JL_FES_PARAM_LABEL_PLAYER_PICTURE_HEIGHT"
+				description="JL_FES_PARAM_DESCR_PLAYER_PICTURE_HEIGHT">
+		</param>
+
+		<param 	name="staff_picture_width" type="text" default="40"
+				label="JL_FES_PARAM_LABEL_STAFF_PICTURE_WIDTH"
+				description="JL_FES_PARAM_DESCR_STAFF_PICTURE_WIDTH">
+		</param>
+
+		<param 	name="staff_picture_height" type="text" default="40"
+				label="JL_FES_PARAM_LABEL_STAFF_PICTURE_HEIGHT"
+				description="JL_FES_PARAM_DESCR_STAFF_PICTURE_HEIGHT">
+		</param>
+	</params>
+
+	<params group="JL_FES_PARAMS_GROUP_ADVANCED_OPTIONS"
+			description="JL_FES_PARAMS_DESCR_ADVANCED_OPTIONS">
+
+		<param 	name="style_class1" type="text" default="sectiontableentry1"
+				label="JL_FES_PARAM_LABEL_STYLE_ODD"
+				description="JL_FES_PARAM_DESCR_STYLE_ODD">
+		</param>
+
+		<param 	name="style_class2" type="text" default="sectiontableentry2"
+				label="JL_FES_PARAM_LABEL_STYLE_EVEN"
+				description="JL_FES_PARAM_DESCR_STYLE_EVEN">
+		</param>
+
+	</params>
+
+</templateconfig>

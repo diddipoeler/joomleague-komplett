@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="JL_XML_PLAYER_LAYOUT_TITLE">
+		<message>
+			<![CDATA[JL_XML_PLAYER_LAYOUT_DESCR]]>
+		</message>
+	</layout>
+	<state>
+		<name>JL_XML_PLAYER_STATE_NAME</name>
+		<description>JL_XML_PLAYER_STATE_DESCR</description>
+		<url addpath="/administrator/components/com_joomleague/elements">
+
+			<param name="p" type="project" label="JL_XML_SELECT_PROJECT_LABEL"
+				description="JL_XML_SELECT_PROJECT_DESCR">
+			</param>
+
+			<param name="pid" type="jlsql" depends="p" rawview="persons"
+				label="JL_XML_PLAYER_SELECT_PLAYER_LABEL" description="JL_XML_PLAYER_SELECT_PLAYER_DESCR"
+				query="	SELECT	id AS value,
+							CONCAT(lastname, ', ', firstname, ' (', birthday, ')') AS pid
+						FROM #__joomleague_person
+						ORDER BY lastname">
+			</param>
+		</url>
+	</state>
+</metadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+	<params group="JL_EXT_EXTENDED_PREFERENCES" addpath="/administrator/components/com_joomleague/elements">
+	
+	<param name="project_league_rss_feed_link" type="textarea" default="" cols="40" rows="16" label="JL_EXT_EXTENDED_PROJECT_LEAGUE_RSSFEED_LINK_LABEL" description="JL_EXT_EXTENDED_PROJECT_LEAGUE__RSSFEED_LINK_DESCR" >
+  </param>
+	<param name="project_live_ticker_rss_feed_link" type="textarea" default="" cols="40" rows="16" label="JL_EXT_EXTENDED_PROJECT_LIVE_TICKER_RSSFEED_LINK_LABEL" description="JL_EXT_EXTENDED_PROJECT_LIVE_TICKER__RSSFEED_LINK_DESCR" >
+  </param>  
+
+<param name="JL_EXT_SIS_XML_LINK_CRON_YN" type="radio" default="0" label="JL_EXT_SIS_XML_LINK_CRON_YN" description="JL_EXT_SIS_DESC_XML_LINK_CRON_YN" size=""> <option value="0">Nein</option> <option value="1">Ja</option> </param>
+	<param name="JL_EXT_SIS_XML_LINK" type="text" label="JL_EXT_SIS_XML_LINK" description="JL_EXT_SIS_DESC_XML_LINK" size="100"/>
+	<param name="JL_EXT_SIS_TEAMKIND" type="sql" label="JL_EXT_SIS_TEAMKIND" description="JL_EXT_SIS_DESC_XML_TEAMKIND" query="SELECT info as id, info as title FROM #__joomleague_team GROUP BY info ORDER BY info ASC " key_field="id" value_field="title"/>      
+    	
+	</params>
+</model>

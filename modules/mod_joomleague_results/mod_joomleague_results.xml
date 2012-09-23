@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>JoomLeague Results</name>
+	<author>JoomLeague Developers</author>
+	<authorEmail>info@joomleague.net</authorEmail>
+	<authorUrl>http://www.joomleague.net</authorUrl>
+	<creationDate>2010-06-05</creationDate>
+	<copyright>Copyright (c) 2009 - 2010 JoomLeague Developers</copyright>
+	<license>GNU GPL v3</license>
+	<version>1.6.0</version>
+	<description>MOD_JLG_RESULTS_MODULE_DESC</description>
+
+	<files>
+		<filename module="mod_joomleague_results">mod_joomleague_results.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>assets</folder>		
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_results.ini
+		</language>
+	</languages>
+
+	<params 	addpath="/administrator/components/com_joomleague/elements">
+	
+		<param 	name="sportstype" type="sportstypes" 
+				label="SPORTSTYPE ID LABEL" 
+				description="SPORTSTYPE ID LABEL DESC" />
+
+		<param 	name="p" task="projectsbysportstypesoptions" type="dependsql" 
+				label="PROJECT ID LABEL" depends="sportstype"
+				description="PROJECT ID LABEL DESC" />
+				
+		<param 	name="division_id" type="dependsql" 
+				depends="p" task="projectdivisionsoptions" 
+				label="DIVISION ID LABEL" 
+				description="DIVISION ID LABEL DESC" />
+			
+		<param 	name="id" type="dependsql"  depends="p"
+				task="roundsoptions" isrequired="0" 
+				label="SELECT ROUND LABEL"
+				description="SELECT ROUND LABEL DESC"/>
+			
+		<param 	name="round_selection" type="list" default="0"
+				label="ROUND SELECTION" 
+				description="ROUND SELECTION DESC">
+			<option value="0">Latest Matches</option>
+			<option value="1">Next Matches</option>
+			<option value="2">Manual select</option>
+		</param>
+		
+		<param 	name="limit" type="text" default="10" 
+				label="ROW LIMIT LABEL"
+				description="ROW LIMIT LABEL DESC" />
+			
+		<param 	name="@spacer" type="spacer" default="" 
+				label=""
+				description="" />
+
+		<param 	name="show_project_name" type="list" default="0"
+				label="SHOW PROJECT NAME" 
+				description="SHOW PROJECT NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param 	name="show_round_name" type="list" default="0"
+				label="SHOW ROUND NAME" 
+				description="SHOW ROUND NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param 	name="show_score_design" type="list" default="1"
+				label="SHOW SCORE DESIGN" 
+				description="SHOW SCORE DESIGN DESC">
+			<option value="0">in extra line (under teams)</option>
+			<option value="1">in same line (with teams)</option>
+		</param>
+
+		<param 	name="date_format" type="text" default="%a, %d.%m."
+				label="DATE FORMAT" 
+				description="DATE FORMAT DESC" />
+				
+		<param 	name="time_format" type="text" default="%H:%M" 
+				label="TIME FORMAT"
+				description="TIME FORMAT DESC" />
+
+		<param 	name="show_logo" type="list" default="0" 
+				label="SHOW LOGO LABEL"
+				description="SHOW LOGO LABEL DESC">
+			<option value="0">No</option>
+			<option value="1">Club Logo</option>
+			<option value="2">Country Flag</option>
+		</param>
+
+		<param 	name="nametype" type="list" default="short_name" 
+				label="TEAM NAME LABEL"
+				description="TEAM NAME DESC">
+			<option value="short_name">TEAM NAME SHORT</option>
+			<option value="middle_name">TEAM NAME MEDIUM</option>
+			<option value="name">TEAM NAME FULL</option>
+		</param>
+
+		<param 	name="teamlink" type="list" default="teaminfo" 
+				label="TEAM LINK LABEL"
+				description="TEAM LINK DESC">
+			<option value="0">LINK NO LINK</option>
+			<option value="teaminfo">LINK TEAMINFO</option>
+			<option value="roster">LINK ROSTER</option>
+			<option value="teamplan">LINK TEAMPLAN</option>
+			<option value="clubinfo">LINK CLUBINFO</option>
+		</param>
+
+		<param 	name="scorelink" type="list" default="scorelink" 
+				label="SCORE LINK LABEL"
+				description="SCORE LINK LABEL DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param 	name="show_date_heading" type="list" 
+				default="1"
+				label="SHOW DATE HEADING" description="SHOW DATE HEADING DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param 	name="show_date" type="list" default="1" 
+				label="SHOW DATE"
+				description="SHOW DATE DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param 	name="show_time" type="list" default="1" 
+				label="SHOW TIME"
+				description="SHOW TIME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param 	name="show_full_link" type="list" default="1"
+				label="SHOW FULL LINK" 
+				description="SHOW FULL LINK DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+
+		<param 	name="@spacer" type="spacer" default="" 
+				label=""
+				description="" />
+					
+		<param 	name="show_custom_css" type="list" default="1" 
+				label="Custom CSS"
+				description="Enable Custom CSS?">
+			<option value="1">YES</option>
+			<option value="0">NO</option>
+		</param>
+
+		<param 	name="style_mod_jl_results" type="text" default="width: 100%;"
+				label="STYLE MOD JL RESULTS" 
+				description="STYLE MOD JL RESULT DESC" />
+
+		<param 	name="style_mod_jl_results_link" type="text" default="color: #c3c3c3;"
+				label="STYLE MOD JL RESULTS LINK" 
+				description="STYLE MOD JL RESULTS LINK DESC" />
+
+		<param 	name="style_mod_jl_results_matches" type="text" default="width: 95%;"
+				label="STYLE MOD JL RESULTS MATCHES" 
+				description="STYLE MOD JL RESULTS MATCHES DESC" />
+
+		<param 	name="style_mod_jl_results_project_name" type="text" default="text-align: left; font-weight: bold;" 
+				label="STYLE MOD JL RESULT PROJECT NAME"
+				description="STYLE MOD JL RESULT PROJECT NAME DESC" />
+
+		<param 	name="style_mod_jl_results_round_name" type="text" default="text-align: left; font-weight: bold;" 
+				label="STYLE MOD JL RESULT ROUND NAME"
+				description="STYLE MOD JL RESULT ROUND NAME DESC" />
+
+		<param 	name="style_mod_jl_results_date" type="text" default="text-align: left; font-weight: bold;" 
+				label="STYLE MOD JL RESULT DATE"
+				description="STYLE MOD JL RESULT DATE DESC" />
+
+		<param 	name="style_mod_jl_results_time" type="text" default="text-align: left;font-weight: bold;"
+				label="STYLE MOD JL RESULT TIME"
+				description="STYLE MOD JL RESULT TIME DESC" />
+
+		<param 	name="style_mod_jl_results_score" type="text" default="text-align: center; font-weight: bold;"
+				label="STYLE MOD JL RESULT SCORE"
+				description="STYLE MOD JL RESULT DESC" />
+
+		<param 	name="style_mod_jl_results_opponent_left" type="text" default="text-align: right; font-weight: bold;"
+				label="STYLE MOD JL RESULT OPPONENT LEFT"
+				description="STYLE MOD JL RESULT OPPONENT LEFT DESC" />
+
+		<param 	name="style_mod_jl_results_opponent_right" type="text" default="text-align: left; font-weight: bold;" 
+				label="STYLE MOD JL RESULT OPPONENT RIGHT"
+				description="STYLE MOD JL RESULT OPPONENT RIGHT DESC" />
+
+		<param 	name="style_mod_jl_results_fulltablelink" type="text" default="text-align: center; padding: 5px 0 5px 0;"
+				label="STYLE MOD JL RESULT FULLTABLELINK"
+				description="STYLE MOD JL RESULT FULLTABLELINK DESC" />
+
+		<param 	name="style_mod_jl_results_matchwin" type="text" default="color: #72ff00;"
+				label="STYLE MOD JL RESULT MATCHWIN"
+				description="STYLE MOD JL RESULT MATCHWIN DESC" />
+
+		<param 	name="style_mod_jl_results_matchloss" type="text" default="color: #ff0000;"
+				label="STYLE MOD JL RESULT MATCHLOSS"
+				description="STYLE MOD JL RESULT MATCHLOSS DESC" />
+
+		<param 	name="style_mod_jl_results_matchdraw" type="text" default="color: #ffae00;"
+				label="STYLE MOD JL RESULT MATCHDRAW"
+				description="STYLE MOD JL RESULT MATCHDRAW DESC" />
+
+		<param 	type="spacer" default="STYLE NOTE DESC" />
+
+		<param 	name="@spacer" type="spacer" default="" 
+				label=""
+				description="" />
+
+	</params>
+
+	<params 	group="advanced">
+		<param 	name="cache" type="list" default="1" 
+				label="CACHING"
+				description="CACHING DESC">
+			<option value="1">USE GLOBAL</option>
+			<option value="0">NO CACHING</option>
+		</param>
+		
+		<param 	name="cache_time" type="text" default="900" 
+				label="CACHE TIME"
+				description="CACHE TIME DESC">
+		</param>		
+				
+		<param 	name="moduleclass_sfx" type="text" default=""
+				label="Module Class Suffix" 
+				description="PARAMMODULECLASSSUFFIX">
+		</param>		
+	</params>
+
+</install>

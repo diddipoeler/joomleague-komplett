@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="JL_XML_PLAYGROUND_LAYOUT_TITLE">
+		<message>
+		<![CDATA[JL_XML_PLAYGROUND_LAYOUT_DESCR]]>
+		</message>
+	</layout>
+	<state>
+		<name>JL_XML_PLAYGROUND_STATE_NAME</name>
+		<description>JL_XML_PLAYGROUND_STATE_DESCR</description>
+		<url addpath="/administrator/components/com_joomleague/elements" >
+			<param 	name="p" type="project" 
+				label="JL_XML_SELECT_PROJECT_LABEL" 
+				description="JL_XML_SELECT_PROJECT_DESCR">
+			</param>
+			<param 	name="pgid" type="sql" 
+				label="JL_XML_PLAYGROUND_SELECT_PLAYGROUND_LABEL" 
+				description="JL_XML_PLAYGROUND_SELECT_PLAYGROUND_DESCR"
+				query="SELECT id AS value, name AS pgid FROM #__joomleague_playground">
+			</param>
+		</url>
+	</state>
+</metadata>

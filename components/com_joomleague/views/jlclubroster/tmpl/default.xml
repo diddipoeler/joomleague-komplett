@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="JL_XML_CLUB_ROSTER_LAYOUT_TITLE">
+		<message>
+			<![CDATA[JL_XML_CLUB_ROSTER_LAYOUT_DESCR]]>
+		</message>
+	</layout>
+	<state>
+		<name>JL_XML_CLUB_ROSTER_STATE_NAME</name>
+		<description>JL_XML_CLUB_ROSTER_STATE_DESCR</description>
+		<url addpath="/administrator/components/com_joomleague/elements">
+			<param name="cid" type="club" label="JL_XML_SELECT_CLUB_LABEL"
+				description="JL_XML_SELECT_CLUB_DESCR">
+			</param>
+			
+			<param type="spacer">
+			</param>
+			
+			<param type="spacer">
+			</param>
+			
+			
+		</url>
+	</state>
+</metadata>

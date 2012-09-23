@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statistic>
+<description>JL_STAT_BASE_DESC</description>
+	<params>
+		<param 	name="ranking_order" type="list" default="DESC" 
+				label="JL_STAT_RANKING_ORDER" 
+				description="JL_STAT_RANKING_ORDER_DESC">
+			<option value="ASC">JL_GLOBAL_ASCENDING</option>
+			<option value="DESC">JL_GLOBAL_DESCENDING</option>
+		</param>
+	</params>
+</statistic>

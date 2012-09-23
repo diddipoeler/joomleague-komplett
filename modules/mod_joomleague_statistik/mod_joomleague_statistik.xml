@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>JoomLeague Statistik</name>
+	<author>diddipoeler</author>
+	<creationDate>2010-06-08</creationDate>
+	<copyright>Copyright (c) 2009 JoomLeague Developers!</copyright>
+	<license>GNU/GPL</license>
+	<authorEmail>diddipoeler@arcor.de</authorEmail>
+	<authorUrl>http://www.fussballineuropa.de</authorUrl>
+	<version>1.0</version>
+	<description><![CDATA[
+	<h3></h3>
+	<p></p>
+	<p></p>
+	]]></description>
+	<files>
+		<filename module="mod_joomleague_statistik">mod_joomleague_statistik.php</filename>
+		<filename>index.html</filename>
+    <filename>helper.php</filename>
+    <folder>tmpl</folder>
+		<folder>css</folder>
+		<folder>images</folder>
+	</files>
+
+<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_statistik.ini
+		</language>
+		<language tag="de-DE">language/de-DE/de-DE.mod_joomleague_statistik.ini
+		</language>
+</languages>
+
+
+
+<params>
+	
+<param name="joomleague_stat_torschuetzen" type="radio" default="1" label="SHOW GOALS" description="SHOW GOALS DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param name="@spacer" type="spacer" default="" label=""
+			description="" />
+<param name="joomleague_stat_gelbe_karten" type="radio" default="1" label="SHOW YELLOW CARD" description="SHOW YELLOW CARD DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param type="sql" name="yellowcard" label="SHOW YELLOW CARD TYPE" description="SHOW YELLOW CARD TYPE DESC"
+                query="SELECT id AS value, name AS yellowcard FROM #__joomleague_eventtype  ORDER BY name" />
+<param name="@spacer" type="spacer" default="" label=""
+			description="" />
+                      
+<param name="joomleague_stat_gelb_rote_karten" type="radio" default="1" label="SHOW YELLOW RED CARD" description="SHOW YELLOW RED CARD DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+<param type="sql" name="yellowredcard" label="SHOW YELLOW RED CARD TYPE" description="SHOW YELLOW RED CARD TYPE DESC"
+                query="SELECT id AS value, name AS yellowredcard FROM #__joomleague_eventtype  ORDER BY name" />
+<param name="@spacer" type="spacer" default="" label=""
+			description="" />
+			
+<param name="joomleague_stat_rote_karten" type="radio" default="1" label="SHOW RED CARD" description="SHOW RED CARD DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+<param type="sql" name="redcard" label="SHOW RED CARD TYPE" description="SHOW RED CARD TYPE DESC"
+                query="SELECT id AS value, name AS redcard FROM #__joomleague_eventtype  ORDER BY name" />
+<param name="@spacer" type="spacer" default="" label=""
+			description="" />
+			
+<param name="joomleague_stat_vereine" type="radio" default="1" label="SHOW CLUB" description="SHOW CLUB DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param name="joomleague_stat_mannschaften" type="radio" default="1" label="SHOW TEAM" description="SHOW TEAM DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param name="joomleague_stat_divisionen" type="radio" default="1" label="SHOW DIVISION" description="SHOW DIVISION DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param name="joomleague_stat_schiedsrichter" type="radio" default="1" label="SHOW REFEREE" description="SHOW REFEREE DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param name="joomleague_stat_spieler" type="radio" default="1" label="SHOW PLAYER" description="SHOW PLAYER DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param name="joomleague_stat_spielorte" type="radio" default="1" label="SHOW VENUES" description="SHOW VENUES DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param name="joomleague_stat_spieltage" type="radio" default="1" label="SHOW ROUNDS" description="SHOW ROUNDS DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param name="joomleague_stat_projekte" type="radio" default="1" label="SHOW PROJECT" description="SHOW PROJECT DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+<param name="joomleague_stat_spielpaarungen" type="radio" default="1" label="SHOW MATCHES" description="SHOW MATCHES DESC">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</param>
+
+
+    
+</params>
+      
+</install>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+	<params group="JL_EXT_EXTENDED_PREFERENCES">
+	
+		<param 	name="JL_EXT_TREETO_DATA" type="text"
+				label="JL_EXT_TREETO_DATA_LABEL"
+				description="Test data">
+		</param>
+		
+	</params>
+</model>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/module-install.dtd">
+<install version="1.5.0" type="module" client="administrator" method="upgrade">
+	<name>JoomLeague Adminpanel Icon Module</name>
+	<author>JoomLeague Developers</author>
+	<authorEmail>info@joomleague.net</authorEmail>
+	<authorUrl>http://www.joomleague.net</authorUrl>
+	<creationDate>June 2009</creationDate>
+	<copyright>Copyright (c)2009 JoomLeague Developers</copyright>
+	<license>GNU GPL v3</license>
+	<version>1.0</version>
+	<description><![CDATA[
+	<hr />
+	<h1>JoomLeague Adminpanel Icon Module</h1>
+	<p>This is a handy  module to display a JoomLeague icon on your administrator
+	back-end's Control Panel page. Clicking it brings you to the JoomLeague backend
+	administration page.</p>
+	<p><strong>Important!</strong> You have to <em>manually</em> enable this module.
+	Go to Extensions, Module Manager and click the Administrator link (<u>not</u>
+	the Site link). Set the position to &quot;<b>icon</b>&quot;, enable this module
+	and you're set!</p>
+	<hr />
+	]]></description>
+	<files>
+		<filename module="mod_joomleague_adminpanel_icon">mod_joomleague_adminpanel_icon.php</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_adminpanel_icon.ini</language>
+	</languages>
+	
+</install>

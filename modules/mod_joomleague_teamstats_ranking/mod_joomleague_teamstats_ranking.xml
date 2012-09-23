@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>JoomLeague Teams Statistic ranking</name>
+	<author>JoomLeague Developers</author>
+	<authorEmail>info@joomleague.net</authorEmail>
+	<authorUrl>http://www.joomleague.net</authorUrl>
+	<creationDate>2009-08-14</creationDate>
+	<copyright>Copyright (c) 2009 JoomLeague Developers</copyright>
+	<license>GNU GPL v3</license>
+	<version>1.5.0</version>
+	<description>MODULE DESC</description>
+
+	<files>
+		<filename module="mod_joomleague_teamstats_ranking">mod_joomleague_teamstats_ranking.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>css</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_joomleague_teamstats_ranking.ini</language>
+	</languages>
+
+	<params addpath="/administrator/components/com_joomleague/elements">
+		<param	name="p" type="project"  
+				label="SELECT_PROJECT_LABEL"
+				description="SELECT_PROJECT_DESCR"
+				/>
+
+		<param	name="sid" type="dependsql" 
+				depends="p" task="projectstatsoptions" 
+				query="" required="1"
+				label="SELECT_STAT_LABEL"
+				description="SELECT_STAT_DESCR"/>
+								
+		<param 	name="ranking_order" type="list" default="DESC" 
+				label="STAT_RANKING_ORDER" 
+				description="STAT_RANKING_ORDER_DESC">
+			<option value="ASC">Ascending</option>
+			<option value="DESC">Descending</option>
+		</param>
+		
+		<param 	name="limit" type="text" default="5" 
+				label="ROW LIMIT LABEL" 
+				description="ROW LIMIT LABEL DESC" />
+    
+		<param 	name="show_project_name" type="list" default="0" 
+				label="SHOW PROJECT NAME" 
+				description="SHOW PROJECT NAME DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param 	name="@spacer" type="spacer" default="" 
+				label="" 
+				description="" />
+
+		<param 	name="teamnametype" type="list" default="short_name" 
+				label="TEAM NAME LABEL" 
+				description="TEAM NAME DESC">
+			<option value="short_name">TEAM NAME SHORT</option>
+			<option value="middle_name">TEAM NAME MEDIUM</option>
+			<option value="name">TEAM NAME FULL</option>
+		</param>
+		
+		<param 	name="teamlink" type="list" default="teaminfo" 
+				label="TEAM LINK LABEL" 
+				description="TEAM LINK DESC">
+			<option value="">LINK NO LINK</option>
+			<option value="teaminfo">LINK TEAMINFO</option>
+			<option value="roster">LINK ROSTER</option>
+			<option value="teamplan">LINK TEAMPLAN</option>
+			<option value="clubinfo">LINK CLUBINFO</option>
+		</param>
+		
+		<param 	name="show_logo" type="list" default="0" 
+				label="SHOW LOGO LABEL" 
+				description="SHOW LOGO LABEL DESC">
+			<option value="0">No</option>
+			<option value="1">Club Logo</option>
+			<option value="2">Country Flag</option>
+		</param>
+
+		<param 	name="@spacer" type="spacer" default="" 
+				label="" 
+				description="" />
+
+		<param 	name="show_event_icon" type="list" default="1" 
+				label="SHOW STATISTIC ICON LABEL" 
+				description="SHOW STATISTIC ICON DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+
+	<params group="advanced">
+		<param 	name="cache" type="list" default="1" 
+				label="CACHING" 
+				description="CACHING DESC">
+			<option value="1">USE GLOBAL</option>
+			<option value="0">NO CACHING</option>
+		</param>
+		
+		<param 	name="cache_time" type="text" default="900" 
+				label="CACHE TIME" 
+				description="CACHE TIME DESC">
+		</param>
+				
+		<param 	name="moduleclass_sfx" type="text" default="" 
+				label="Module Class Suffix" 
+				description="PARAMMODULECLASSSUFFIX">
+		</param>				
+				
+		<param 	name="style_class1" type="text" default="sectiontableentry1"
+				label="JL_MOD_TEAMSTATSRANK_PARAM_LABEL_STYLE_ODD"
+				description="JL_MOD_TEAMSTATSRANK_PARAM_DESCR_STYLE_ODD">
+		</param>
+			
+		<param 	name="style_class2" type="text" default="sectiontableentry2"
+				label="JL_MOD_TEAMSTATSRANK_PARAM_LABEL_STYLE_EVEN"
+				description="JL_MOD_TEAMSTATSRANK_PARAM_DESCR_STYLE_EVEN">
+		</param>					
+	</params>
+
+</install>

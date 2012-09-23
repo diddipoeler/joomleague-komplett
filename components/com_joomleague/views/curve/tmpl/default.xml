@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="JL_XML_CURVE_LAYOUT_TITLE">
+		<message>
+			<![CDATA[JL_XML_CURVE_LAYOUT_DESCR]]>
+		</message>
+	</layout>
+	<state>
+		<name>JL_XML_CURVE_STATE_NAME</name>
+		<description>JL_XML_CURVE_STATE_DESCR</description>
+		<url addpath="/administrator/components/com_joomleague/elements">
+			<param name="p" type="project" label="JL_XML_SELECT_PROJECT_LABEL"
+				description="JL_XML_SELECT_PROJECT_DESCR">
+			</param>
+			<param name="division" type="dependsql" depends="p"
+				task="projectdivisionsoptions" label="JL_XML_SELECT_DIVISION_LABEL"
+				description="JL_XML_SELECT_DIVISION_DESCR" query="" required="0">
+			</param>
+			<param name="tid1" type="dependsql" depends="p,division"
+				task="projectteamsbydivisionoptions" label="JL_XML_CURVE_SELECT_TEAM1_LABEL"
+				description="JL_XML_CURVE_SELECT_TEAM1_DESCR" query="" required="0">
+			</param>
+			<param name="tid2" type="dependsql" depends="p,division"
+				task="projectteamsbydivisionoptions" label="JL_XML_CURVE_SELECT_TEAM2_LABEL"
+				description="JL_XML_CURVE_SELECT_TEAM2_DESCR" query="" required="0">
+			</param>
+			<param name="both" type="radio" default="1"
+				label="JL_XML_CURVE_BOTH_LABEL" description="JL_XML_CURVE_BOTH_DESCR">
+				<option value="0">JL_GLOBAL_NO</option>
+				<option value="1">JL_GLOBAL_YES</option>
+			</param>
+		</url>
+	</state>
+</metadata>

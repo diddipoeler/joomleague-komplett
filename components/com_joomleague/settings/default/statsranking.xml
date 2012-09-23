@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<templateconfig type="JL_template" version="1.0.0">
+	<name><![CDATA[JL_FES_STATSRANK_NAME]]></name>
+	<description><![CDATA[JL_FES_STATSRANK_DESCR]]></description>
+
+	<params group="JL_FES_PARAMS_GROUP_PAGE_ELEMENTS" 
+			description="JL_FES_PARAMS_DESCR_PAGE_ELEMENTS">
+
+		<param 	name="show_sectionheader" type="radio" default="1" 
+				label="JL_FES_PARAM_LABEL_SHOW_SECTIONHEADER" 
+				description="JL_FES_PARAM_DESCR_SHOW_SECTIONHEADER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+
+	</params>
+
+	<params group="JL_FES_PARAMS_GROUP_OPTIONS" 
+			description="JL_FES_PARAMS_DESCR_OPTIONS"
+			addpath="/administrator/components/com_joomleague/elements">
+	
+		<param 	name="count_stats" type="text" default="5"
+				label="JL_FES_STATSRANK_PARAM_LABEL_COUNT_STATS"
+				description="JL_FES_STATSRANK_PARAM_DESCR_COUNT_STATS">
+		</param>
+		
+		<param 	name="max_stats" type="text" default="20"
+				label="JL_FES_STATSRANK_PARAM_LABEL_MAX_STATS"
+				description="JL_FES_STATSRANK_PARAM_DESCR_MAX_STATS">
+		</param>
+			
+		<param 	name="show_icons" type="radio" default="0"
+				label="JL_FES_STATSRANK_PARAM_LABEL_SHOW_ICONS"
+				description="JL_FES_STATSRANK_PARAM_DESCR_SHOW_ICONS">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+	</params>
+	
+	<params group= "JL_FES_PARAMS_GROUP_PERSONOPTIONS" 
+			description="JL_FES_PARAMS_DESCR_PERSONOPTIONS">	
+
+		<param	name="name_format" type="nameformat" default="0"
+				label="JL_FES_STATSRANK_PARAM_LABEL_NAME_FORMAT"
+				description="JL_FES_STATSRANK_PARAM_DESCR_NAME_FORMAT">
+		</param>
+			
+		<param 	name="show_picture_thumb" type="radio" default="0"
+				label="JL_FES_STATSRANK_PARAM_LABEL_SHOW_THUMB_PLAYER" 
+				description="JL_FES_STATSRANK_PARAM_DESCR_SHOW_THUMB_PLAYER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="player_picture_width" type="text" default="40"
+				label="JL_FES_PARAM_LABEL_PLAYER_PICTURE_WIDTH" 
+				description="JL_FES_PARAM_DESCR_PLAYER_PICTURE_WIDTH">
+		</param>
+		
+		<param 	name="player_picture_height" type="text" default="0"
+				label="JL_FES_PARAM_LABEL_PLAYER_PICTURE_HEIGHT" 
+				description="JL_FES_PARAM_DESCR_PLAYER_PICTURE_HEIGHT">
+		</param>
+		
+		<param 	name="show_nation" type="radio" default="0"
+				label="JL_FES_STATSRANK_PARAM_LABEL_SHOW_NAT_PLAYER"
+				description="JL_FES_STATSRANK_PARAM_DESCR_SHOW_NAT_PLAYER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="link_to_player" type="radio" default="1"
+				label="JL_FES_STATSRANK_PARAM_LABEL_LINK_PLAYER"
+				description="JL_FES_STATSRANK_PARAM_DESCR_LINK_PLAYER">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+			
+	</params>	
+	
+	<params group="JL_FES_PARAMS_GROUP_TEAMOPTIONS"
+			description="JL_FES_PARAMS_DESCR_TEAMOPTIONS">
+
+		<param	name="highlight_fav" type="radio" default="1"
+				label="JL_FES_PARAM_LABEL_HIGHLIGHT_FAV"
+				description="JL_FES_PARAM_DESCR_HIGHLIGHT_FAV">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="show_team" type="radio" default="1"
+				label="JL_FES_STATSRANK_PARAM_LABEL_SHOW_TEAM"
+				description="JL_FES_STATSRANK_PARAM_DESCR_SHOW_TEAM">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>		
+
+		<param 	name="link_to_team" type="radio" default="1"
+				label="JL_FES_STATSRANK_PARAM_LABEL_LINK_TEAM"
+				description="JL_FES_STATSRANK_PARAM_DESCR_LINK_TEAM">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>		
+	</params>
+	
+	<params group="JL_FES_PARAMS_GROUP_ADVANCED_OPTIONS" 
+			description="JL_FES_PARAMS_DESCR_ADVANCED_OPTIONS">	
+		
+		<param 	name="style_class1" type="text" default="sectiontableentry1" 
+				label="JL_FES_PARAM_LABEL_STYLE_ODD" 
+				description="JL_FES_PARAM_DESCR_STYLE_ODD">
+		</param>
+		
+		<param 	name="style_class2" type="text" default="sectiontableentry2" 
+				label="JL_FES_PARAM_LABEL_STYLE_EVEN" 
+				description="JL_FES_PARAM_DESCR_STYLE_EVEN">
+		</param>
+					
+	</params>	
+				
+</templateconfig>

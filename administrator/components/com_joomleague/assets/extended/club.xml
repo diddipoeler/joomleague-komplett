@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+	<params group="JL_EXT_EXTENDED_PREFERENCES" addpath="/administrator/components/com_joomleague/elements">
+	
+		<param 	name="JL_EXT_CLUB_YOUTHMANAGER" type="text" 
+				label="JL_EXT_CLUB_YOUTHMANAGER"
+				description="Youth Manager">
+		</param>
+		
+		<param 	name="JL_EXT_CLUB_YOUTHTREASURER" type="text" 
+				label="JL_EXT_CLUB_YOUTHTREASURER"
+				description="Youth treasurer">
+		</param>
+		
+		<param 	name="JL_EXT_CLUB_CLUBTREASURER" type="text" 
+				label="JL_EXT_CLUB_CLUBTREASURER"
+				description="Club treasurer">
+		</param>
+		
+		
+		
+		
+		<param 	name="JL_ADMINISTRATIVE_AREA_LEVEL_1_LONG_NAME" type="text" 
+				label="JL_ADMINISTRATIVE_AREA_LEVEL_1_LONG_NAME_LABEL"
+				description="JL_ADMINISTRATIVE_AREA_LEVEL_1_LONG_NAME_DESC">
+		</param>
+		<param 	name="JL_ADMINISTRATIVE_AREA_LEVEL_1_SHORT_NAME" type="text" 
+				label="JL_ADMINISTRATIVE_AREA_LEVEL_1_SHORT_NAME_LABEL"
+				description="JL_ADMINISTRATIVE_AREA_LEVEL_1_SHORT_NAME_DESC">
+		</param>
+		<param 	name="JL_ADMINISTRATIVE_AREA_LEVEL_2_LONG_NAME" type="text" 
+				label="JL_ADMINISTRATIVE_AREA_LEVEL_2_LONG_NAME_LABEL"
+				description="JL_ADMINISTRATIVE_AREA_LEVEL_2_LONG_NAME_DESC">
+		</param>
+		<param 	name="JL_ADMINISTRATIVE_AREA_LEVEL_2_SHORT_NAME" type="text" 
+				label="JL_ADMINISTRATIVE_AREA_LEVEL_2_SHORT_NAME_LABEL"
+				description="JL_ADMINISTRATIVE_AREA_LEVEL_2_SHORT_NAME_DESC">
+		</param>
+		<param 	name="JL_ADMINISTRATIVE_AREA_LEVEL_3_LONG_NAME" type="text" 
+				label="JL_ADMINISTRATIVE_AREA_LEVEL_3_LONG_NAME_LABEL"
+				description="JL_ADMINISTRATIVE_AREA_LEVEL_3_LONG_NAME_DESC">
+		</param>
+		<param 	name="JL_ADMINISTRATIVE_AREA_LEVEL_3_SHORT_NAME" type="text" 
+				label="JL_ADMINISTRATIVE_AREA_LEVEL_3_SHORT_NAME_LABEL"
+				description="JL_ADMINISTRATIVE_AREA_LEVEL_3_SHORT_NAME_DESC">
+		</param>                        
+    
+    <param 	name="JL_LOCALITY_LONG_NAME" type="text" 
+				label="JL_LOCALITY_LONG_NAME_LABEL"
+				description="JL_LOCALITY_LONG_NAME_DESC">
+		</param>
+		<param 	name="JL_SUBLOCALITY_LONG_NAME" type="text" 
+				label="JL_SUBLOCALITY_LONG_NAME_LABEL"
+				description="JL_SUBLOCALITY_LONG_NAME_DESC">
+		</param>
+    
+		<param 	name="JL_EXT_CLUB_SECONDWWW" type="link" 
+				label="JL_EXT_CLUB_SECONDWWW"
+				description="Second website"
+				backendonly="">
+		</param>
+		
+    <param name="club_rss_feed_link" type="textarea" default="" cols="40" rows="16" label="JL_EXT_EXTENDED_CLUB_RSSFEED_LINK_LABEL" description="JL_EXT_EXTENDED_CLUB_RSSFEED_LINK_DESCR" >
+  </param>
+    
+    
+	</params>
+</model>

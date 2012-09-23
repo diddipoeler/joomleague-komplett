@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+	<params group="JL_EXT_EXTENDED_PREFERENCES" addpath="/administrator/components/com_joomleague/elements">
+	
+		<param name="JL_EXT_MATCH_TVBROADCAST" type="textarea" rows="4" cols="50" label="JL_EXT_MATCH_TVBROADCAST" description="Enter the tv broadcast info here." backendonly="0">
+		</param>
+			
+		<param name="Weather" type="list" label="JL_EXT_MATCH_WEATHER" description="Weather" backendonly="0">
+		<option value="dry">Dry</option><option value="rainy">Rainy</option><option value="sunny">Sunny</option><option value="windy">Windy</option><option value="snowing">Snowing</option>
+    </param>		
+
+<param name="formation1" type="sql"  label="Spielsystem-Heim" description="Spielsystem-Heim"
+query="SELECT name AS value, name AS formation1 FROM #__joomleague_rosterposition where short_name = 'HOME_POS' ORDER BY name" >
+</param>
+
+<param name="formation2" type="sql"  label="Spielsystem-Gast" description="Spielsystem-Gast"
+query="SELECT name AS value, name AS formation2 FROM #__joomleague_rosterposition where short_name = 'AWAY_POS'  ORDER BY name" >
+</param>
+
+<param name="untergrund" type="list" default="0" label="Platztyp" description="Platztyp">
+<option value="0">nichts ausgewaehlt</option>
+<option value="rasen">Rasen</option>
+<option value="kunstrasen">Kunstrasen</option>
+<option value="asche">Asche</option>
+</param>	
+						
+<param name="dfbnet_matchreport_csv" type="filelist" default="" label="JL_EXT_MATCH_DFBNET_CSV_FILE_LABEL" description="JL_EXT_MATCH_DFBNET_CSV_FILE_DESCR" directory="media/com_joomleague/dfbnet-matchreport" filter="\.csv" exclude="" stripext="" />		
+<param name="dfbnet_matchreport_pdf" type="filelist" default="" label="JL_EXT_MATCH_DFBNET_PDF_FILE_LABEL" description="JL_EXT_MATCH_DFBNET_PDF_FILE_DESCR" directory="media/com_joomleague/dfbnet-matchreport" filter="\.pdf" exclude="" stripext="" />						
+	
+  		
+		<param name="JL_EXT_MATCH_EXTERNAL_LINK" type="link" label="JL_EXT_MATCH_EXTERNAL_LINK" description="Matchlink" backendonly="0">
+		</param>
+		
+		<param name="JL_EXT_MATCH_FIELDCONDITION" type="list" label="JL_EXT_MATCH_FIELDCONDITION" description="Field condition" backendonly="0">
+			
+			
+			
+			
+		<option value="normal">Normal</option><option value="dry">Dry</option><option value="wet">Wet</option></param>		
+		
+	</params>
+</model>
