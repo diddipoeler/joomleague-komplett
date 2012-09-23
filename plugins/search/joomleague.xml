@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC 
+  "-//Joomla! 1.5//DTD plugin 1.0//EN" "http://dev.joomla.org/xml/1.5/plugin-install.dtd">
+<install version="1.5" type="plugin" group="search" method="upgrade">
+	<name>Search - Joomleague</name>
+	<creationDate>Jul 2010</creationDate>
+	<author>Diddipoeler</author>
+	<authorEmail>Diddipoeler</authorEmail>
+	<authorUrl>http://www.joomleague.net</authorUrl>
+	<copyright>(C) 2005 - 2010 Joomleague.net. All rights reserved.</copyright>
+	<license>This component in released under the GNU/GPL v2 or later
+		license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>1.0</version>
+	<description>Search for clubs, teams, persons, playgrounds(venues)</description>
+	<files>
+		<filename plugin="joomleague">joomleague.php</filename>
+	</files>
+
+	<params>
+		<param name="search_clubs" type="radio" default="1" label="Clubs"
+			description="Search Clubs ?">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param name="search_teams" type="radio" default="1" label="Teams"
+			description="Search Teams ?">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param name="search_persons" type="radio" default="1" label="Persons"
+			description="Search Persons ?">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param name="search_playground" type="radio" default="1"
+			label="Playground" description="Search Playground ?">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+
+</install>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC
+  "-//Joomla! 1.5//DTD plugin 1.0//EN" "http://dev.joomla.org/xml/1.5/plugin-install.dtd">
+<install version="1.5" type="plugin" group="joomleague" method="upgrade">
+  <name>Joomleague comments integration plugin</name>
+  <creationDate>Nov 2009</creationDate>
+  <author>Julien Vonthron</author>
+  <authorEmail>jlv@jlv-solutions.com</authorEmail>
+  <authorUrl>http://www.joomleague.net</authorUrl>
+	<copyright>(C) 2005-2011 Joomleague.de. All rights reserved.</copyright>
+	<license>This component in released under the http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <version>1.0</version>
+  <description>PLUGIN DESC</description>
+
+  <files>
+    <filename plugin="comments">comments.php</filename>
+  </files>
+
+  <languages>
+    <language tag="en-GB">languages/en-GB.plg_joomleague_comments.ini</language>
+  </languages>
+
+   <params>
+	   <param name="separate_comments" type="radio" default="0"
+			label="SEPARATE_COMMENTS_LABEL"
+			description="SEPARATE_COMMENTS_DESC">
+				<option value="0">NO</option>
+				<option value="1">YES</option>
+		</param>
+
+   </params>
+
+</install>

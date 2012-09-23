@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC
+  "-//Joomla! 1.5//DTD plugin 1.0//EN" "http://dev.joomla.org/xml/1.5/plugin-install.dtd">
+<install version="1.5" type="plugin" group="content" method="upgrade">
+<name>Joomleague Person Plugin</name>
+<author>Joomleague Development Team</author>
+<creationDate>November 2010</creationDate>
+<copyright>This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html</copyright>
+<authorEmail>kevintuns@hotmail.com</authorEmail>
+<authorUrl>http://www.joomleague.net</authorUrl>
+<version>1.0</version>
+<description>This plugin lets you link a name to the correct joomleague profile by simply using this format: {jl_player}firstname lastname{/jl_player}</description>
+<files>
+    <filename plugin="joomleagueperson">joomleagueperson.php</filename>
+</files>
+</install>
