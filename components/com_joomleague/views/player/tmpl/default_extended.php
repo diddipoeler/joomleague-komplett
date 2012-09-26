@@ -85,15 +85,21 @@ $nebenimage = 'media/com_joomleague/jl_person_playground/nebenposition.png';
 switch ( $this->teamPlayer->position_name )
 {
 case 'JL_P_GOALKEEPER':
+case 'Torwart':
+case 'Torhüter':
 $image_class = 'hp1';
 break;
 case 'JL_P_DEFENDER':
+case 'Abwehr':
 $image_class = 'hp3l';
 break;
 case 'JL_P_MIDFIELDER':
+case 'Mittelfeld':
 $image_class = 'hp6';
 break;
 case 'JL_P_FORWARD':
+case 'Sturm':
+case 'Stürmer':
 $image_class = 'hp14';
 break;
 }
