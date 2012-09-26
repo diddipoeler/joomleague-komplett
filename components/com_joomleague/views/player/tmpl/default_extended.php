@@ -1,13 +1,6 @@
 <?php 
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
 
-/*
-echo 'person_positions <br>';
-echo '<pre>';
-print_r($this->person_positions);
-echo '</pre><br>';
-*/
-
 ?>
 <!-- EXTENDED DATA-->
 
