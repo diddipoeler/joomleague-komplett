@@ -122,13 +122,13 @@ function _initData()
 			{
 				case 'CSS':
 					// Determine template CSS directory
-		      $dir = JPATH_SITE.DS.'components'.DS.$option.DS.'extensions'.DS.'jlextcsseditor'.DS.'assets'.DS.'css';
-		      $files = JFolder::files($dir, '\.css$', false, false);
+		      			$dir = JPATH_SITE.DS.'components'.DS.$option.DS.'assets'.DS.'css';
+		      			$files = JFolder::files($dir, '\.css$', false, false);
 					break;
 
 				case 'XML':
-				  $dir = JPATH_SITE.DS.'administrator'.DS.'components'.DS.$option.DS.'assets'.DS.'extended';
-				  $files = JFolder::files($dir, '\.xml$', false, false);
+				  	$dir = JPATH_SITE.DS.'administrator'.DS.'components'.DS.$option.DS.'assets'.DS.'extended';
+				  	$files = JFolder::files($dir, '\.xml$', false, false);
 					break;
 			}
 			
