@@ -11,7 +11,7 @@
 //$this->overallconfig['show_footer'] = 1;
 
 echo '<div class="componentheading">';
-			echo $this->leaguename;
+			//echo $this->leaguename;
 			#JoomleagueHTML::PrintIcon( $row, $params, false, '' );
 			#JoomleagueModelProject::PrintIcon( null, null, true, '' );
 			echo '</div>';

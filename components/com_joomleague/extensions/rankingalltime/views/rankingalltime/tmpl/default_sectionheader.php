@@ -5,8 +5,14 @@
     <tr>
         <td class="contentheading">
             <?php
-            //echo JText::_('JL_RANKINGALLTIME_PAGE_TITLE' );
-            echo JText::sprintf('JL_RANKINGALLTIME_PAGE_TITLE', (int)$this->alltimepoints );
+            echo $this->leaguename;;
+            ?>
+        </td>
+    </tr>
+    <tr>
+        <td class="contentheading">
+            <?php
+            echo JText::sprintf('JL_RANKINGALLTIME_PAGE_TITLE', $this->alltimepoints );
             ?>
         </td>
     </tr>

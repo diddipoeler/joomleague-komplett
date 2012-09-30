@@ -13,7 +13,7 @@ $colspanSingleTab = count($columns);
 <thead>
 	<tr class="sectiontableheader">
 		<th class="rankheader" colspan="3">
-			<?php JoomleagueHTML::printColumnHeadingSort( JText::_( 'JL_RANKING_POSITION' ), "rank", $config, "ASC" ); ?>
+			<?php JoomleagueHTML::printColumnHeadingSortAllTimeTable( JText::_( 'JL_RANKING_POSITION' ), "rank", $config, "ASC" ); ?>
 		</th>
 		
 		<?php
@@ -24,7 +24,7 @@ $colspanSingleTab = count($columns);
 		?>
 		
 		<th class="teamheader">	
-		<?php JoomleagueHTML::printColumnHeadingSort( JText::_( 'JL_RANKING_TEAM' ), "name", $config, "ASC" ); ?>
+		<?php JoomleagueHTML::printColumnHeadingSortAllTimeTable( JText::_( 'JL_RANKING_TEAM' ), "name", $config, "ASC" ); ?>
 		</th>
 		
 		<?php
@@ -51,31 +51,31 @@ for ( $tabs = 0; $tabs < $tabcols; $tabs++ )
 					$border = 'style="border-left: 1px solid"';
 				}
 				echo '<th class="headers" ' . $border . '>';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "played", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "played", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_WINS':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "won", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "won", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_TIES':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "draw", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "draw", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_LOSSES':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "loss", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "loss", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_WINPCT':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "winpct", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "winpct", $config );
 				echo '</th>';
 				break;
 
@@ -93,25 +93,25 @@ for ( $tabs = 0; $tabs < $tabcols; $tabs++ )
 
 			case 'JL_LEGS_DIFF':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "legsdiff", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "legsdiff", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_LEGS_RATIO':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "legsratio", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "legsratio", $config );
 				echo '</th>';
 				break;				
 				
 			case 'JL_SCOREFOR':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "goalsfor", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "goalsfor", $config );
 				echo '</th>';
 				break;				
 				
 			case 'JL_SCOREAGAINST':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "goalsagainst", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "goalsagainst", $config );
 				echo '</th>';
 				break;
 
@@ -123,55 +123,55 @@ for ( $tabs = 0; $tabs < $tabcols; $tabs++ )
 				
 			case 'JL_RESULTS':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "goalsp", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "goalsp", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_DIFF':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "diff", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "diff", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_POINTS':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "points", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "points", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_NEGPOINTS':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "negpoints", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "negpoints", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_OLDNEGPOINTS':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "negpoints", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "negpoints", $config );
 				echo '</th>';
 				break;
 				
 			case 'JL_POINTS_RATIO':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "pointsratio", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "pointsratio", $config );
 				echo '</th>';
 				break;				
 
 			case 'JL_BONUS':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "bonus", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "bonus", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_START':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "start", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "start", $config );
 				echo '</th>';
 				break;
 
 			case 'JL_QUOT':
 				echo '<th class="headers">';
-				JoomleagueHTML::printColumnHeadingSort( $column_names[$k], "quot", $config );
+				JoomleagueHTML::printColumnHeadingSortAllTimeTable( $column_names[$k], "quot", $config );
 				echo '</th>';
 				break;
 

@@ -54,6 +54,45 @@ class JoomleagueHTML
 		}
 	}
 
+  function printColumnHeadingSortAllTimeTable( $columnTitle, $paramName, $config = null, $default="DESC" )
+	{
+		$output = "";
+		$img='';
+		if ( $config['column_sorting'] || $config == null)
+		{
+			$params = array(
+				"option" => "com_joomleague",
+				"view"   => JRequest::getVar("view", "rankingalltime"),
+				"l" => JRequest::getInt( "l", 0 ),
+				"points" => JRequest::getVar( "points", "" ),
+				"type" => JRequest::getVar( "type", "" ) );
+
+			if ( JRequest::getVar( 'order', '' ) == $paramName )
+			{
+				$params["order"] = $paramName;
+				$params["dir"] = ( JRequest::getVar( 'dir', '') == 'ASC' ) ? 'DESC' : 'ASC';
+				$imgname = 'sort'.(JRequest::getVar( 'dir', '') == 'ASC' ? "02" :"01" ).'.gif';
+				$img = JHTML::image(
+									'media/com_joomleague/jl_images/' . $imgname,
+				$params["dir"] );
+			}
+			else
+			{
+				$params["order"] = $paramName;
+				$params["dir"] = $default;
+			}
+			$query = JURI::buildQuery( $params );
+			echo JHTML::link(
+			JRoute::_( "index.php?".$query ),
+			JText::_($columnTitle),
+			array( "class" => "jl_rankingheader" ) ).$img;
+		}
+		else
+		{
+			echo JText::_($columnTitle);
+		}
+	}
+	
 	function nextLastPages( $url, $text, $maxentries, $limitstart = 0, $limit = 10 )
 	{
 		$latestlimitstart = 0;
