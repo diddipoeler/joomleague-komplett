@@ -70,7 +70,7 @@ if (count($list['eventtypes']) > 0)
 						<tr class="sectiontableheader">
 							<th class="rank"><?php echo JText::_('MOD EVENT COL RANK')?></th>
 							<?php if ($showPicture == 1) : ?>
-							<th class="picture"><?php echo JText::_('MOD EVENT COL PIC');?></th>'
+							<th class="picture"><?php echo JText::_('MOD EVENT COL PIC');?></th>
 							<?php endif; ?>
 							<th class="personname"><?php echo JText::_('MOD EVENT COL NAME')?></th>
 							<?php if ($showTeam == 1) : ?>
