@@ -88,7 +88,7 @@ if ($this->config['type_matches'] != 0) {
 			$hometeam->project_id	= $game->prid;
 			$hometeam->club_id		= $game->t1club_id;
 			$hometeam->projectteamid = $game->projectteam1_id;
-			$tname1 = JoomleagueHelper::formatTeamName($hometeam,'clubplan',$this->config,$isFavTeam,0);
+			$tname1 = JoomleagueHelper::formatTeamName($hometeam,'clubplanhome',$this->config,$isFavTeam,0);
 			
 			$isFavTeam				= false;
 			$isFavTeam				= in_array($game->team2_id,$favteams);
@@ -100,7 +100,7 @@ if ($this->config['type_matches'] != 0) {
 			$awayteam->project_id	= $game->prid;
 			$awayteam->club_id		= $game->t2club_id;
 			$awayteam->projectteamid = $game->projectteam2_id;
-			$tname2 = JoomleagueHelper::formatTeamName($awayteam,'clubplan',$this->config,$isFavTeam,0);
+			$tname2 = JoomleagueHelper::formatTeamName($awayteam,'clubplanaway',$this->config,$isFavTeam,0);
 
 			$favStyle = '';
 			if ($this->config['highlight_fav'] == 1 && !$club_id) {
