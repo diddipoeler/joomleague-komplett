@@ -8,6 +8,10 @@ div.jl_teamsubstats th {
 	text-align: center;
 }
 
+div.jl_teamsubstats th.le {
+	text-align: left;
+}
+
 div.jl_teamsubstats td {
 	text-align: right;
 	padding: 3px 5px;
