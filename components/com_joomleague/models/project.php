@@ -187,13 +187,33 @@ class JoomleagueModelProject extends JModel
 				
 				if (!$result)
 				{
-					// the current value as invalid... just take the first round
+				/*	
+          // the current value as invalid... just take the first round
 					$query = ' SELECT r.id, r.roundcode FROM #__joomleague_round AS r '
 					       . ' WHERE r.project_id = '. $project->id
 					       . ' ORDER BY . r.roundcode ASC '
 					       ;
 					$this->_db->setQuery($query);
 					$result = $this->_db->loadObject();
+				*/
+					if ($project->current_round_auto == 2) {
+						// the current value is invalid... saison is over, just take the last round
+						$query = ' SELECT r.id, r.roundcode FROM #__joomleague_round AS r '
+							. ' WHERE r.project_id = '. $project->id
+							. ' ORDER BY . r.roundcode DESC '
+						;
+						$this->_db->setQuery($query);
+						$result = $this->_db->loadObject();
+					} else {
+						// the current value is invalid... just take the first round
+						$query = ' SELECT r.id, r.roundcode FROM #__joomleague_round AS r '
+							. ' WHERE r.project_id = '. $project->id
+							. ' ORDER BY . r.roundcode ASC '
+						;
+						$this->_db->setQuery($query);
+						$result = $this->_db->loadObject();
+					}        
+					
 				}
 			}
 			
