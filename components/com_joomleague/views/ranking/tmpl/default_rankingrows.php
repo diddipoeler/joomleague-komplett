@@ -87,7 +87,7 @@ foreach( $current as $ptid => $team )
 	
 //**************Last rank (image)
 	echo '<td class="rankingrow_lastrankimg" ';
-	if ( $color != '' )
+	if ( $color != '' && $config['row_colors'] )
 	{
 		echo " style='background-color: " . $color . "'";
 	}
@@ -96,8 +96,14 @@ foreach( $current as $ptid => $team )
 	echo '</td>';
 	echo "\n";				
 	
-//**************Last rank (number)				
-	echo '<td class="rankingrow_lastrank" nowrap="nowrap" style="background-color:' . $color . '">';
+//**************Last rank (number)	
+  echo '<td class="rankingrow_lastrank" ';
+	if ( $color != '' && $config['row_colors'] )
+	{
+		echo " style='background-color: " . $color . "'";
+	}
+	echo ">";
+  
 	if ( ( $this->tableconfig['last_ranking'] == 1 ) && ( isset( $previous[$ptid]->rank ) ) )
 	{
 		echo "(" . $previous[$ptid]->rank . ")";
@@ -120,7 +126,7 @@ foreach( $current as $ptid => $team )
     }
     
     
-		if ( $color != '' )
+		if ( $color != '' && $config['row_colors'] )
 		{
 			echo ' style="background-color: ' . $color . '"';
 		}
@@ -134,7 +140,7 @@ foreach( $current as $ptid => $team )
 				
 //**************Team name
 	echo '<td class="rankingrow_teamname" nowrap="nowrap"';
-	if ( $color != '' )
+	if ( $color != '' && $config['row_colors'] )
 	{
 		echo ' style="background-color: ' . $color . '"';
 	}
@@ -152,7 +158,7 @@ foreach( $current as $ptid => $team )
 				  {
 					  case 'JL_PLAYED':
 						echo '<td class="rankingrow_played" ';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -164,7 +170,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_WINS':
 						echo '<td class="rankingrow" ';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -184,7 +190,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_TIES':
 						echo '<td class="rankingrow" ';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -204,7 +210,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_LOSSES':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -224,7 +230,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_WOT':   
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -248,7 +254,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_LOT':   
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -260,7 +266,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_LSO':   
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -272,7 +278,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_WINPCT':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -290,7 +296,7 @@ foreach( $current as $ptid => $team )
 							$ref_lost = $team->cnt_lost;
 						}
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -303,7 +309,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_LEGS':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -315,7 +321,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_LEGS_DIFF':   
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -327,7 +333,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_LEGS_RATIO':   
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -340,7 +346,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_SCOREFOR':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -352,7 +358,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_SCOREAGAINST':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -364,7 +370,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_SCOREPCT':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -378,7 +384,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_RESULTS':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -390,7 +396,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_DIFF':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -402,7 +408,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_POINTS':
 						echo '<td class="rankingrow_points"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -414,7 +420,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_NEGPOINTS':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -426,7 +432,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_OLDNEGPOINTS':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -438,7 +444,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_POINTS_RATIO':   
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -451,7 +457,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_BONUS':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -463,7 +469,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_START':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -491,7 +497,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_QUOT':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -504,7 +510,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_TADMIN':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -516,7 +522,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_GFA':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -530,7 +536,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_GAA':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -544,7 +550,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_PPG':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -558,7 +564,7 @@ foreach( $current as $ptid => $team )
 
 					case 'JL_PPP':
 						echo '<td class="rankingrow"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
@@ -572,7 +578,7 @@ foreach( $current as $ptid => $team )
 					
 					case 'JL_LASTGAMES':
 						echo '<td class="rankingrow lastgames"';
-							if ( $color != '' )
+							if ( $color != '' && $config['row_colors']  )
 							{
 								echo 'style="background-color:' . $color . '"';
 							}
