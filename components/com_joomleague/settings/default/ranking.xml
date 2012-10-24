@@ -129,6 +129,13 @@
 			<option value="1">JL_GLOBAL_YES</option>
 		</param>		
 
+    <param	name="row_colors" type="radio" default="1" 
+				label="JL_FES_RANKING_PARAM_LABEL_TABLE_ROW_COLORS"
+				description="JL_FES_RANKING_PARAM_DESCR_TABLE_ROW_COLORS">				
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+</param>
+
 		<param 	name="colors" type="textarea" default="1,1,#bdd8be,Champions;2,2,#cee0ce,Champions League;3,3,#dce7dc,Qualification Champions League;4,5,#f7f6d0,Europa League;6,6,#fcfbed,UI Cup;16,18,#f6dfdb,Relegation;" 
 				label="JL_FES_RANKING_PARAM_LABEL_TABLE_COLORS" 
 				description="JL_FES_RANKING_PARAM_DESCR_TABLE_COLORS" 
