@@ -75,6 +75,7 @@ class JoomleagueControllerLeague extends JoomleagueCommonController
     $rowleague =& JTable::getInstance( $table, 'Table' );
     $rowleague->load( $league_id );
     $rowleague->league_level = $post['league_level'][$league_id];
+    $rowleague->ordering = $post['order'][$x];
     if ( !$rowleague->store() )
     {
     }
