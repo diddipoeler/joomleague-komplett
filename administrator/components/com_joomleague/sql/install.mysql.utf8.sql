@@ -110,6 +110,10 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_league` (
   `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
   `modified` DATETIME NULL ,
   `modified_by` INT NULL ,
+  `associations` INT(11) NULL DEFAULT NULL,
+  `league_art_id` INT(11) NULL DEFAULT NULL,
+  `league_level` INT(11) NULL DEFAULT NULL,
+  `champ_to_league_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `name` (`name` ASC)
   )
