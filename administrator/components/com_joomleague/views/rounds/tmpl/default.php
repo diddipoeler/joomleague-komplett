@@ -12,7 +12,9 @@ JToolBarHelper::title(JText::_('JL_ADMIN_ROUNDS_TITLE'),'Matchdays');
 
 if (!$massadd)
 {
-	JToolBarHelper::apply('saveshort');
+	JToolBarHelper::custom('roundtodivision','move','move',JText::_('JL_ADMIN_INS_ROUNDS_AS_DIVISION'),false);
+	JToolBarHelper::divider();
+  JToolBarHelper::apply('saveshort');
 	JToolBarHelper::divider();
 	JToolBarHelper::custom('massadd','new.png','new_f2.png',JText::_('JL_ADMIN_ROUNDS_MASSADD_BUTTON'),false);
 	JToolBarHelper::addNewX('populate', JText::_('JL_ADMIN_ROUNDS_POPULATE_BUTTON'), false);

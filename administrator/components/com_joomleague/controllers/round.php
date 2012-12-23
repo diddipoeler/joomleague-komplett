@@ -103,6 +103,20 @@ class JoomleagueControllerRound extends JoomleagueCommonController
 		parent::display();
 	}
 
+  function roundtodivision()
+{
+// Check for request forgeries
+JRequest::checkToken() or die('JL_GLOBAL_INVALID_TOKEN');
+$option='com_joomleague';
+$mainframe =& JFactory::getApplication();
+$post=JRequest::get('post');
+$model=$this->getModel('round');
+$divisions=$model->setRoundsAsDivisions($post);
+$link='index.php?option=com_joomleague&view=divisions&controller=division';
+$this->setRedirect($link,$msg);		
+}
+
+
 	function save()
 	{
 		// Check for request forgeries

@@ -248,5 +248,57 @@ class JoomleagueModelRound extends JoomleagueModelItem
 		return $result;
 	}
 	
+	function setRoundsAsDivisions($post)
+	{
+	global $mainframe, $option;
+/*	
+echo 'setRoundsAsDivisions post<br>';
+echo '<pre>';
+print_r($post);
+echo '</pre><br>';
+*/
+$cid=JRequest::getVar('cid',array(),'post','array');
+JArrayHelper::toInteger($cid);
+$project_id = $post['project_id'];
+$mainframe->enqueueMessage(JText::_('project id -> '.$project_id),'Notice');
+
+for ($x=0; $x < count($cid); $x++)
+{
+$division_name = $post['name'.$cid[$x]];
+$mainframe->enqueueMessage(JText::_('division_name -> '.$division_name),'Notice');
+$query = "SELECT d.id
+        from #__joomleague_division as d
+        where d.name like '$division_name'
+        and d.project_id = '$project_id'
+        ";
+$this->_db->setQuery( $query );
+
+if ( $this->_db->loadResult() )
+        {
+        $mainframe->enqueueMessage(JText::_('division_name -> '.$division_name.' vorhanden'),'Notice');
+        }
+        else
+        {
+        $mainframe->enqueueMessage(JText::_('division_name -> '.$division_name.' nicht vorhanden'),'Error');
+        $table = 'division';
+        $rowdivision =& JTable::getInstance( $table, 'Table' );
+
+        $rowdivision->project_id = $project_id;
+        $rowdivision->shortname = $division_name;
+        $rowdivision->name = $division_name;
+        $rowdivision->alias = $division_name;
+        
+        if ( !$rowdivision->store() )
+        {
+        $mainframe->enqueueMessage(JText::_('division_name -> '.$division_name.' nicht angelegt'),'Error');
+        }
+        else
+        {
+        $mainframe->enqueueMessage(JText::_('division_name -> '.$division_name.' angelegt'),'');
+        }
+        }
+}				
+	}
+	
 }
 ?>
