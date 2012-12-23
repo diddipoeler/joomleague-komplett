@@ -61,6 +61,31 @@ class JoomleagueControllerLeague extends JoomleagueCommonController
 		parent::display();
 	}
 
+  function saveleaguesshort()
+	{
+		// Check for request forgeries
+		JRequest::checkToken() or die('JL_GLOBAL_INVALID_TOKEN');
+		$post=JRequest::get('post');
+		$cid=JRequest::getVar('cid',array(0),'post','array');
+		JArrayHelper::toInteger($cid);
+		for ($x=0; $x < count($cid); $x++)
+		{
+		$league_id = $cid[$x];
+		$table = 'league';
+    $rowleague =& JTable::getInstance( $table, 'Table' );
+    $rowleague->load( $league_id );
+    $rowleague->league_level = $post['league_level'][$league_id];
+    if ( !$rowleague->store() )
+    {
+    }
+		
+		
+		}
+		$msg=JText::_('JL_ADMIN_LEAGUE_CTRL_SAVED');
+		$link='index.php?option=com_joomleague&view=leagues';
+		$this->setRedirect($link,$msg);
+	}
+  	
 	function save()
 	{
 		// Check for request forgeries

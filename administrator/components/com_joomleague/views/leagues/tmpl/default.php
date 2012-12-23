@@ -49,6 +49,11 @@ JHTML::_('behavior.tooltip');
 						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_COUNTRY','obj.country',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
+					<th width="10%" class="title" style="vertical-align: top; ">
+						<?php
+						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_LEVEL','obj.league_level',$this->lists['order_Dir'],$this->lists['order']);
+						?>
+					</th>
 					<th width="85" nowrap="nowrap" style="vertical-align: top; ">
 						<?php
 						echo JHTML::_('grid.sort','JL_GLOBAL_ORDER','obj.ordering',$this->lists['order_Dir'],$this->lists['order']);
@@ -99,7 +104,14 @@ JHTML::_('behavior.tooltip');
 						<td><?php echo $row->name; ?></td>
 						<td><?php echo $row->short_name; ?></td>
 						<td style="text-align:center; "><?php echo Countries::getCountryFlag($row->country); ?></td>
-						<td class="order">
+						<td>
+						<?PHP
+						// 'onchange="document.getElementById(\'cb'.$i.'\').checked=true"'
+						?>
+						<input	type="text" name="league_level[<?php echo $row->id;?>]" size="5" value="<?php echo $row->league_level;?>" <?php echo $disabled; ?>
+						class="text_area" style="text-align: center" onchange="document.getElementById(cb<?php echo $i;?>).checked=true" />
+						</td>
+            <td class="order">
 							<span>
 								<?php echo $this->pagination->orderUpIcon($i,$i > 0,'orderup','JL_GLOBAL_ORDER_UP',$ordering); ?>
 							</span>

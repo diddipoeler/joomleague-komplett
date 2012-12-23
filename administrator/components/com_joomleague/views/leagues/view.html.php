@@ -30,6 +30,8 @@ class JoomleagueViewLeagues extends JLGView
 
 		// Set toolbar items for the page
 		JToolBarHelper::title(JText::_('JL_ADMIN_LEAGUES_TITLE'),'leagues');
+		JToolBarHelper::apply('saveleaguesshort');
+		JToolBarHelper::divider();
 		JToolBarHelper::addNewX();
 		JToolBarHelper::editListX();
 		JToolBarHelper::custom('import','upload','upload',JText::_('JL_GLOBAL_CSV_IMPORT'),false);
