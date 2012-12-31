@@ -622,6 +622,7 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_round` (
   `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
   `modified` DATETIME NULL ,
   `modified_by` INT NULL ,
+  `extended` TEXT NULL ,
   PRIMARY KEY (`id`) ,
   KEY `project_id` (`project_id`)
   )

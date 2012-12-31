@@ -57,6 +57,11 @@ JToolBarHelper::help('screen.joomleague', true);
 		echo $pane->startPanel(JText::_('JL_TABS_DETAILS'),'panel1');
 		echo $this->loadTemplate('details');
 		echo $pane->endPanel();
+		
+		echo $pane->startPanel(JText::_('JL_TABS_EXTENDED'),'panel2');
+    echo $this->loadTemplate('extended');
+    echo $pane->endPanel();
+    
 		echo $pane->endPane();
 		?>
 	</div>

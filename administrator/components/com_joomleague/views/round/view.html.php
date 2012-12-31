@@ -66,6 +66,15 @@ class JoomleagueViewRound extends JLGView
 			$matchday->order=0;
 		}
 
+    /*
+    * extended data
+    */
+    $paramsdata=$object->extended;
+    $paramsdefs=JPATH_COMPONENT.DS.'assets'.DS.'extended'.DS.'round.xml';
+    $extended=new JLGExtraParams($paramsdata,$paramsdefs);
+
+    $this->assignRef('extended',$extended);
+    
 		$projectws =& $this->get('Data','projectws');
 		$this->assignRef('projectws',$projectws);
 		$this->assignRef('lists',$lists);

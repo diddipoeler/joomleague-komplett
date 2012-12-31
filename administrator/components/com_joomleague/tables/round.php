@@ -46,6 +46,13 @@ class TableRound extends JTable
 	var $checked_out;
 	var $checked_out_time;
 
+  /**
+	 * stores extended info
+	 *
+	 * @var string
+	 */
+	var $extended;	
+	
 	/**
 	 * Constructor
 	 *
