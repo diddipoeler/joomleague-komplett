@@ -24,6 +24,31 @@ class JoomleagueViewMatrix extends JLGView
 		$this->assignRef( 'round', $model->getRound() );
 		$this->assignRef( 'teams', $model->getTeamsIndexedByPtid( $model->getDivisionID() ) );
 		$this->assignRef( 'results', $model->getMatrixResults( $model->projectid ) );
+
+		if ($project->project_type == 'DIVISIONS_LEAGUE' && !$this->divisionid )
+		{
+		$this->assignRef( 'divisions', $model->getDivisions() );
+		
+		foreach ( $this->results as $result ) 
+      {
+      foreach ( $this->teams as $teams ) 
+        {
+        
+        if ( $result->division_id )
+        {
+
+        if ( ($result->projectteam1_id == $teams->projectteamid) || ($result->projectteam2_id == $teams->projectteamid) ) 
+        {
+        $teams->division_id = $result->division_id;
+        }
+
+        }
+        
+        }
+  
+      }
+		}		
+		
 		if(!is_null($project)) {
 			$this->assignRef( 'favteams', $model->getFavTeams() );
 		}

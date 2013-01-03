@@ -63,6 +63,7 @@ class JoomleagueModelMatrix extends JoomleagueModelProject
 												r.roundcode,
 												m.show_report,
 												m.cancel,
+												m.division_id,
 												m.cancel_reason,
 												m.projectteam1_id,
 												m.projectteam2_id,
