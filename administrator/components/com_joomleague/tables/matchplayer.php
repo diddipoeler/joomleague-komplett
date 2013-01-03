@@ -74,7 +74,12 @@ class TableMatchplayer extends JTable
 	var $ordering;
 	var $checked_out;
 	var $checked_out_time;
-
+	
+  var $modified;
+  var $modified_by;
+  var $extended;
+  var $jerseynumber;
+  
 	/**
 	 * Constructor
 	 *

@@ -226,6 +226,8 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_match_player` (
   `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
   `modified` DATETIME NULL ,
   `modified_by` INT NULL ,
+  `extended` TEXT NULL ,
+  `jerseynumber` INT(11) UNSIGNED NULL DEFAULT NULL ,
   PRIMARY KEY (`id`),
   KEY `match_id` (`match_id`),
   KEY `teamplayer_id` (`teamplayer_id`),
