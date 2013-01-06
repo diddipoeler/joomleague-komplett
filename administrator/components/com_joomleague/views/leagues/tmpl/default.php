@@ -110,7 +110,7 @@ JHTML::_('behavior.tooltip');
 						// 'onchange="document.getElementById(\'cb'.$i.'\').checked=true"'
 						?>
 						<input	type="text" name="league_level[<?php echo $row->id;?>]" size="5" value="<?php echo $row->league_level;?>" <?php echo $disabled; ?>
-						class="text_area" style="text-align: center" onchange="document.getElementById(cb<?php echo $i;?>).checked=true" />
+						class="text_area" style="text-align: center" onchange="document.getElementById('cb<?php echo $i;?>').checked=true" />
 						</td>
             <td class="order">
 							<span>
