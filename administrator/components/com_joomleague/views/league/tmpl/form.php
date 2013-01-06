@@ -78,6 +78,14 @@ JToolBarHelper::help('screen.joomleague',true);
 		echo $pane->startPanel(JText::_('JL_TABS_EXTENDED'),'panel2');
     echo $this->loadTemplate('extended');
     echo $pane->endPanel();
+    
+    echo $pane->startPanel(JText::_('JL_TABS_PICTURE'),'panel3');
+    echo $this->loadTemplate('picture');
+    echo $pane->endPanel();
+    
+    echo $pane->startPanel(JText::_('JL_TABS_RELATIONSHIP'),'panel4');
+    echo $this->loadTemplate('relationship');
+    echo $pane->endPanel();
 
 		echo $pane->endPane();
 		?>

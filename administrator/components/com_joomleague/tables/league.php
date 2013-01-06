@@ -55,6 +55,13 @@ class TableLeague extends JLTable {
 	var $league_art_id;
 	var $league_level;
 	var $champ_to_league_id;
+	
+	var $picture;
+	var $promotion_to;
+	var $relegation_to;
+	var $founded_year;
+	var $folded_year;
+	var $feeder_to;
 
 	/**
 	 * Constructor

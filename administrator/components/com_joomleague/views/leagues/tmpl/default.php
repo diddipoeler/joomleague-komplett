@@ -106,6 +106,7 @@ JHTML::_('behavior.tooltip');
 						<td style="text-align:center; "><?php echo Countries::getCountryFlag($row->country); ?></td>
 						<td>
 						<?PHP
+						$disabled=true ?	'' : 'disabled="disabled"';
 						// 'onchange="document.getElementById(\'cb'.$i.'\').checked=true"'
 						?>
 						<input	type="text" name="league_level[<?php echo $row->id;?>]" size="5" value="<?php echo $row->league_level;?>" <?php echo $disabled; ?>

@@ -36,7 +36,7 @@ function getVersion()
 	$version->major=1;
 	$version->minor=6;
 	$version->build=0;
-	$version->revision='nathalie';
+	$version->revision='diddipoeler';
 	$version->file='joomleague';
 	$version->date='0000-00-00 00:00:00';
 

@@ -430,7 +430,8 @@ class JoomleagueControllerProject extends JoomleagueCommonController
 		{
 			$post['fav_team']='';
 		}
-		if (isset($post['extension']))
+		
+    if (isset($post['extension']))
 		{
 			if (count($post['extension']) > 0)
 			{

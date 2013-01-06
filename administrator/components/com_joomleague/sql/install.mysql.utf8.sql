@@ -1,4 +1,36 @@
 -- -----------------------------------------------------
+-- Table `#__joomleague_tables`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `#__joomleague_jltable_tables` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `tablename` VARCHAR(100) NOT NULL DEFAULT '' ,
+  `visible` TINYINT(1) NOT NULL DEFAULT '0' ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `name` (`tablename`)
+  )
+ENGINE = MyISAM
+DEFAULT CHARSET = utf8;
+
+CREATE  TABLE IF NOT EXISTS `#__joomleague_jltable_fields` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `tablename` VARCHAR(100) NOT NULL DEFAULT '' ,
+  `fieldname` VARCHAR(100) NOT NULL DEFAULT '' ,
+  `fieldtype` VARCHAR(100) NOT NULL DEFAULT '' ,
+  `fieldnull` VARCHAR(100) NOT NULL DEFAULT '' ,
+  `fieldkey` VARCHAR(100) NOT NULL DEFAULT '' ,
+  `fielddefault` VARCHAR(100) NOT NULL DEFAULT '' ,
+  `fieldextra` VARCHAR(100) NOT NULL DEFAULT '' ,
+  `userfield` TINYINT(1) NOT NULL DEFAULT '0' ,
+  `ordering` INT(11) NOT NULL DEFAULT '0' ,
+  `fieldlengh` INT(11) NOT NULL DEFAULT '0' ,
+  `visible` TINYINT(1) NOT NULL DEFAULT '0' ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `name` (`tablename`,`fieldname`)
+  )
+ENGINE = MyISAM
+DEFAULT CHARSET = utf8;
+
+-- -----------------------------------------------------
 -- Table `#__joomleague_club`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `#__joomleague_club` (
@@ -114,6 +146,12 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_league` (
   `league_art_id` INT(11) NULL DEFAULT NULL,
   `league_level` INT(11) NULL DEFAULT NULL,
   `champ_to_league_id` INT(11) NULL DEFAULT NULL,
+  `picture` VARCHAR(128) NOT NULL DEFAULT '' ,
+  `promotion_to` TEXT NULL ,
+  `relegation_to` TEXT NULL ,
+  `founded_year` VARCHAR(4) NULL DEFAULT NULL,
+  `folded_year` VARCHAR(4) NULL DEFAULT NULL,
+  `feeder_to` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `name` (`name` ASC)
   )
@@ -636,7 +674,9 @@ CREATE TABLE IF NOT EXISTS `#__joomleague_rosterposition` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`,`short_name`),
   KEY `country` (`country`)
-) ENGINE=MyISAM  ;
+) 
+ENGINE=MyISAM  
+DEFAULT CHARSET = utf8;
 
 
 

@@ -102,6 +102,17 @@ class JoomleagueModelLeague extends JoomleagueModelItem
 			$league->ordering			= 0;
 			$league->modified			= null;
 			$league->modified_by		= null;
+			
+			$league->league_level = 0;
+			
+			$league->champ_to_league_id		= null;
+			$league->promotion_to		= null;
+			$league->relegation_to		= null;
+			$league->founded_year		= null;
+			$league->folded_year		= null;
+			$league->feeder_to		= null;
+			
+			
 			$this->_data				= $league;
 
 			return (boolean) $this->_data;
@@ -109,7 +120,68 @@ class JoomleagueModelLeague extends JoomleagueModelItem
 		return true;
 	}
 
-	/**
+	
+  function getPromotionto()
+  {
+  $league_country = '';
+  $league_level = 0;
+  $promotion_to = 0;
+  $relegation_to = 0;
+  
+  $table = 'league';
+  $rowleague =& JTable::getInstance( $table, 'Table' );
+  $rowleague->load( (int) $this->_id );
+  
+  $league_country = $rowleague->country;
+  $league_level = $rowleague->league_level;
+  
+  $promotion_to = $rowleague->promotion_to;
+  $relegation_to = $rowleague->relegation_to;
+  
+  $query = "SELECT id, name FROM #__joomleague_league where country like '".$league_country."' and league_level < ".$league_level." ORDER BY league_level ASC ";
+	$this->_db->setQuery($query);
+	if (!$result=$this->_db->loadObjectList())
+	{
+		$this->setError($this->_db->getErrorMsg());
+		return false;
+	}
+		
+  return $result;
+  
+  }
+  
+  
+  function getRelegationto()
+  {
+  $league_country = '';
+  $league_level = 0;
+  $promotion_to = 0;
+  $relegation_to = 0;
+  
+  $table = 'league';
+  $rowleague =& JTable::getInstance( $table, 'Table' );
+  $rowleague->load( (int) $this->_id );
+  
+  $league_country = $rowleague->country;
+  $league_level = $rowleague->league_level;
+  
+  $promotion_to = $rowleague->promotion_to;
+  $relegation_to = $rowleague->relegation_to;
+  
+  $query = "SELECT id, name FROM #__joomleague_league where country like '".$league_country."' and league_level > ".$league_level." ORDER BY league_level ASC ";
+	$this->_db->setQuery($query);
+	if (!$result=$this->_db->loadObjectList())
+	{
+		$this->setError($this->_db->getErrorMsg());
+		return false;
+	}
+		
+  return $result;
+  
+  }
+  
+  
+  /**
 	* Method to return the query that will obtain all ordering versus leagues
 	* It can be used to fill a list box with value/text data.
 	*

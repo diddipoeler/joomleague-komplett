@@ -11,8 +11,8 @@
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.html.pane');
 
-$version			= '1.6.0-nathalie';
-$updateFileDate		= '2012-04-04';
+$version			= '1.6.0-diddipoeler';
+$updateFileDate		= '2013-01-04';
 $updateFileTime		= '23:10';
 $updateDescription	='<span style="color:orange">Update all tables using actual install sql-file of JoomLeague v1.6.0</span>';
 $excludeFile		='false';
@@ -65,7 +65,12 @@ function setUpdatePart($val=1)
 function ImportTables()
 {
 	$db =& JFactory::getDBO();
-
+  $config = JFactory::getConfig();
+  $app = JFactory::getApplication();  
+  
+  $jl_tables = array();
+  $jl_tables_fields = array();
+  
 	$imports=file_get_contents(JPATH_ADMINISTRATOR.'/components/com_joomleague/sql/install.mysql.utf8.sql');
 	$imports=preg_replace("%/\*(.*)\*/%Us",'',$imports);
 	$imports=preg_replace("%^--(.*)\n%mU",'',$imports);
@@ -95,7 +100,11 @@ function ImportTables()
 			$DummyStr=$import;
 			$DummyStr=substr($DummyStr,strpos($DummyStr,'`')+1);
 			$tableName=substr($DummyStr,0,strpos($DummyStr,'`'));
-			//echo "<br />$tableName<br />";
+			
+      // diddipoeler
+      //echo "tableName<br />$tableName<br />";
+      
+      $jl_tables[] = $tableName;
 
 			$DummyStr=substr($DummyStr,strpos($DummyStr,'(')+1);
 			$DummyStr=substr($DummyStr,0,strpos($DummyStr,'ENGINE'));
@@ -119,7 +128,9 @@ function ImportTables()
 				$fields=explode("\n",$DummyStr);
 				if ($fields[0]==$DummyStr){$fields=explode("\r",$DummyStr);}
 			}
-			//echo '<pre>'.print_r($fields,true).'</pre>';
+			
+      // diddipoeler
+      //echo 'fields <br><pre>'.print_r($fields,true).'</pre><br>';
 
 			$newIndexes=array();
 			$i=(-1);
@@ -145,8 +156,10 @@ function ImportTables()
 					$newFields[$i]=$dummy;
 				}
 			}
-			//echo '<pre>'.print_r($newFields,true).'</pre>';
-
+			
+      // diddipoeler
+      //echo 'newFields <br><pre>'.print_r($newFields,true).'</pre><br>';
+      
 			$rows=count($newIndexes)+1;
 			echo '<tr><th class="key" style="vertical-align:top; width:10; white-space:nowrap; " rowspan="'.$rows.'">';
 			echo JText::sprintf('Table needs following<br />keys/indexes:',$tableName);
@@ -229,6 +242,16 @@ function ImportTables()
 				}
 				echo '&nbsp;</td></tr>';
 				$k=(1-$k);
+        
+        if ( $tableName != '#__joomleague_jltable_fields' )
+        {
+        $temp = new stdClass();
+        $temp->dffieldname = $dFfieldName;  
+        $temp->fieldname = $fieldName;
+        $temp->dfieldsetting = $dFieldSetting;
+        $jl_tables_fields[$tableName][] = $temp;
+        }
+        
 			}
 
 			$rows=count($newIndexes)+1;
@@ -278,9 +301,118 @@ function ImportTables()
 			
 			echo $pane->endPanel();
 			echo $pane->endPane();
+      
 		}
 		unset($import);
 	}
+  
+  //echo 'jl_tables_fields <br><pre>'.print_r($jl_tables_fields,true).'</pre><br>';
+  
+  JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_joomleague'.DS.'tables');
+  
+  //echo 'config <br><pre>'.print_r($config,true).'</pre><br>';
+  //$prefix = $config->get('dbprefix');
+  //$database = $config->get('db');
+  //echo 'database -><br>'.$database.'<br>';
+  //echo 'prefix -><br>'.$prefix.'<br>';
+  
+//   echo $app->getCfg('user').'<br>'; 
+//   echo $app->getCfg('password').'<br>';
+//   echo $app->getCfg('dbprefix').'<br>'; 
+//   echo $app->getCfg('db').'<br>';
+  
+  $database = $app->getCfg('db');
+  
+  $result = mysql_list_fields($database, "jos_joomleague_club");
+  //echo 'result <br><pre>'.print_r($result,true).'</pre><br>';
+   
+  foreach ( $jl_tables_fields as $table => $fields )
+  {
+  // diddipoeler
+  
+  //echo 'tabelle '.$table.'<br>';
+  $result1 = $db->getTableFields($table);
+  //echo 'tabellenfelder <br><pre>'.print_r($result1,true).'</pre><br>';
+  
+  $query = "SHOW COLUMNS FROM ".$table;
+  
+  // diddipoeler
+  $row =& JTable::getInstance('jltabletables', 'Table');
+  $row->tablename		= $table;
+  if (!$row->store())
+	{
+	}
+	else
+	{
+  }
+  
+  $db->setQuery($query);
+  $result2 = $db->loadAssocList('Field');
+  
+  //echo 'loadAssocList <br><pre>'.print_r($result2,true).'</pre><br>';
+
+  /*
+  foreach ( $result as $res )
+  {
+    $type  = mysql_field_type($res->Field);
+    $name  = mysql_field_name($res->Field);
+    $len   = mysql_field_len($res->Field);
+    $flags = mysql_field_flags($res->Field);
+    echo $type . " " . $name . " " . $len . " " . $flags . "\n";
+  }
+  */
+  
+//  $fields = mysql_num_fields($result);
+  
+  /*
+  echo "The table has the following fields:\n";
+  for ($i=0; $i < $fields; $i++) 
+  {
+    $type  = mysql_field_type($result, $i);
+    $name  = mysql_field_name($result, $i);
+    $len   = mysql_field_len($result, $i);
+    $flags = mysql_field_flags($result, $i);
+    echo $type . " " . $name . " " . $len . " " . $flags . "\n";
+  }
+  */
+  
+  foreach ( $fields as $field )
+  {
+  $row =& JTable::getInstance('jltablefields', 'Table');
+  
+  $row->tablename		= $table;
+  $row->fieldname		= $field->fieldname;
+  $row->fieldtype = $result1[$table][$field->fieldname];
+  
+  
+	if (!$row->store())
+	{
+		//echo($row->getError());
+    $query = "	SELECT id
+FROM #__joomleague_jltable_fields
+WHERE tablename like '" . $table ."' and fieldname like '".$field->fieldname."'";
+$db->setQuery( $query );
+$jltable_id = $db->loadResult();
+
+//echo 'jltable_id -> '.$jltable_id.'<br>';
+  
+  $rowupdate =& JTable::getInstance('jltablefields', 'Table');
+  $rowupdate->load($jltable_id);
+  $rowupdate->fieldtype = $row->fieldtype;
+  $rowupdate->fieldlengh = preg_replace("/[(a-zA-Z)]/",'', $result2[$field->fieldname]['Type'] );
+  if (!$rowupdate->store())
+	{
+  }
+  
+	}
+  
+  // diddipoeler
+  //echo 'feld -> '.$field->fieldname.'<br>';
+  }
+  
+  
+  }
+  
 	return '';
 }
 
@@ -292,7 +424,7 @@ function ImportTables()
 	$mtime=$mtime[1] + $mtime[0];
 	$starttime=$mtime;
 
-	JToolBarHelper::title(JText::_('JoomLeage 1.5 - Database update process'));
+	JToolBarHelper::title(JText::_('JoomLeage 1.6 (diddipoeler) - Database update process'));
 	echo '<h2>'.JText::sprintf(	'JoomLeague v%1$s - %2$s - Filedate: %3$s / %4$s',
 								$version,$updateDescription,$updateFileDate,$updateFileTime).'</h2>';
 	$totalUpdateParts = 2;

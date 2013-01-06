@@ -2,17 +2,17 @@
 
 <!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
 
-<install type="component" version="1.6.0-nathalie" method="upgrade">
+<install type="component" version="1.6.0-diddipoeler" method="upgrade">
 
 	<name>JoomLeague</name>
-	<creationDate>2012</creationDate>
+	<creationDate>04.01.2013</creationDate>
 	<author>JoomLeague Developers</author>
-	<authorEmail>andone@mfga.at</authorEmail>
+	<authorEmail>famploeger@arcor.de</authorEmail>
 	<authorUrl>http://www.joomleague.net</authorUrl>
 	<copyright>(C) 2005-2012 JoomLeague.net. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-	<version>1.6.0-nathalie</version>
-	<description>League Management component for Joomla 1.5x - Release 1.6.0-nathalie</description>
+	<version>1.6.0-diddipoeler</version>
+	<description>League Management component for Joomla 1.5x - Release 1.6.0-diddipoeler</description>
 
   <installfile>install.joomleague.all.php</installfile>
 	<uninstallfile>uninstall.joomleague.php</uninstallfile>
@@ -55,6 +55,7 @@
 		<folder>jl_images</folder>
 		<folder>jl_person_playground</folder>
 		<folder>persons</folder>
+		<folder>leagues</folder>
 		<folder>placeholders</folder>
 		<folder>playgrounds</folder>
     <folder>rosterground</folder>

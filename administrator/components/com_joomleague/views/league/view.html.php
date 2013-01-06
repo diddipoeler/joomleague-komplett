@@ -14,6 +14,8 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.view');
 
+require_once( JPATH_COMPONENT . DS . 'helpers' . DS . 'imageselect.php' );
+
 /**
  * HTML View class for the Joomleague component
  *
@@ -78,6 +80,41 @@ class JoomleagueViewLeague extends JLGView
 		$query = $model->getOrderingAndLeagueQuery();		
 		$lists['ordering']=JHTML::_('list.specificordering',$object,$object->id,$query,1);
 
+    // image selector
+		$default = JoomleagueHelper::getDefaultPlaceholder('leaguelogo');
+		if (empty($object->picture)){
+			$object->picture = $default;
+		}
+		
+		$imageselect = ImageSelect::getSelector('picture','picture_preview','leagues',$object->picture, $default);
+		$this->assignRef( 'imageselect', $imageselect);
+
+    /*
+    promotion to 
+    */
+    $promotion = array();
+    $lists['promotion_to'] = "";
+    $promotion = $model->getPromotionto();
+    $promotion_to = @explode(",",$object->promotion_to);
+    if ( $promotion )
+    {
+		$lists['promotion_to'] = JHTMLSelect::genericlist($promotion,'promotion_to[]',' multiple="true" class="inputbox" size="15" width="100"','id','name',$promotion_to);
+    }
+    
+    /*
+    relegation to
+    */
+    $relegation = array();
+    $lists['relegation_to'] = "";
+    $relegation = $model->getRelegationto();
+    $relegation_to = @explode(",",$object->relegation_to);
+    if ( $relegation )
+    {
+		$lists['relegation_to'] = JHTMLSelect::genericlist($relegation,'relegation_to[]',' multiple="true" class="inputbox" size="15" width="100"','id','name',$relegation_to);
+    }
+    
+    
+		
     /*
     * extended data
     */

@@ -94,7 +94,44 @@ class JoomleagueControllerLeague extends JoomleagueCommonController
 		$post=JRequest::get('post');
 		$cid=JRequest::getVar('cid',array(0),'post','array');
 		$post['id']=(int) $cid[0];
-		$model=$this->getModel('league');
+		
+    
+    if (isset($post['promotion_to']))
+		{
+			if (count($post['promotion_to']) > 0)
+			{
+				$temp=implode(",",$post['promotion_to']);
+			}
+			else
+			{
+				$temp='';
+			}
+			$post['promotion_to']=$temp;
+		}
+		else
+		{
+			$post['promotion_to']='';
+		}
+		
+		if (isset($post['relegation_to']))
+		{
+			if (count($post['relegation_to']) > 0)
+			{
+				$temp=implode(",",$post['relegation_to']);
+			}
+			else
+			{
+				$temp='';
+			}
+			$post['relegation_to']=$temp;
+		}
+		else
+		{
+			$post['relegation_to']='';
+		}
+		
+		
+    $model=$this->getModel('league');
 		if ($model->store($post))
 		{
 			$msg=JText::_('JL_ADMIN_LEAGUE_CTRL_SAVED');
