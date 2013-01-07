@@ -85,18 +85,22 @@ class JoomleagueViewJLextuserfields extends JLGView
 		global $mainframe, $option;
 
 		$db		=& JFactory::getDBO();
+		$document	= & JFactory::getDocument();
 		$uri 	=& JFactory::getURI();
 		$user 	=& JFactory::getUser();
 		$mainframe	=& JFactory::getApplication();
 		$model	=& $this->getModel();
 		
+		//add css and submenu to document
+    //$document->addStyleSheet(JURI::base().'components/com_joomleague/extensions/jlextuserfields/admin/assets/css/cpanel.css');
+    $stylelink = '<link rel="stylesheet" href="'.JURI::root().'components/com_joomleague/extensions/jlextuserfields/admin/assets/css/cpanel.css'.'" type="text/css" />' ."\n";
+    $document->addCustomTag($stylelink);
 		$tablefields =& $model->getJLTableFields() ; 
 		
 		$this->assignRef( 'tablefields',		$tablefields );
 		$this->assignRef('request_url',$uri->toString());
 		
-		// Set toolbar items for the page
-		JToolBarHelper::title(JText::_('JL_ADMIN_USER_FIELDS_OVERVIEW'),'ProjectSettings');
+		
 		
 		parent::display( $tpl );
 	}

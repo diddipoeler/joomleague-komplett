@@ -1,5 +1,5 @@
 -- -----------------------------------------------------
--- Table `#__joomleague_tables`
+-- Table `#__joomleague_tables`  
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `#__joomleague_jltable_tables` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
@@ -24,6 +24,7 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_jltable_fields` (
   `ordering` INT(11) NOT NULL DEFAULT '0' ,
   `fieldlengh` INT(11) NOT NULL DEFAULT '0' ,
   `visible` TINYINT(1) NOT NULL DEFAULT '0' ,
+  `description` VARCHAR(100) NOT NULL DEFAULT '' ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `name` (`tablename`,`fieldname`)
   )

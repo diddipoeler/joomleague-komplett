@@ -41,6 +41,7 @@ class TableJLTableFields extends JTable
   var $ordering;
   var $fieldlengh;
 	var $visible;
+	var $description;
 
 	/**
 	 * Constructor

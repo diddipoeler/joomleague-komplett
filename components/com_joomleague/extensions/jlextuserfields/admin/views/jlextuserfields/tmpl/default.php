@@ -3,6 +3,16 @@ defined('_JEXEC') or die('Restricted access');
 
 //echo 'tabellenfelder<br><pre>',print_r($this->tablefields,true),'</pre><br>';
 
+// echo 'Joomla root URI is ' . JURI::root() . "\n";
+// echo 'Joomla root URI (path only) is ' . JURI::root( true ) . "\n";
+
+JToolBarHelper::title( JText::_( 'JL_ADMIN_USER_FIELDS_FIELDMANAGER' ), 'cbe-fields' );
+JToolBarHelper::custom( 'newField', 'new.png', 'new_f2.png', 'New Field', false );
+JToolBarHelper::editList('editField');
+JToolBarHelper::deleteList('The Field and all user data associated to this field will be lost and cannot be undone!','removeField');
+JToolBarHelper::spacer();
+JToolBarHelper::cancel();
+
 ?>
 
 
@@ -22,7 +32,7 @@ defined('_JEXEC') or die('Restricted access');
 <th width="5" style="vertical-align: top; "><?php echo JText::_('JL_ADMIN_USER_FIELDS_ORDERING'); ?></th>
 <th width="5" style="vertical-align: top; "><?php echo JText::_('JL_ADMIN_USER_FIELDS_FIELDLENGH'); ?></th>
 <th width="5" style="vertical-align: top; "><?php echo JText::_('JL_ADMIN_USER_FIELDS_VISIBLE'); ?></th>
-
+<th width="5" style="vertical-align: top; "><?php echo JText::_('JL_ADMIN_USER_FIELDS_DESCRIPTION'); ?></th>
 </tr>
 </thead>
 			
@@ -64,7 +74,7 @@ defined('_JEXEC') or die('Restricted access');
 						<td><?php echo $row->ordering; ?></td>
 						<td><?php echo $row->fieldlengh; ?></td>
 						<td><?php echo $row->visible; ?></td>
-						
+						<td><?php echo $row->description; ?></td>
 						
 						
 						

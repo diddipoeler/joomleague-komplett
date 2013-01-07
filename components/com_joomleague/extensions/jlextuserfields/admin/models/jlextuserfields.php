@@ -62,8 +62,9 @@ $jltablerow->load($jltableid);
 // echo 'post<br><pre>',print_r($post,true),'</pre><br>';
 // echo 'REQUEST<br><pre>',print_r($_REQUEST,true),'</pre><br>';
 
-$mainframe->enqueueMessage(JText::_('tabelle  -> '.$jltablerow->tablename),'Notice');
+//$mainframe->enqueueMessage(JText::_('tabelle  -> '.$jltablerow->tablename),'Notice');
 //$mainframe->enqueueMessage(JText::_('tabelleid  -> '.$jltableid),'Notice');
+$mainframe->enqueueMessage(JText::sprintf('JL_ADMIN_USER_FIELDS_TABLE_IN_USE',$jltablerow->tablename),'Notice');
 
 $query = "	SELECT jlf.*	
 					FROM #__joomleague_jltable_fields as jlf
