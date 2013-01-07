@@ -20,7 +20,7 @@ table.nostyle td,table.nostyle th,table.nostyle tr.even td,table.nostyle tr:hove
 .sectiontableentry2 {background-color:#ddd;}
 .sectiontableentry2 tr:hover td{background-color:#fff;}
 
-.contentheading {background-color:#FFFFFF;color:#fff;text-transform:uppercase;font-weight:bold;border-bottom:1px solid #e8e1c8;}
+.contentheading {background-color:#FFFFFF;color:#ccc;text-transform:uppercase;font-weight:bold;border-bottom:1px solid #e8e1c8;}
 
 .td_l {
 	text-align: left;
