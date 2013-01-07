@@ -36,6 +36,9 @@ $this->addTemplatePath(JPATH_COMPONENT.DS.'views'.DS.'adminmenu');
 					?>
 				</button>
 			</td>
+			
+			<td nowrap="nowrap" align="right"><?php echo $this->lists['countries'].'&nbsp;&nbsp;'; ?></td>
+			
 			<td align="center" colspan="4">
 				<?php
 				for ($i=65; $i < 91; $i++)

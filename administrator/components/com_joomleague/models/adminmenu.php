@@ -78,6 +78,8 @@ class JoomleagueModelAdminmenu extends JoomleagueModelItem
 		return true;
 	}
 
+  
+	
 	/**
 	* Method to return a project array (id, name)
 	*

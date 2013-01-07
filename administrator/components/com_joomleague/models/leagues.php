@@ -31,10 +31,10 @@ class JoomleagueModelLeagues extends JoomleagueModelList
 		$where=$this->_buildContentWhere();
 		$orderby=$this->_buildContentOrderBy();
 
-		$query='	SELECT	obj.*,
+		$query='	SELECT	objleagues.*,
 							u.name AS editor
-					FROM #__joomleague_league AS obj
-					LEFT JOIN #__users AS u ON u.id=obj.checked_out ' .
+					FROM #__joomleague_league AS objleagues
+					LEFT JOIN #__users AS u ON u.id=objleagues.checked_out ' .
 					$where .
 					$orderby;
 		return $query;
@@ -44,15 +44,15 @@ class JoomleagueModelLeagues extends JoomleagueModelList
 	{
 		$option='com_joomleague';
 		$mainframe =& JFactory::getApplication();
-		$filter_order		= $mainframe->getUserStateFromRequest($option.'l_filter_order',		'filter_order',		'obj.ordering',	'cmd');
+		$filter_order		= $mainframe->getUserStateFromRequest($option.'l_filter_order',		'filter_order',		'objleagues.ordering',	'cmd');
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest($option.'l_filter_order_Dir',	'filter_order_Dir',	'',				'word');
-		if ($filter_order == 'obj.ordering')
+		if ($filter_order == 'objleagues.ordering')
 		{
-			$orderby=' ORDER BY obj.ordering '.$filter_order_Dir;
+			$orderby=' ORDER BY objleagues.ordering '.$filter_order_Dir;
 		}
 		else
 		{
-			$orderby=' ORDER BY '.$filter_order.' '.$filter_order_Dir.',obj.ordering ';
+			$orderby=' ORDER BY '.$filter_order.' '.$filter_order_Dir.',objleagues.ordering ';
 		}
 		return $orderby;
 	}
@@ -61,14 +61,23 @@ class JoomleagueModelLeagues extends JoomleagueModelList
 	{
 		$option='com_joomleague';
 		$mainframe =& JFactory::getApplication();
-		$filter_order		= $mainframe->getUserStateFromRequest($option.'l_filter_order',		'filter_order',		'obj.ordering',	'cmd');
+		$filter_order	= $mainframe->getUserStateFromRequest($option.'l_filter_order',		'filter_order',		'objleagues.ordering',	'cmd');
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest($option.'l_filter_order_Dir',	'filter_order_Dir',	'',				'word');
-		$search				= $mainframe->getUserStateFromRequest($option.'l_search',			'search',			'',				'string');
+		
+    $filter_countries	= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.filter_countries',		'filter_countries',		'',		'word');
+    
+    $search				= $mainframe->getUserStateFromRequest($option.'l_search',			'search',			'',				'string');
 		$search=JString::strtolower($search);
 		$where=array();
+		
+		if( $filter_countries ) 
+    {
+			$where[] = 'objleagues.country = ' . "'" . $filter_countries . "'";
+		}
+		
 		if ($search)
 		{
-			$where[]='LOWER(obj.name) LIKE '.$this->_db->Quote('%'.$search.'%');
+			$where[]='LOWER(objleagues.name) LIKE '.$this->_db->Quote('%'.$search.'%');
 		}
 		$where=(count($where) ? ' WHERE '.implode(' AND ',$where) : '');
 		return $where;

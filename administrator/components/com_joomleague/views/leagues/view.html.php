@@ -46,13 +46,26 @@ class JoomleagueViewLeagues extends JLGView
 
 		$filter_order		= $mainframe->getUserStateFromRequest($option.'l_filter_order',		'filter_order',		'obj.ordering',	'cmd');
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest($option.'l_filter_order_Dir',	'filter_order_Dir',	'',				'word');
-		$search				= $mainframe->getUserStateFromRequest($option.'l_search',			'search',			'',				'string');
+		$filter_countries		= $mainframe->getUserStateFromRequest($option.'.'.$this->get('identifier').'.filter_countries', 'filter_countries', '',	'word');
+    $search				= $mainframe->getUserStateFromRequest($option.'l_search',			'search',			'',				'string');
 		$search=JString::strtolower($search);
 
 		$items =& $this->get('Data');
 		$total =& $this->get('Total');
 		$pagination =& $this->get('Pagination');
 
+    //build the html select list for countries
+		$countries[] = JHTML::_('select.option','',JText::_('JL_ADMIN_LEAGUE_SELECT_COUNTRY'),'value','text');
+		if ($res =& Countries::getCountryOptions()){$countries=array_merge($countries,$res);}
+		$lists['countries']=JHTML::_( 'select.genericList',
+										$countries,
+										'filter_countries',
+										'class="inputbox" onChange="this.form.submit();" style="width:120px"',
+										'value',
+										'text',
+										$filter_countries);
+		unset($countries);
+		
 		// table ordering
 		$lists['order_Dir']=$filter_order_Dir;
 		$lists['order']=$filter_order;

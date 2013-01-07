@@ -66,12 +66,18 @@ class JoomleagueModelTeams extends JoomleagueModelList
 		$filter_state		= $mainframe->getUserStateFromRequest( $option.'t_filter_state',		'filter_state',		'',				'word' );
 		$filter_order		= $mainframe->getUserStateFromRequest( $option.'t_filter_order',		'filter_order',		't.ordering',	'cmd' );
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option.'t_filter_order_Dir',	'filter_order_Dir',	'',				'word' );
+		$filter_countries		= $mainframe->getUserStateFromRequest($option.'t_filter_countries',			't_filter_countries',		'',	'word');
 		$search			= $mainframe->getUserStateFromRequest( $option.'t_search',			'search',			'',				'string' );
 		$search_mode		= $mainframe->getUserStateFromRequest( $option.'t_search_mode',			'search_mode',			'',				'string' );
 		$search			= JString::strtolower( $search );
 
 		$where = array();
 
+    if( $filter_countries ) 
+    {
+			$where[] = 'c.country = ' . "'" . $filter_countries . "'";
+		}
+		
 		if ($search) {
 			if($search_mode)
 				$where[] = 'LOWER(t.name) LIKE '.$this->_db->Quote($search.'%');

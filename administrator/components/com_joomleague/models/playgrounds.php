@@ -62,10 +62,19 @@ class JoomleagueModelPlaygrounds extends JoomleagueModelList
 		$mainframe =& JFactory::getApplication();
 		$filter_order		= $mainframe->getUserStateFromRequest($option.'v_filter_order',		'filter_order',		'v.ordering',	'cmd');
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest($option.'v_filter_order_Dir',	'filter_order_Dir',	'',				'word');
-		$search				= $mainframe->getUserStateFromRequest($option.'v_search',			'search',			'',				'string');
+		
+    $filter_countries		= $mainframe->getUserStateFromRequest($option.'v_filter_countries',			'v_filter_countries',		'',	'word');
+    
+    $search				= $mainframe->getUserStateFromRequest($option.'v_search',			'search',			'',				'string');
 		$search_mode		= $mainframe->getUserStateFromRequest($option.'v_search_mode',		'search_mode',		'',				'string');
 		$search=JString::strtolower($search);
 		$where=array();
+		
+    if( $filter_countries ) 
+    {
+			$where[] = 'v.country = ' . "'" . $filter_countries . "'";
+		}
+    		
 		if ($search)
 		{
 			if($search_mode)

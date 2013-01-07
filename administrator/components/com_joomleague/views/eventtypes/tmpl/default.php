@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die('Restricted access');
 
 //Ordering allowed ?
-$ordering=($this->lists['order'] == 'obj.ordering');
+$ordering=($this->lists['order'] == 'objeventtypes.ordering');
 
 JHTML::_('behavior.tooltip');
 ?>
@@ -36,7 +36,7 @@ JHTML::_('behavior.tooltip');
 					<th width="20" style="vertical-align: top; ">&nbsp;</th>
 					<th class="title" nowrap="nowrap" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_ADMIN_EVENTS_STANDARD_NAME_OF_EVENT','obj.name',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_ADMIN_EVENTS_STANDARD_NAME_OF_EVENT','objeventtypes.name',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
 					<th class="title" style="vertical-align: top; " style="vertical-align: top; ">
@@ -44,29 +44,29 @@ JHTML::_('behavior.tooltip');
 					</th>
 					<th width="10%" class="title" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_ADMIN_EVENTS_ICON','obj.icon',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_ADMIN_EVENTS_ICON','objeventtypes.icon',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
 					<th width="10%" class="title" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_ADMIN_EVENTS_SPORTSTYPE','obj.sports_type_id',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_ADMIN_EVENTS_SPORTSTYPE','objeventtypes.sports_type_id',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
 					<th width="1%" nowrap="nowrap" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_GLOBAL_PUBLISHED','obj.published',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_GLOBAL_PUBLISHED','objeventtypes.published',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
 					<th width="85" nowrap="nowrap" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_GLOBAL_ORDER','obj.ordering',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_GLOBAL_ORDER','objeventtypes.ordering',$this->lists['order_Dir'],$this->lists['order']);
 						echo '<br />';
 						echo JHTML::_('grid.order',$this->items);
 						?>
 					</th>
 					<th style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_GLOBAL_ID','obj.id',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_GLOBAL_ID','objeventtypes.id',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
 				</tr>

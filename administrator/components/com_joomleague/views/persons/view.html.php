@@ -64,7 +64,10 @@ class JoomleagueViewPersons extends JLGView
 		$filter_state		= $mainframe->getUserStateFromRequest($option.'pl_filter_state', 'filter_state', '', 'word');
 		$filter_order		= $mainframe->getUserStateFromRequest($option.'pl_filter_order', 'filter_order', 'pl.ordering', 'cmd');
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest($option.'pl_filter_order_Dir', 'filter_order_Dir', '', 'word');
-		$search				= $mainframe->getUserStateFromRequest($option.'pl_search', 'search', '', 'string');
+		
+    $filter_countries		= $mainframe->getUserStateFromRequest($option.'pl_filter_countries',			'pl_filter_countries',		'',	'word');
+        
+    $search				= $mainframe->getUserStateFromRequest($option.'pl_search', 'search', '', 'string');
 		$search_mode		= $mainframe->getUserStateFromRequest($option.'pl_search_mode', 'search_mode', '', 'string');
 
 		$items =& $this->get('Data');
@@ -73,6 +76,18 @@ class JoomleagueViewPersons extends JLGView
 
 		$mainframe->setUserState($option.'task','');
 
+    //build the html select list for countries
+		$countries[] = JHTML::_('select.option','',JText::_('JL_ADMIN_LEAGUE_SELECT_COUNTRY'),'value','text');
+		if ($res =& Countries::getCountryOptions()){$countries=array_merge($countries,$res);}
+		$lists['countries']=JHTML::_( 'select.genericList',
+										$countries,
+										'pl_filter_countries',
+										'class="inputbox" onChange="this.form.submit();" style="width:120px"',
+										'value',
+										'text',
+										$filter_countries);
+		unset($countries);
+		
 		// state filter
 		$lists['state']=JHTML::_('grid.state',$filter_state);
 

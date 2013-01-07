@@ -17,6 +17,7 @@ JHTML::_('behavior.tooltip');
 					?>
 				</button>
 			</td>
+			
 			<td nowrap="nowrap" align="right"><?php echo $this->lists['sportstypes'].'&nbsp;&nbsp;'; ?></td>
 			<td nowrap="nowrap" align="right"><?php echo $this->lists['leagues'].'&nbsp;&nbsp;'; ?></td>
 			<td nowrap="nowrap" align="right"><?php echo $this->lists['seasons'].'&nbsp;&nbsp;'; ?></td>

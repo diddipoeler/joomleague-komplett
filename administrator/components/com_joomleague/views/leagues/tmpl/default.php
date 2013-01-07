@@ -3,7 +3,7 @@
 $user =& JFactory::getUser();
 
 //Ordering allowed ?
-$ordering=($this->lists['order'] == 'obj.ordering');
+$ordering=($this->lists['order'] == 'objleagues.ordering');
 
 JHTML::_('behavior.tooltip');
 ?>
@@ -23,6 +23,8 @@ JHTML::_('behavior.tooltip');
 					?>
 				</button>
 			</td>
+			
+			<td nowrap="nowrap" align="right"><?php echo $this->lists['countries'].'&nbsp;&nbsp;'; ?></td>
 		</tr>
 	</table>
 	<div id="editcell">
@@ -36,33 +38,33 @@ JHTML::_('behavior.tooltip');
 					<th width="20" style="vertical-align: top; ">&nbsp;</th>
 					<th class="title" nowrap="nowrap" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_NAME','obj.name',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_NAME','objleagues.name',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
 					<th class="title" nowrap="nowrap" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_SHORT_NAME','obj.name',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_SHORT_NAME','objleagues.name',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>					
 					<th width="10%" class="title" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_COUNTRY','obj.country',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_COUNTRY','objleagues.country',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
 					<th width="10%" class="title" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_LEVEL','obj.league_level',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_ADMIN_LEAGUES_LEVEL','objleagues.league_level',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
 					<th width="85" nowrap="nowrap" style="vertical-align: top; ">
 						<?php
-						echo JHTML::_('grid.sort','JL_GLOBAL_ORDER','obj.ordering',$this->lists['order_Dir'],$this->lists['order']);
+						echo JHTML::_('grid.sort','JL_GLOBAL_ORDER','objleagues.ordering',$this->lists['order_Dir'],$this->lists['order']);
 						echo '<br />';
 						echo JHTML::_('grid.order',$this->items);
 						?>
 					</th>
 					<th width="20" style="vertical-align: top; ">
-						<?php echo JHTML::_('grid.sort','JL_GLOBAL_ID','obj.id',$this->lists['order_Dir'],$this->lists['order']); ?>
+						<?php echo JHTML::_('grid.sort','JL_GLOBAL_ID','objleagues.id',$this->lists['order_Dir'],$this->lists['order']); ?>
 					</th>
 				</tr>
 			</thead>
@@ -107,7 +109,6 @@ JHTML::_('behavior.tooltip');
 						<td>
 						<?PHP
 						$disabled=true ?	'' : 'disabled="disabled"';
-						// 'onchange="document.getElementById(\'cb'.$i.'\').checked=true"'
 						?>
 						<input	type="text" name="league_level[<?php echo $row->id;?>]" size="5" value="<?php echo $row->league_level;?>" <?php echo $disabled; ?>
 						class="text_area" style="text-align: center" onchange="document.getElementById('cb<?php echo $i;?>').checked=true" />

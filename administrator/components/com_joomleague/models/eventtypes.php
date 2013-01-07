@@ -30,12 +30,12 @@ class JoomleagueModelEventtypes extends JoomleagueModelList
 		// Get the WHERE and ORDER BY clauses for the query
 		$where=$this->_buildContentWhere();
 		$orderby=$this->_buildContentOrderBy();
-		$query="	SELECT	obj.*,
+		$query="	SELECT	objeventtypes.*,
 							st.name AS sportstype,
 							u.name AS editor
-					FROM #__joomleague_eventtype AS obj
-					LEFT JOIN #__joomleague_sports_type AS st ON st.id=obj.sports_type_id
-					LEFT JOIN #__users AS u ON u.id=obj.checked_out " .
+					FROM #__joomleague_eventtype AS objeventtypes
+					LEFT JOIN #__joomleague_sports_type AS st ON st.id=objeventtypes.sports_type_id
+					LEFT JOIN #__users AS u ON u.id=objeventtypes.checked_out " .
 					$where.$orderby;
 		return $query;
 	}
@@ -44,15 +44,15 @@ class JoomleagueModelEventtypes extends JoomleagueModelList
 	{
 		$option='com_joomleague';
 		$mainframe =& JFactory::getApplication();
-		$filter_order		= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.filter_order',		'filter_order',		'obj.ordering',	'cmd');
+		$filter_order		= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.filter_order',		'filter_order',		'objeventtypes.ordering',	'cmd');
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.filter_order_Dir',	'filter_order_Dir',	'',				'word');
-		if ($filter_order=='obj.ordering')
+		if ($filter_order=='objeventtypes.ordering')
 		{
-			$orderby=' ORDER BY obj.ordering '.$filter_order_Dir;
+			$orderby=' ORDER BY objeventtypes.ordering '.$filter_order_Dir;
 		}
 		else
 		{
-			$orderby=' ORDER BY '.$filter_order.' '.$filter_order_Dir.',obj.ordering ';
+			$orderby=' ORDER BY '.$filter_order.' '.$filter_order_Dir.',objeventtypes.ordering ';
 		}
 		return $orderby;
 	}
@@ -63,7 +63,7 @@ class JoomleagueModelEventtypes extends JoomleagueModelList
 		$mainframe =& JFactory::getApplication();
 		$filter_sports_type	= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.filter_sports_type',	'filter_sports_type','',	'int');
 		$filter_state		= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.filter_state',		'filter_state',		'',				'word');
-		$filter_order		= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.filter_order',		'filter_order',		'obj.ordering',	'cmd');
+		$filter_order		= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.filter_order',		'filter_order',		'objeventtypes.ordering',	'cmd');
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.filter_order_Dir',	'filter_order_Dir',	'',				'word');
 		$search				= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.search',				'search',			'',				'string');
 		$search_mode		= $mainframe->getUserStateFromRequest($option.'.'.$this->_identifier.'.search_mode',		'search_mode',		'',				'string');
@@ -72,21 +72,21 @@ class JoomleagueModelEventtypes extends JoomleagueModelList
 		$where=array();
 		if ($filter_sports_type > 0)
 		{
-			$where[]='obj.sports_type_id='.$this->_db->Quote($filter_sports_type);
+			$where[]='objeventtypes.sports_type_id='.$this->_db->Quote($filter_sports_type);
 		}
 		if ($search)
 		{
-			$where[]='LOWER(obj.name) LIKE '.$this->_db->Quote('%'.$search.'%');
+			$where[]='LOWER(objeventtypes.name) LIKE '.$this->_db->Quote('%'.$search.'%');
 		}
 		if ($filter_state)
 		{
 			if ($filter_state == 'P')
 			{
-				$where[]='obj.published=1';
+				$where[]='objeventtypes.published=1';
 			}
 			elseif ($filter_state == 'U')
 			{
-				$where[]='obj.published=0';
+				$where[]='objeventtypes.published=0';
 			}
 		}
 		$where=(count($where) ? ' WHERE '. implode(' AND ',$where) : '');

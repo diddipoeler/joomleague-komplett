@@ -62,10 +62,20 @@ class JoomleagueModelClubs extends JoomleagueModelList
 		$filter_state		= $mainframe->getUserStateFromRequest($option.'a_filter_state',		'filter_state',		'',				'word');
 		$filter_order		= $mainframe->getUserStateFromRequest($option.'a_filter_order',		'filter_order',		'a.ordering',	'cmd');
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest($option.'a_filter_order_Dir',	'filter_order_Dir',	'',				'word');
-		$search				= $mainframe->getUserStateFromRequest($option.'a_search',			'search',			'',				'string');
+		
+    $filter_countries		= $mainframe->getUserStateFromRequest($option.'a_filter_countries',			'a_filter_countries',		'',	'word');
+    
+    $search				= $mainframe->getUserStateFromRequest($option.'a_search',			'search',			'',				'string');
 		$search_mode		= $mainframe->getUserStateFromRequest($option.'a_search_mode',		'search_mode',		'',				'string');
 		$search				= JString::strtolower($search);
 		$where=array();
+		
+		if( $filter_countries ) 
+    {
+			$where[] = 'a.country = ' . "'" . $filter_countries . "'";
+		}
+		
+		
 		if ($search)
 		{
 			if($search_mode)

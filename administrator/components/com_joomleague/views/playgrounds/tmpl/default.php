@@ -31,6 +31,9 @@ JHTML::_('behavior.tooltip');
 				<button onclick="this.form.submit(); "><?php echo JText::_('JL_GLOBAL_GO'); ?></button>
 				<button onclick="document.getElementById('search').value='';this.form.submit(); "><?php echo JText::_('JL_GLOBAL_RESET'); ?></button>
 			</td>
+			
+			<td nowrap="nowrap" align="right"><?php echo $this->lists['countries'].'&nbsp;&nbsp;'; ?></td>
+			
 			<td align="center" colspan="4">
 				<?php for ($i=65; $i < 91; $i++){printf("<a href=\"javascript:searchPlayground('%s')\">%s</a>&nbsp;&nbsp;&nbsp;&nbsp;",chr($i),chr($i));} ?>
 			</td>

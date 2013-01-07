@@ -71,7 +71,10 @@ class JoomleagueModelPersons extends JoomleagueModelList
 		$filter_state		= $mainframe->getUserStateFromRequest( $option . 'pl_filter_state', 'filter_state', '', 'word' );
 		$filter_order		= $mainframe->getUserStateFromRequest( $option . 'pl_filter_order', 'filter_order', 'pl.lastname', 'cmd' );
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option . 'pl_filter_order_Dir',	'filter_order_Dir', '',	'word' );
-		$search				= $mainframe->getUserStateFromRequest( $option . 'pl_search', 'search',	'', 'string');
+		
+    $filter_countries		= $mainframe->getUserStateFromRequest($option.'pl_filter_countries',			'pl_filter_countries',		'',	'word');
+    
+    $search				= $mainframe->getUserStateFromRequest( $option . 'pl_search', 'search',	'', 'string');
 		$search_mode		= $mainframe->getUserStateFromRequest( $option . 'pl_search_mode', 'search_mode', '', 'string');
 		$project_id			= $mainframe->getUserState( $option . 'project' );
 		$team_id			= $mainframe->getUserState( $option . 'team_id' );
@@ -80,6 +83,13 @@ class JoomleagueModelPersons extends JoomleagueModelList
 		$exludePerson		= '';
 
 		$where = array();
+		
+		if( $filter_countries ) 
+    {
+			$where[] = 'pl.country = ' . "'" . $filter_countries . "'";
+		}
+		
+		
 		if ( $search )
 		{
 			if ( $search_mode )

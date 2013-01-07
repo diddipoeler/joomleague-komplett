@@ -47,7 +47,10 @@ class JoomleagueViewPlaygrounds extends JLGView
 
 		$filter_order		= $mainframe->getUserStateFromRequest($option.'v_filter_order',		'filter_order',		'v.ordering',	'cmd');
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest($option.'v_filter_order_Dir',	'filter_order_Dir',	'',				'word');
-		$search				= $mainframe->getUserStateFromRequest($option.'v_search',			'search',			'',				'string');
+		
+    $filter_countries		= $mainframe->getUserStateFromRequest($option.'v_filter_countries',			'v_filter_countries',		'',	'word');
+    
+    $search				= $mainframe->getUserStateFromRequest($option.'v_search',			'search',			'',				'string');
 		$search_mode		= $mainframe->getUserStateFromRequest($option.'t_search_mode',		'search_mode',		'',				'string');
 		$search				= JString::strtolower($search);
 
@@ -55,6 +58,18 @@ class JoomleagueViewPlaygrounds extends JLGView
 		$total =& $this->get('Total');
 		$pagination =& $this->get('Pagination');
 
+    //build the html select list for countries
+		$countries[] = JHTML::_('select.option','',JText::_('JL_ADMIN_LEAGUE_SELECT_COUNTRY'),'value','text');
+		if ($res =& Countries::getCountryOptions()){$countries=array_merge($countries,$res);}
+		$lists['countries']=JHTML::_( 'select.genericList',
+										$countries,
+										'v_filter_countries',
+										'class="inputbox" onChange="this.form.submit();" style="width:120px"',
+										'value',
+										'text',
+										$filter_countries);
+		unset($countries);
+		
 		// table ordering
 		$lists['order_Dir']=$filter_order_Dir;
 		$lists['order']=$filter_order;

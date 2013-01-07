@@ -86,6 +86,12 @@ class JoomleagueViewAdminmenu extends JLGView
 		$version = urlencode(JoomleagueHelper::getVersion());
 		$document->addScript(JURI::base().'components/com_joomleague/assets/js/quickmenu.js?v='.$version);
 		$uri =& JFactory::getURI();
+		
+		
+		// diddipoeler
+    $mdljltables = JModel::getInstance("jlextuserfields", "JoomleagueModel");
+		$jltables = $mdljltables->getJLTables();
+			
 		$model =& $this->getModel('project') ;
 		$params =& JComponentHelper::getParams( 'com_joomleague' );
 
@@ -114,6 +120,8 @@ class JoomleagueViewAdminmenu extends JLGView
 		$project =& $this->get('Data');
 		$model =& $this->getModel();
 
+    
+    
 		$use_seasons=$params->get('cfg_show_seasons_in_project_drop_down',0); //Use seasons in dropdown or not
 
 		//build the html select list for sports-types
@@ -456,6 +464,9 @@ class JoomleagueViewAdminmenu extends JLGView
 		$this->assignRef('project',$project);
 		$this->assignRef('sports_type_id',$sports_type_id);
 		$this->assignRef('management',$management);
+		
+		// diddipoeler
+		$this->assignRef('jltables',$jltables);
 
 		parent::display('admin');
 	}
