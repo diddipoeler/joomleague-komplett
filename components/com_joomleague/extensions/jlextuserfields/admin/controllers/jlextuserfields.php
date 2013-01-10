@@ -40,56 +40,150 @@ function __construct()
 //         $this->registerTask('selectpage','display');
     }
 
-function createColumn( $table, $column, $type) {
-		global $acl, $migrate;
-		$database = &JFactory::getDBO();
-		$ck_obj = NULL;
-		$sql="SELECT * FROM `".$table."` LIMIT 1";
-		$database->setQuery($sql);
-		if ($database->loadObject($ck_obj) && array_key_exists($column, $ck_obj)) {
-			return $this->updateColumn( $table, $column, $type);
-		} else {
-			$sql="ALTER TABLE `$table` ADD `$column` $type";
-			$database->SetQuery($sql);
-			$ret = $database->query();
-			if( !$ret ) {
-				$this->_error .= get_class( $this )."::createColumn failed <br />" . $this->_db->getErrorMsg();
-				return false;
-			} else {
-				return true;
-			}
+
+function newField()	
+{
+JRequest::setVar('hidemainmenu',0);
+JRequest::setVar('layout','formfield');
+JRequest::setVar('view','jlextuserfield');
+JRequest::setVar('edit',true);
+JRequest::setVar('new',true);
+
+parent::display();
+
+}
+
+function editField()	
+{
+JRequest::setVar('hidemainmenu',0);
+JRequest::setVar('layout','formfield');
+JRequest::setVar('view','jlextuserfield');
+JRequest::setVar('edit',true);
+JRequest::setVar('new',false);
+
+parent::display();
+
+}
+
+function removeField()
+	{
+		$cid = JRequest::getVar( 'cid', array(), 'post', 'array' );
+		JArrayHelper::toInteger( $cid );
+    $jltableid = JRequest::getInt( "jltableid", 0 );
+    
+		if ( count( $cid ) < 1 )
+		{
+			JError::raiseError( 500, JText::_( 'JL_GLOBAL_SELECT_TO_DELETE' ) );
 		}
+
+		$model = $this->getModel( 'jlextuserfield' );
+
+		if ( !$model->delete( $cid ) )
+		{
+			echo "<script> alert('" . $model->getError(true) . "'); window.history.go(-1); </script>\n";
+		}
+    else
+    {
+    JError::raiseNotice( 500, JText::_( 'JL_GLOBAL_SELECT_DELETE' ) );
+    }
+		$this->setRedirect( 'index.php?option=com_joomleague&controller=jlextuserfields&view=jlextuserfields&jltableid='.$jltableid );
 	}
 	
-function deleteColumn( $table, $column) {
-		global $acl, $migrate, $database;
-		$database = &JFactory::getDBO();
+function save()	
+{
+// Check for request forgeries
+		JRequest::checkToken() or die( 'JL_GLOBAL_INVALID_TOKEN' );
+    $jltableid = JRequest::getInt( "jltableid", 0 );
+		$post	= JRequest::get( 'post' );
+		$cid	= JRequest::getVar( 'cid', array(0), 'post', 'array' );
+		$post['id'] = (int) $cid[0];
+    
+    
+		$model = $this->getModel( 'jlextuserfield' );
 
-		$sql="ALTER TABLE `$table` DROP `$column`";
-		$database->SetQuery($sql);
-		$ret = $database->LoadResult();
-		if( !$ret ) {
-			$this->_error .= get_class( $this )."::deleteColumn failed <br />" . $this->_db->getErrorMsg();
-			return false;
-		} else {
-			return true;
-		}
-	}
-  
-function updateColumn( $table, $column, $type) {
-		global $acl, $migrate, $database;
-		$database = &JFactory::getDBO();
+		if ( $model->store( $post ) )
+		{
+		  $insertid = $model->_db->insertid();
+		  
+		  $row_field =& JTable::getInstance('jlextuserfield', 'Table');
+      $row_field->load($insertid);
+      $row_table =& JTable::getInstance('jltabletables', 'Table');
+      $row_table->load($jltableid);
+      $model->createColumn( $row_table->tablename, $row_field->fieldname, $row_field->fieldtype.'('.$row_field->fieldlengh.')'  );
+			$msg = JText::_( 'JL_ADMIN_USER_FIELDS_CTRL_SAVED' ).' '.$insertid;
 
-		$sql="ALTER TABLE `".$table."` CHANGE `".$column."` `".$column."` ".$type;
-		$database->setQuery($sql);
-		$ret = $database->query();
-		if( !$ret ) {
-			$this->_error .= get_class( $this )."::updateColumn failed <br />" . $this->_db->getErrorMsg();
-			return false;
-		} else {
-			return true;
 		}
-	}  	
+		else
+		{
+			$msg = JText::_( 'JL_ADMIN_USER_FIELDS_CTRL_ERROR_SAVE' ) . $model->getError();
+		}
+
+		// Check the table in so it can be edited.... we are done with it anyway
+		$model->checkin();
+
+		if ( $this->getTask() == 'save' )
+		{
+			$link = 'index.php?option=com_joomleague&controller=jlextuserfields&view=jlextuserfields&jltableid='.$jltableid;
+		}
+		else
+		{
+			//$link = 'index.php?option=com_joomleague&controller=jlextuserfields&task=editField&cid[]=' . $post['id'];
+			$link = 'index.php?option=com_joomleague&controller=jlextuserfields&view=jlextuserfields&jltableid='.$jltableid;
+		}
+
+		$this->setRedirect( $link, $msg );
+
+
+
+}
+
+function apply()	
+{
+// Check for request forgeries
+		JRequest::checkToken() or die( 'JL_GLOBAL_INVALID_TOKEN' );
+    $jltableid = JRequest::getInt( "jltableid", 0 );
+		$post	= JRequest::get( 'post' );
+		$cid	= JRequest::getVar( 'cid', array(0), 'post', 'array' );
+		$post['id'] = (int) $cid[0];
+    
+    
+		$model = $this->getModel( 'jlextuserfield' );
+
+		if ( $model->store( $post ) )
+		{
+		  $row_field =& JTable::getInstance('jlextuserfield', 'Table');
+      $row_field->load( $post['id'] );
+      $row_table =& JTable::getInstance('jltabletables', 'Table');
+      $row_table->load($jltableid);
+      $model->updateColumn( $row_table->tablename, $row_field->fieldname, $row_field->fieldtype.'('.$row_field->fieldlengh.')'  );
+      
+			$msg = JText::_( 'JL_ADMIN_USER_FIELDS_CTRL_SAVED' );
+
+		}
+		else
+		{
+			$msg = JText::_( 'JL_ADMIN_USER_FIELDS_CTRL_ERROR_SAVE' ) . $model->getError();
+		}
+
+		// Check the table in so it can be edited.... we are done with it anyway
+		$model->checkin();
+
+		if ( $this->getTask() == 'save' )
+		{
+			$link = 'index.php?option=com_joomleague&controller=jlextuserfields&view=jlextuserfields&jltableid='.$jltableid;
+		}
+		else
+		{
+			//$link = 'index.php?option=com_joomleague&controller=jlextuserfields&task=editField&cid[]=' . $post['id'];
+			$link = 'index.php?option=com_joomleague&controller=jlextuserfields&view=jlextuserfields&jltableid='.$jltableid;
+		}
+
+		$this->setRedirect( $link, $msg );
+
+
+
+}  
+
 
 
 }

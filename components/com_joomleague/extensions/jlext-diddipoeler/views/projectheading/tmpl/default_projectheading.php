@@ -3,8 +3,38 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 require_once (JPATH_COMPONENT . DS . 'extensions' . DS . 'jlext-diddipoeler' . DS. 'helpers' . DS . 'countries.php');
 
+if ( $this->show_debug_info )
+{
+
+echo 'overallconfig<pre>',print_r($this->overallconfig,true),'</pre><br>';
+echo 'league_extended<pre>',print_r($this->league_extended,true),'</pre><br>';
+echo 'division<pre>',print_r($this->division,true),'</pre><br>';
+echo 'divisions<pre>',print_r($this->divisions,true),'</pre><br>';
+echo 'teams<pre>',print_r($this->teams,true),'</pre><br>';
+
+}
+
 $nbcols = 2;
 if ( $this->overallconfig['show_project_picture'] ) { $nbcols++; }
+if ( $this->overallconfig['show_division_picture'] ) { $nbcols++; }
+if ( $this->overallconfig['show_league_picture'] ) { $nbcols++; }
+
+foreach ( $this->league_extended->getGroups() as $group => $groups )
+			{
+				$league_desc = $this->league_extended->get('JL_EXT_LEAGUE_DESCRIPTION');
+        /*
+        $params = $this->league_extended->getElements($group);
+				foreach ($params as $param)
+				{
+					if (!empty($param->value) && !$param->backendonly)
+					{
+					echo $param->label.' - '.$param->value;
+					}
+				}
+				*/
+			}   
+
+
 
 if ( $this->overallconfig['show_project_heading'] == "1" && $this->project)
 {
@@ -106,7 +136,21 @@ echo "</table>";
 			   	}
 				?>
 				<tr class="contentheading">
+					<?php
+          if ( $this->overallconfig['show_league_picture'] == "1" )
+					{
+						?>
+						<td>
+						<?php
+						echo JoomleagueHelper::getPictureThumb($this->project->league_picture,
+																$this->project->league_name,
+																$this->overallconfig['picture_width'],
+																$this->overallconfig['picture_height'], 
+																2);
+						?>
+						</td>
 					<?php	
+			    	}	
 			    	if ( $this->overallconfig['show_project_picture'] == "1" )
 					{
 						?>
@@ -127,6 +171,21 @@ echo "</table>";
 					echo $this->project->name;
 					if (isset( $this->division))
 					{
+					if ( $this->overallconfig['show_division_picture'] == "1" )
+					{
+						?>
+						<td>
+						<?php
+						echo JoomleagueHelper::getPictureThumb($this->division->picture,
+																$this->division->name,
+																$this->overallconfig['picture_width'],
+																$this->overallconfig['picture_height'], 
+																2);
+						?>
+						</td>
+					<?php	
+			    	}
+			    	
 						echo ' - ' . $this->division->name;
 					}
 					?>
@@ -161,6 +220,23 @@ echo "</table>";
 					?>
 					</td>
 				</tr>
+				<?PHP
+        if ( $this->overallconfig['show_league_desc'] == "1" )
+					{
+				?>	
+				<tr class="contentheading">
+				<td colspan="<?php echo $nbcols; ?>">
+				<?PHP
+        echo $league_desc;
+					?>
+				</td>
+				</tr>
+				<?PHP	
+					}
+        ?>
+				
+				
+				
 			</tbody>
 		</table>
 	</div>			

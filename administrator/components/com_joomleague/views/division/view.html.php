@@ -13,6 +13,7 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport( 'joomla.application.component.view' );
+require_once(JPATH_COMPONENT.DS.'helpers'.DS.'imageselect.php');
 
 /**
  * HTML View class for the Joomleague component
@@ -82,6 +83,14 @@ class JoomleagueViewDivision extends JLGView
 
 		$projectws =& $this->get( 'Data', 'projectws' );
 
+    /*
+		 * extended data
+		 */
+		$paramsdata=$division->extended;
+		$paramsdefs=JPATH_COMPONENT.DS.'assets'.DS.'extended'.DS.'division.xml';
+		$extended=new JLGExtraParams($paramsdata,$paramsdefs);
+		$this->assignRef('extended',$extended);
+		
 		//build the html select list for parent divisions
 		$parents[] = JHTML::_( 'select.option', '0', JText::_( 'JL_GLOBAL_SELECT_PROJECT' ) );
 		if ( $res =& $model->getParentsDivisions() )
@@ -92,6 +101,14 @@ class JoomleagueViewDivision extends JLGView
 										$division->parent_id );
 		unset( $parents );
 
+    // image selector
+		$default = JoomleagueHelper::getDefaultPlaceholder('clublogobig');
+		if (empty($division->picture)){
+			$division->picture = $default;
+		}
+		$imageselect = ImageSelect::getSelector('picture','picture_preview','divisions',$division->picture, $default);
+		$this->assignRef( 'imageselect', $imageselect);
+		
 		$this->assignRef( 'projectws',	$projectws );
 		$this->assignRef( 'lists',		$lists );
 		$this->assignRef( 'division',	$division );

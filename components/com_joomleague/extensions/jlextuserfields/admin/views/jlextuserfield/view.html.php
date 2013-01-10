@@ -62,7 +62,7 @@ jimport( 'joomla.application.component.view' );
  * @package		Joomleague
  * @since 0.1
  */
-class JoomleagueViewJLextuserfields extends JLGView
+class JoomleagueViewJLextuserfield extends JLGView
 {
 
 
@@ -89,7 +89,7 @@ class JoomleagueViewJLextuserfields extends JLGView
 		
 	}
 	
-/*	
+	
 	function _displayFormField( $tpl )
 	{
 		global $mainframe, $option;
@@ -114,8 +114,8 @@ class JoomleagueViewJLextuserfields extends JLGView
     $this->assignRef( 'userfield',	$userfield );
     parent::display( $tpl );
   }
-*/
-    
+
+    /*
 	function _displayDefault( $tpl )
 	{
 		global $mainframe, $option;
@@ -140,7 +140,7 @@ class JoomleagueViewJLextuserfields extends JLGView
 		
 		parent::display( $tpl );
 	}
-	
+	*/
 	
   
   

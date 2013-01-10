@@ -67,6 +67,7 @@ table.paramlist td.paramlist_key {
 <?php
 $pane =& JPane::getInstance('tabs',array('startOffset'=>0));
 echo $pane->startPane('pane');
+
 echo $pane->startPanel(JText::_('JL_TABS_DETAILS'),'panel1');
 echo $this->loadTemplate('details');
 echo $pane->endPanel();
@@ -78,6 +79,13 @@ echo $pane->endPanel();
 echo $pane->startPanel(JText::_('JL_TABS_EXTENDED'),'panel3');
 echo $this->loadTemplate('extended');
 echo $pane->endPanel();
+
+if ( $this->userfields )
+{
+echo $pane->startPanel(JText::_('JL_TABS_USER_FIELDS'),'panel4');
+echo $this->loadTemplate('userfields');
+echo $pane->endPanel();
+}
 
 echo $pane->endPane();
 ?>

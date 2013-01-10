@@ -29,10 +29,41 @@ defined('_JEXEC') or die('Restricted access');
 		<tr>
 			<td class="contentheading">
 				<?php
+				if ( $this->overallconfig['show_division_picture'] == "1" )
+					{
+						?>
+						
+						<?php
+						echo JoomleagueHelper::getPictureThumb($divisions->picture,
+																$divisions->name,
+																$this->overallconfig['picture_width'],
+																$this->overallconfig['picture_height'], 
+																2);
+						?>
+						
+					<?php	
+			    	}
 					echo " " . $divisions->name;
 				?>
 			</td>
 		</tr>
+		
+		<?PHP
+    if ( $this->overallconfig['show_division_desc'] == "1" )
+					{
+					?>
+	<tr class="contentheading">
+			<td>				
+					<?PHP
+					echo $divisions->division_desc;
+					?>
+			</td>
+		</tr>
+		      <?PHP
+					
+          }
+    ?>
+		
 	</table>
       <?PHP
   
@@ -315,6 +346,12 @@ defined('_JEXEC') or die('Restricted access');
 		$matrix .= "</tr>";
 		}
 	}  
+  
+  if ( isset($k_c) )
+  {
+  //$k_c++;
+  $matrix .= '<tr class="contentheading"><td colspan="'.$k_c.'">'.$divisions->notes.'</td></tr>';
+  }
       
   $matrix .= '</table>';
 	echo $matrix;      

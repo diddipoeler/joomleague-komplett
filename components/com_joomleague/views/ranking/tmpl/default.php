@@ -19,6 +19,11 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
 		echo $this->loadTemplate('rankingnav');
 	}
 
+  if ($this->config['show_counting']==1)
+	{
+		echo $this->loadTemplate('counting');
+	}
+	
 	if ($this->config['show_ranking']==1)
 	{
 		echo $this->loadTemplate('ranking');
@@ -39,6 +44,11 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
 		echo $this->loadTemplate('pagnav');
 	}
 	
+	if ($this->config['show_notes'] == "1")
+	{
+		echo $this->loadTemplate('notes');
+	}
+	
 	if (($this->config['show_maps'])==1)
 	{ 
 		echo $this->loadTemplate('maps');
@@ -55,6 +65,8 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
     echo $this->loadTemplate('rssfeed-table');
 	}
   
+  
+	
 	echo "<div>";
 		echo $this->loadTemplate('backbutton');
 		echo $this->loadTemplate('footer');

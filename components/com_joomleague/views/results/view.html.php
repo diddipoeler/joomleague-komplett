@@ -30,6 +30,15 @@ class JoomleagueViewResults extends JLGView
 		
 			
 		$this->assignRef('project', $project);
+		
+		/*
+    * league extended data
+    */
+    $paramsdata_league = $this->project->league_extended;
+    $paramsdefs_league = JLG_PATH_ADMIN.DS.'assets'.DS.'extended'.DS.'league.xml';
+    $extended_league = new JLGExtraParams($paramsdata_league,$paramsdefs_league);
+    $this->assignRef('league_extended',$extended_league);
+    
 		$lists=array();
 		
 		if (isset($this->project))
@@ -97,9 +106,7 @@ class JoomleagueViewResults extends JLGView
      
     }
     
-    
-    
-    
+
     
     }
 		
@@ -110,6 +117,7 @@ class JoomleagueViewResults extends JLGView
 			$pageTitle .= ': ' . $this->project->name;
 		}
 		$document->setTitle($pageTitle);
+    $this->assign('show_debug_info', JComponentHelper::getParams('com_joomleague')->get('show_debug_info',0) );
 
 		//build feed links
 		$feed = 'index.php?option=com_joomleague&view=results&p='.$this->project->id.'&format=feed';

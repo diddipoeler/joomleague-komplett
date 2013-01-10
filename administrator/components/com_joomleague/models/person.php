@@ -25,6 +25,8 @@ require_once (JPATH_COMPONENT.DS.'models'.DS.'item.php');
 class JoomleagueModelPerson extends JoomleagueModelItem
 {
 
+var $jltable = '#__joomleague_person';
+
 	/**
 	 * Method to load content person data
 	 *
@@ -35,9 +37,19 @@ class JoomleagueModelPerson extends JoomleagueModelItem
 	function _loadData()
 	{
 		// Lets load the content if it doesn't already exist
+        $query = "SHOW COLUMNS FROM ".$this->jltable;
+        $this->_db->setQuery($query);
+        $result2 = $this->_db->loadAssocList('Field');
+        foreach( $result2 as $key => $value )
+        {
+        $fields[] = $value['Field'];   
+        }
+        $fields = implode(",",$fields);
+        //echo 'result2<pre>',print_r($result2,true),'</pre><br>';
+        
 		if (empty($this->_data))
 		{
-			$query='SELECT * FROM #__joomleague_person WHERE id='.(int) $this->_id;
+			$query='SELECT '.$fields.' FROM #__joomleague_person WHERE id='.(int) $this->_id;
 			$this->_db->setQuery($query);
 			$this->_data=$this->_db->loadObject();
 			return (boolean) $this->_data;
@@ -57,6 +69,7 @@ class JoomleagueModelPerson extends JoomleagueModelItem
 		// Lets load the content if it doesn't already exist
 		if (empty($this->_data))
 		{
+		  
 			$person=new stdClass();
 			$person->id							= null;
 
@@ -103,6 +116,13 @@ class JoomleagueModelPerson extends JoomleagueModelItem
 			$person->position_id				= null;
 			$person->modified					= null;
 			$person->modified_by				= null;
+            
+            $userfields = $this->getUserfields();
+            foreach( $userfields as $field )
+            {
+                $fieldname = $field->fieldname; 
+                $person->$fieldname				= null;
+            }
 
 			$this->_data						= $person;
 
@@ -295,6 +315,20 @@ class JoomleagueModelPerson extends JoomleagueModelItem
 			return $result;
 		}
 	}
+    
+    
+    function getUserfields()
+    {
+    $query = "SELECT * FROM #__joomleague_jltable_fields 
+    where userfield = 1 
+    and tablename like '".$this->jltable."'";
+	$this->_db->setQuery($query);    
+    $result = $this->_db->loadObjectList();    
+        
+        
+        
+    return $result;    
+    }
 
 	/**
 	 * Method to return a joomla users array (id,name)

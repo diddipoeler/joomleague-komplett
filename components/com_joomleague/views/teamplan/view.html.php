@@ -20,6 +20,15 @@ class JoomleagueViewTeamPlan extends JLGView
 		if (isset($project))
 		{
 			$this->assignRef('project',$project);
+		/*
+    * league extended data
+    */
+    $paramsdata_league = $this->project->league_extended;
+    $paramsdefs_league = JLG_PATH_ADMIN.DS.'assets'.DS.'extended'.DS.'league.xml';
+    $extended_league = new JLGExtraParams($paramsdata_league,$paramsdefs_league);
+    $this->assignRef('league_extended',$extended_league);
+    $this->assign('show_debug_info', JComponentHelper::getParams('com_joomleague')->get('show_debug_info',0) );
+    
 			$rounds=$model->getRounds($config['plan_order']);
 
 			$this->assignRef('overallconfig',$model->getOverallConfig());

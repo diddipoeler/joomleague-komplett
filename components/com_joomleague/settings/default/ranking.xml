@@ -61,7 +61,21 @@
             <option value="0">JL_GLOBAL_NO</option>
             <option value="1">JL_GLOBAL_YES</option>
         </param>
-        
+    
+      <param 	name="show_notes" type="radio" default="1" 
+				label="JL_FES_RANKING_PARAM_LABEL_SHOW_NOTES" 
+				description="JL_FES_RANKING_PARAM_DESCR_SHOW_NOTES">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param 	name="show_counting" type="radio" default="1" 
+				label="JL_FES_RANKING_PARAM_LABEL_SHOW_COUNTING" 
+				description="JL_FES_RANKING_PARAM_DESCR_SHOW_COUNTING">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+      
 	</params>
 
 	<params group="JL_FES_PARAMS_GROUP_OPTIONS" 

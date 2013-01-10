@@ -27,9 +27,37 @@
 			<option value="1">JL_GLOBAL_YES</option>
 		</param>
     
-		<param	name="show_project_picture" type="radio" default="0"
+		<param	name="show_project_picture" type="radio" default="1"
 			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_PROJECT_PICTURE"
 			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_PROJECT_PICTURE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param	name="show_league_picture" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_LEAGUE_PICTURE"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_LEAGUE_PICTURE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param	name="show_league_desc" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_LEAGUE_DESCRIPTION"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_LEAGUE_DESCRIPTION">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param	name="show_division_picture" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_DIVISION_PICTURE"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_DIVISION_PICTURE">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+		
+		<param	name="show_division_desc" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_DIVISION_DESCRIPTION"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_DIVISION_DESCRIPTION">
 			<option value="0">JL_GLOBAL_NO</option>
 			<option value="1">JL_GLOBAL_YES</option>
 		</param>

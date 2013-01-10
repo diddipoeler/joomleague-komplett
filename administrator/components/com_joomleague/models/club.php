@@ -30,7 +30,10 @@ require_once(JPATH_COMPONENT_SITE . DS . 'helpers' . DS . 'simple-gmap-api' . DS
  */
 class JoomleagueModelClub extends JoomleagueModelItem
 {
-	/**
+	
+    var $jltable = '#__joomleague_club';
+    
+    /**
 	 * Method to remove a club
 	 *
 	 * @access	public
@@ -80,9 +83,19 @@ class JoomleagueModelClub extends JoomleagueModelItem
 	function _loadData()
 	{
 		// Lets load the content if it doesn't already exist
+        $query = "SHOW COLUMNS FROM ".$this->jltable;
+        $this->_db->setQuery($query);
+        $result2 = $this->_db->loadAssocList('Field');
+        foreach( $result2 as $key => $value )
+        {
+        $fields[] = $value['Field'];   
+        }
+        $fields = implode(",",$fields);
+        //echo 'result2<pre>',print_r($result2,true),'</pre><br>';
+        
 		if (empty($this->_data))
 		{
-			$query='SELECT * FROM #__joomleague_club WHERE id='.(int) $this->_id;
+			$query='SELECT '.$fields.' FROM #__joomleague_club WHERE id='.(int) $this->_id;
 			$this->_db->setQuery($query);
 			$this->_data=$this->_db->loadObject();
 			return (boolean) $this->_data;
@@ -132,6 +145,22 @@ class JoomleagueModelClub extends JoomleagueModelItem
 			$club->alias				= null;
 			$club->modified				= null;
 			$club->modified_by			= null;
+			
+			$club->dissolved	= null;
+			$club->dissolved_year	= null;
+			$club->unique_id	= null;
+			$club->new_club_id	= null;
+			$club->enable_sb	= null;
+			$club->sb_catid	= null;
+			$club->founded_year	= null;
+			
+            $userfields = $this->getUserfields();
+            foreach( $userfields as $field )
+            {
+                $fieldname = $field->fieldname; 
+                $club->$fieldname				= null;
+            }
+			
 			$this->_data				= $club;
 			return (boolean) $this->_data;
 		}
@@ -184,6 +213,19 @@ class JoomleagueModelClub extends JoomleagueModelItem
 		return $address;
 	}
 	
+    function getUserfields()
+    {
+    $query = "SELECT * FROM #__joomleague_jltable_fields 
+    where userfield = 1 
+    and tablename like '".$this->jltable."'";
+	$this->_db->setQuery($query);    
+    $result = $this->_db->loadObjectList();    
+        
+        
+        
+    return $result;    
+    }
+    
 	function JLgetGeoCoords($address)
 {
     $coords = array();

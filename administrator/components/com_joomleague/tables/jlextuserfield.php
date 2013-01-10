@@ -13,41 +13,39 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // Include library dependencies
-jimport('joomla.filter.input');
+jimport( 'joomla.filter.input' );
 
 /**
-* Division class
+* Event Table class
 *
 * @package		Joomleague
 * @since 0.1
 */
-class TableDivision extends JLTable
+class Tablejlextuserfield extends JTable
 {
 	/**
 	 * Primary Key
 	 *
 	 * @var int
 	 */
-	var $id = null;
-	/**
-	 * alias for nice sef urls
-	 * @var string
-	 */
-	var $alias;
+	var $id= NULL;
+
 	
-	var $project_id;
-	var $name;
-	var $shortname;
-	var $notes;
-	var $parent_id;
-
-	var $published=1;
-	var $ordering;
-
+	var $tablename;
+	var $fieldname;
+  var $fieldtype;
+  var $fieldnull;
+  var $fieldkey;
+  var $fielddefault;
+  var $fieldextra;
+  var $userfield;
+  var $ordering;
+  var $fieldlengh;
+	var $visible;
+	var $description;
 	var $checked_out;
 	var $checked_out_time;
-  var $picture;
-  var $extended = null;
+	
 
 	/**
 	 * Constructor
@@ -55,8 +53,9 @@ class TableDivision extends JLTable
 	 * @param object Database connector object
 	 * @since 1.0
 	 */
-	function __construct(& $db) {
-		parent::__construct('#__joomleague_division', 'id', $db);
+	function __construct( & $db )
+	{
+		parent::__construct( '#__joomleague_jltable_fields', 'id', $db );
 	}
 
 	/**
@@ -68,16 +67,13 @@ class TableDivision extends JLTable
 	 */
 	function check()
 	{
-		// setting alias
-		if ( empty( $this->alias ) )
+		/*
+    if ( ! (( $this->event_type_id && $this->projectteam_id) || ( $this->notes && $this->event_sum)))
 		{
-			$this->alias = JFilterOutput::stringURLSafe( $this->name );
+			$this->setError( JText::_( 'CHECK FAILED' ) );
+			return false;
 		}
-		else {
-			$this->alias = JFilterOutput::stringURLSafe( $this->alias ); // make sure the user didn't modify it to something illegal...
-		}
-		
-		//should check name unicity
+    */
 		return true;
 	}
 }

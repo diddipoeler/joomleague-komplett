@@ -42,6 +42,7 @@ class TableJLTableFields extends JTable
   var $fieldlengh;
 	var $visible;
 	var $description;
+	var $checked_out;
 
 	/**
 	 * Constructor

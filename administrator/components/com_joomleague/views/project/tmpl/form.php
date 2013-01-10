@@ -231,6 +231,10 @@ JToolBarHelper::help('screen.joomleague',true);
 		echo $pane->endPanel();
     }
     
+    echo $pane->startPanel( JText::_( 'JL_TABS_DESCRIPTION' ), 'panel9' );
+		echo $this->loadTemplate('description');
+		echo $pane->endPanel();
+		
 		echo $pane->endPane();
 		?>
 		<div class="clr"></div>

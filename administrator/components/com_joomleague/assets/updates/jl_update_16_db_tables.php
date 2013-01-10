@@ -243,6 +243,21 @@ function ImportTables()
 				echo '&nbsp;</td></tr>';
 				$k=(1-$k);
         
+  switch ($tableName)
+  {
+  case '#__joomleague_jltable_fields':
+  case '#__joomleague_jltable_tables':  
+  break;
+  
+  default:
+  $temp = new stdClass();
+  $temp->dffieldname = $dFfieldName;  
+  $temp->fieldname = $fieldName;
+  $temp->dfieldsetting = $dFieldSetting;
+  $jl_tables_fields[$tableName][] = $temp;
+  break;
+  }
+        /*
         if ( $tableName != '#__joomleague_jltable_fields' )
         {
         $temp = new stdClass();
@@ -251,7 +266,7 @@ function ImportTables()
         $temp->dfieldsetting = $dFieldSetting;
         $jl_tables_fields[$tableName][] = $temp;
         }
-        
+        */
 			}
 
 			$rows=count($newIndexes)+1;
@@ -321,9 +336,8 @@ function ImportTables()
 //   echo $app->getCfg('dbprefix').'<br>'; 
 //   echo $app->getCfg('db').'<br>';
   
-  $database = $app->getCfg('db');
-  
-  $result = mysql_list_fields($database, "jos_joomleague_club");
+  //$database = $app->getCfg('db');
+  //$result = mysql_list_fields($database, "jos_joomleague_club");
   //echo 'result <br><pre>'.print_r($result,true).'</pre><br>';
    
   foreach ( $jl_tables_fields as $table => $fields )
@@ -331,83 +345,96 @@ function ImportTables()
   // diddipoeler
   
   //echo 'tabelle '.$table.'<br>';
-  $result1 = $db->getTableFields($table);
+  //$result1 = $db->getTableFields($table);
   //echo 'tabellenfelder <br><pre>'.print_r($result1,true).'</pre><br>';
   
   $query = "SHOW COLUMNS FROM ".$table;
   
   // diddipoeler
-  $row =& JTable::getInstance('jltabletables', 'Table');
-  $row->tablename		= $table;
-  if (!$row->store())
+  $row_table =& JTable::getInstance('jltabletables', 'Table');
+  $row_table->tablename = $table;
+  
+  switch ($table)
+  {
+  case '#__joomleague_person':
+  case '#__joomleague_club':  
+  $visible = 1;
+  break;
+  
+  default:
+  $visible = 0;
+  break;
+  }
+  
+  $row_table->visible = $visible;
+    
+  if (!$row_table->store())
 	{
+	   $query = "	SELECT id
+FROM #__joomleague_jltable_tables
+WHERE tablename like '" . $table ."'";
+$db->setQuery( $query );
+$jltable_id = $db->loadResult();
+
+$rowupdate_table =& JTable::getInstance('jltabletables', 'Table');
+  $rowupdate_table->load($jltable_id);
+  $rowupdate_table->visible = $visible;
+  
+  if (!$rowupdate_table->store())
+  {
+  }
+  else
+  {
+  }
 	}
 	else
 	{
   }
   
+  $result1 = $db->getTableFields($table);
+  //echo 'tabellenfelder result 1<br><pre>'.print_r($result1,true).'</pre><br>';
+  $query = "SHOW COLUMNS FROM ".$table;
   $db->setQuery($query);
   $result2 = $db->loadAssocList('Field');
   
-  //echo 'loadAssocList <br><pre>'.print_r($result2,true).'</pre><br>';
+  //echo 'tabellenfelder result 2<br><pre>'.print_r($result2,true).'</pre><br>'; 
 
-  /*
-  foreach ( $result as $res )
-  {
-    $type  = mysql_field_type($res->Field);
-    $name  = mysql_field_name($res->Field);
-    $len   = mysql_field_len($res->Field);
-    $flags = mysql_field_flags($res->Field);
-    echo $type . " " . $name . " " . $len . " " . $flags . "\n";
-  }
-  */
-  
-//  $fields = mysql_num_fields($result);
-  
-  /*
-  echo "The table has the following fields:\n";
-  for ($i=0; $i < $fields; $i++) 
-  {
-    $type  = mysql_field_type($result, $i);
-    $name  = mysql_field_name($result, $i);
-    $len   = mysql_field_len($result, $i);
-    $flags = mysql_field_flags($result, $i);
-    echo $type . " " . $name . " " . $len . " " . $flags . "\n";
-  }
-  */
+ 
   
   foreach ( $fields as $field )
   {
-  $row =& JTable::getInstance('jltablefields', 'Table');
+  $rowfield =& JTable::getInstance('jlextuserfield', 'Table');
   
-  $row->tablename		= $table;
-  $row->fieldname		= $field->fieldname;
-  $row->fieldtype = $result1[$table][$field->fieldname];
+  $rowfield->tablename		= $table;
+  $rowfield->fieldname		= $field->fieldname;
+  $rowfield->fieldtype = $result1[$table][$field->fieldname];
   
   
-	if (!$row->store())
+	if (!$rowfield->store())
 	{
 		//echo($row->getError());
     $query = "	SELECT id
 FROM #__joomleague_jltable_fields
 WHERE tablename like '" . $table ."' and fieldname like '".$field->fieldname."'";
 $db->setQuery( $query );
-$jltable_id = $db->loadResult();
+$jltable_field_id = $db->loadResult();
 
-//echo 'jltable_id -> '.$jltable_id.'<br>';
+//echo 'jltable_field_id -> '.$jltable_field_id.'<br>';
   
-  $rowupdate =& JTable::getInstance('jltablefields', 'Table');
-  $rowupdate->load($jltable_id);
-  $rowupdate->fieldtype = $row->fieldtype;
-  $rowupdate->fieldlengh = preg_replace("/[(a-zA-Z)]/",'', $result2[$field->fieldname]['Type'] );
-  if (!$rowupdate->store())
-	{
+  $rowupdate_fields =& JTable::getInstance('jlextuserfield', 'Table');
+  $rowupdate_fields->load($jltable_field_id);
+  $rowupdate_fields->fieldtype = $rowfield->fieldtype;
+  $rowupdate_fields->fieldlengh = preg_replace("/[(a-zA-Z)]/",'', $result2[$field->fieldname]['Type'] );
+  if (!$rowupdate_fields->store())
+  {
+  }
+  else
+  {
   }
   
 	}
   
-  // diddipoeler
-  //echo 'feld -> '.$field->fieldname.'<br>';
+  
   }
   
   

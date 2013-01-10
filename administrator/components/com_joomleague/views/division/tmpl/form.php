@@ -60,9 +60,19 @@ echo JHTML::script( 'JL_eventsediting.js?v='.$version,'administrator/components/
 		<?php
 		$pane =& JPane::getInstance('tabs',array('startOffset'=>0));
 		echo $pane->startPane('pane');
+		
 		echo $pane->startPanel(JText::_('JL_TABS_DETAILS'),'panel1');
 		echo $this->loadTemplate('details');
 		echo $pane->endPanel();
+		
+		echo $pane->startPanel(JText::_('JL_TABS_EXTENDED'),'panel2');
+    echo $this->loadTemplate('extended');
+    echo $pane->endPanel();
+
+    echo $pane->startPanel(JText::_('JL_TABS_PICTURE'),'panel3');
+    echo $this->loadTemplate('picture');
+    echo $pane->endPanel();
+    
 		echo $pane->endPane();
 		?>
 	<div class="clr"></div>

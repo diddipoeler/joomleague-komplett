@@ -66,7 +66,8 @@ class JoomleagueModelProject extends JModel
 	{
 		if (is_null($this->_project) && $this->projectid > 0)
 		{
-			$query='SELECT p.*, l.country,
+			$query='SELECT p.*, l.country,l.picture as league_picture,l.name as league_name,
+			l.extended as league_extended,
 					CASE WHEN CHAR_LENGTH( p.alias )
 					THEN CONCAT_WS( \':\', p.id, p.alias )
 					ELSE p.id
@@ -327,7 +328,7 @@ class JoomleagueModelProject extends JModel
 			if (empty($this->_divisions))
 			{
 				$query="SELECT * from #__joomleague_division
-						  WHERE project_id=".$this->projectid;
+						  WHERE project_id = " . $this->projectid . " ORDER BY ordering ASC";
 				$this->_db->setQuery($query);
 				$this->_divisions=$this->_db->loadObjectList('id');
 			}

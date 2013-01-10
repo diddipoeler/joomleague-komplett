@@ -142,6 +142,8 @@ class JoomleagueViewClub extends JLGView
     
     foreach ( $extended->getGroups() as $key => $groups )
 		{
+		if ( $this->address_geocode )
+		{
 		foreach ( $this->address_geocode['results'][0]['address_components'] as $georesult )
 		{
     
@@ -171,7 +173,12 @@ class JoomleagueViewClub extends JLGView
     }
     
     }
+    }
 		}
+    
+    // select userfields
+        $userfields = $model->getUserfields();
+        $this->assignRef('userfields',$userfields);
     
 		$this->assignRef('edit',$edit);
 		$this->assignRef('extended',$extended);

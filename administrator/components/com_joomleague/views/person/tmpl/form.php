@@ -80,6 +80,13 @@ echo $this->loadTemplate('assign');
 echo $pane->endPanel();
 }
 
+if ( $this->userfields )
+{
+echo $pane->startPanel(JText::_('JL_TABS_USER_FIELDS'),'panel7');
+echo $this->loadTemplate('userfields');
+echo $pane->endPanel();
+}
+
 echo $pane->endPane();
 ?>
 

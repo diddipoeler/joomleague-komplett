@@ -81,7 +81,7 @@ class JoomleagueViewLeague extends JLGView
 		$lists['ordering']=JHTML::_('list.specificordering',$object,$object->id,$query,1);
 
     // image selector
-		$default = JoomleagueHelper::getDefaultPlaceholder('leaguelogo');
+		$default = JoomleagueHelper::getDefaultPlaceholder('clublogobig');
 		if (empty($object->picture)){
 			$object->picture = $default;
 		}

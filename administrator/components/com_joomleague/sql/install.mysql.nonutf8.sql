@@ -24,6 +24,8 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_jltable_fields` (
   `fieldlengh` INT(11) NOT NULL DEFAULT '0' ,
   `visible` TINYINT(1) NOT NULL DEFAULT '0' ,
   `description` VARCHAR(100) NOT NULL DEFAULT '' ,
+  `checked_out` INT(11) NOT NULL DEFAULT '0' ,
+  `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `name` (`tablename`,`fieldname`)
   )
@@ -89,6 +91,8 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_division` (
   `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
   `modified` DATETIME NULL ,
   `modified_by` INT NULL ,
+  `picture` VARCHAR(128) NOT NULL DEFAULT '' ,
+  `extended` TEXT NULL ,
   PRIMARY KEY (`id`),
  KEY `project_id` (`project_id`),
  KEY `parent_id` (`parent_id`)
@@ -535,6 +539,7 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_project` (
   `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
   `modified` DATETIME NULL ,
   `modified_by` INT NULL ,
+  `notes` TEXT NOT NULL ,
   PRIMARY KEY (`id`) ,
   KEY `league_id` (`league_id`),
   KEY `season_id` (`season_id`),

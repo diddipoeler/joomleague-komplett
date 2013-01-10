@@ -16,6 +16,8 @@ jimport( 'joomla.application.component.model' );
 //require_once ( JPATH_COMPONENT . DS . 'models' . DS . 'project.php' );
 //require_once (JPATH_COMPONENT.DS.'models'.DS.'list.php');
 
+require_once ( JLG_PATH_ADMIN.DS. 'models' . DS . 'list.php' );
+
 /**
  * Joomleague Component Adminmenu Model
  *
@@ -23,14 +25,20 @@ jimport( 'joomla.application.component.model' );
  * @package   Joomleague
  * @since 0.1
  */
-class JoomleagueModeljlextuserfields extends JModel
+class JoomleagueModeljlextuserfields extends JoomleagueModelList
 {
+var $_identifier = "jlextuserfields";
 
+	
+
+	
+	
 function getJLTables()
 	{
 		$query = '	SELECT	id,
 							tablename
 					FROM #__joomleague_jltable_tables
+					where visible = 1
 					ORDER BY tablename ASC';
 
 		$this->_db->setQuery( $query );
@@ -71,6 +79,7 @@ $query = "	SELECT jlf.*
 					inner join #__joomleague_jltable_tables as jlt
 					on jlt.tablename = jlf.tablename
 					where jlt.id = ".$jltableid."
+                    and jlf.userfield = 1
 					ORDER BY jlf.ordering ASC";
 
 		$this->_db->setQuery( $query );
@@ -87,6 +96,12 @@ $query = "	SELECT jlf.*
 		}
 
 }	
+
+
+  
+	
+
+
 	
 }
 

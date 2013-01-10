@@ -8,8 +8,14 @@ class JoomleagueViewProjectHeading extends JLGView
     {
         $model = & $this->getModel();
         $this->assignRef( 'project', $model->getProject() );
-		$this->assignRef( 'division', $model->getDivision() );
+		    $this->assignRef( 'division', $model->getDivision() );
         $this->assignRef( 'overallconfig', $model->getOverallConfig() );
+        
+    
+    
+     
+        
+        
         parent::display($tpl);
     }
 }

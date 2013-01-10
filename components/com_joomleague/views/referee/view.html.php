@@ -14,6 +14,14 @@ class JoomleagueViewReferee extends JLGView
 		$person=$model->getPerson();
 
 		$this->assignRef('project',$model->getProject());
+		/*
+    * league extended data
+    */
+    $paramsdata_league = $this->project->league_extended;
+    $paramsdefs_league = JLG_PATH_ADMIN.DS.'assets'.DS.'extended'.DS.'league.xml';
+    $extended_league = new JLGExtraParams($paramsdata_league,$paramsdefs_league);
+    $this->assignRef('league_extended',$extended_league);
+    
 		$this->assignRef('overallconfig',$model->getOverallConfig());
 		$this->assignRef('config',$config);
 		$this->assignRef('person',$person);
@@ -53,7 +61,8 @@ class JoomleagueViewReferee extends JLGView
 		$this->assignRef('extended',$extended);
 
 		$document->setTitle($titleStr);
-
+    $this->assign('show_debug_info', JComponentHelper::getParams('com_joomleague')->get('show_debug_info',0) );
+    
 		parent::display($tpl);
 	}
 

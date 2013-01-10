@@ -31,6 +31,7 @@ class JoomleagueViewResultsmatrix extends JoomleagueViewResults  {
 		// add the results model
 		$resultsmodel	= new JoomleagueModelResults();
 		$project = $resultsmodel->getProject();
+		$this->assignRef( 'divisions', $resultsmodel->getDivisions() );
 		
 		// add some javascript
 		$version = urlencode(JoomleagueHelper::getVersion());
@@ -51,6 +52,15 @@ class JoomleagueViewResultsmatrix extends JoomleagueViewResults  {
 		$config = array_merge($matrixconfig, $resultsconfig);
 
 		$this->assignRef('project', 		$resultsmodel->getProject());
+
+    /*
+    * league extended data
+    */
+    $paramsdata_league = $this->project->league_extended;
+    $paramsdefs_league = JLG_PATH_ADMIN.DS.'assets'.DS.'extended'.DS.'league.xml';
+    $extended_league = new JLGExtraParams($paramsdata_league,$paramsdefs_league);
+    $this->assignRef('league_extended',$extended_league);
+    
 		$this->assignRef('overallconfig',	$resultsmodel->getOverallConfig());
 		$this->assignRef('config',			array_merge($this->overallconfig, $config));
 		$this->assignRef('tableconfig',		$matrixconfig);
@@ -62,7 +72,90 @@ class JoomleagueViewResultsmatrix extends JoomleagueViewResults  {
 		$this->assignRef( 'division', $matrixmodel->getDivision() );
 		$this->assignRef( 'teams', $matrixmodel->getTeamsIndexedByPtid( $matrixmodel->getDivisionID() ) );
 		$this->assignRef( 'results', $matrixmodel->getMatrixResults( $matrixmodel->getProject()->id ) );
-		$this->assignRef( 'favteams', $matrixmodel->getFavTeams() );
+		
+    if ($this->project->project_type == 'DIVISIONS_LEAGUE' && !$this->divisionid )
+		{
+		$ranking_reason = array();
+//		$this->assignRef( 'divisions', $model->getDivisions() );
+		
+		/*
+    * division extended data
+    */
+    $paramsdefs_division = JLG_PATH_ADMIN.DS.'assets'.DS.'extended'.DS.'division.xml';
+		foreach ( $this->divisions as $row )
+		{
+    $paramsdata_division = $row->extended;
+    $extended_division = new JLGExtraParams($paramsdata_division,$paramsdefs_division);
+    $this->assignRef('division_extended',$extended_division);
+    foreach ( $this->division_extended->getGroups() as $group => $groups )
+			{
+				$row->division_desc = $this->division_extended->get('JL_EXT_DIVISION_DESCRIPTION');
+        /*
+        $params = $this->league_extended->getElements($group);
+				foreach ($params as $param)
+				{
+					if (!empty($param->value) && !$param->backendonly)
+					{
+					echo $param->label.' - '.$param->value;
+					}
+				}
+				*/
+			} 
+    }
+    
+    foreach ( $this->results as $result ) 
+      {
+      foreach ( $this->teams as $teams ) 
+        {
+        
+        if ( $result->division_id )
+        {
+
+        if ( ($result->projectteam1_id == $teams->projectteamid) || ($result->projectteam2_id == $teams->projectteamid) ) 
+        {
+        $teams->division_id = $result->division_id;
+        
+        if ( $teams->start_points )
+        {
+        
+        if ( $teams->start_points < 0 )
+        {
+        $color = "red";
+        }
+        else
+        {
+        $color = "green";
+        }
+        
+        $ranking_reason[$result->division_id][$teams->name] = '<font color="'.$color.'">'.$teams->name.': '.$teams->start_points.' Punkte Grund: '.$teams->reason.'</font>';
+        }
+        
+        }
+
+        }
+        
+        }
+  
+      }
+    
+    foreach ( $this->divisions as $row )
+		{
+		if ( isset($ranking_reason[$row->id]) )
+		{
+    $row->notes = implode(", ",$ranking_reason[$row->id]);
+    }
+    
+    }
+      
+    }
+    
+		
+		
+    
+    
+    
+    
+    $this->assignRef( 'favteams', $matrixmodel->getFavTeams() );
 
 		$this->assignRef('matches',			$resultsmodel->getMatches());
 		$this->assignRef('round',			$resultsmodel->roundid);
@@ -90,6 +183,8 @@ class JoomleagueViewResultsmatrix extends JoomleagueViewResults  {
 			$pageTitle .= ' - ' . $this->project->name;
 		}
 		$document->setTitle($pageTitle);
+		$this->assign('show_debug_info', JComponentHelper::getParams('com_joomleague')->get('show_debug_info',0) );
+		
 		/*
 		 //build feed links
 		 $feed = 'index.php?option=com_joomleague&view=results&p='.$this->project->id.'&format=feed';

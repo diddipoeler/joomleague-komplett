@@ -2,6 +2,8 @@
 
 $nbcols = 2;
 if ( $this->overallconfig['show_project_picture'] ) { $nbcols++; }
+if ( $this->overallconfig['show_division_picture'] ) { $nbcols++; }
+if ( $this->overallconfig['show_league_picture'] ) { $nbcols++; }
 
 if ( $this->overallconfig['show_project_heading'] == "1" && $this->project)
 {
@@ -25,7 +27,22 @@ if ( $this->overallconfig['show_project_heading'] == "1" && $this->project)
 			   	}
 				?>
 				<tr class="contentheading">
+					<?php
+          if ( $this->overallconfig['show_league_picture'] == "1" )
+					{
+						?>
+						<td>
+						<?php
+						echo JoomleagueHelper::getPictureThumb($this->project->league_picture,
+																$this->project->league_name,
+																$this->overallconfig['picture_width'],
+																$this->overallconfig['picture_height'], 
+																2);
+						?>
+						</td>
 					<?php	
+			    	}
+            	
 			    	if ( $this->overallconfig['show_project_picture'] == "1" )
 					{
 						?>
@@ -46,6 +63,22 @@ if ( $this->overallconfig['show_project_heading'] == "1" && $this->project)
 					echo $this->project->name;
 					if (isset( $this->division))
 					{
+					  if ( $this->overallconfig['show_division_picture'] == "1" )
+					{
+						?>
+						<td>
+						<?php
+						echo JoomleagueHelper::getPictureThumb($this->division->picture,
+																$this->division->name,
+																$this->overallconfig['picture_width'],
+																$this->overallconfig['picture_height'], 
+																2);
+						?>
+						</td>
+					<?php	
+			    	}
+					
+					
 						echo ' - ' . $this->division->name;
 					}
 					?>

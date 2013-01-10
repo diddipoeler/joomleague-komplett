@@ -125,12 +125,16 @@ class JoomleagueViewPerson extends JLGView
 		$lists['show_persdata']=JHTMLSelect::radiolist($ynOptions,'show_persdata','class="inputbox"','value','text',$person->show_persdata);
 		$lists['show_teamdata']=JHTMLSelect::radiolist($ynOptions,'show_teamdata','class="inputbox"','value','text',$person->show_teamdata);
 		$lists['show_on_frontend']=JHTMLSelect::radiolist($ynOptions,'show_on_frontend','class="inputbox"','value','text',$person->show_on_frontend);
+        
+        // select userfields
+        $userfields = $model->getUserfields();
 
 		$this->assignRef('edit',$edit);
 		$this->assignRef('extended',$extended);
 		$this->assignRef('imageselect',$imageselect);
 		$this->assignRef('lists',$lists);
 		$this->assignRef('person',$person);
+        $this->assignRef('userfields',$userfields);
 
 		parent::display($tpl);
 	}

@@ -80,6 +80,12 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
 		{
 			echo $this->loadTemplate('sectionheaderrank');
 		}
+		
+		if ($this->config['show_counting']==1)
+	{
+		echo $this->loadTemplate('counting');
+	}
+	
 		echo $this->loadTemplate('ranking');
 		
 		if ($this->config['show_colorlegend'])
@@ -91,6 +97,12 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
 		{
 			echo $this->loadTemplate('explanation');
 		}
+		
+	if ($this->config['show_notes'] == "1")
+	{
+		echo $this->loadTemplate('notes');
+	}
+	
 		echo $pane->endPanel();
 	}
 
@@ -125,12 +137,23 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
 		{
 			echo $this->loadTemplate('sectionheaderrank');
 		}
+		
+		if ($this->config['show_counting']==1)
+	{
+		echo $this->loadTemplate('counting');
+	}
+	
 		echo $this->loadTemplate('ranking');
 		
 		if ($this->config['show_colorlegend'])
 		{
 			echo $this->loadTemplate('colorlegend');
 		}
+		
+	if ($this->config['show_notes'] == "1")
+	{
+		echo $this->loadTemplate('notes');
+	}
 		
 		if ($this->config['show_explanation']==1)
 		{

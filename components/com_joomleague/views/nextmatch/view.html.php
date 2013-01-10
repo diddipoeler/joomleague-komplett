@@ -16,6 +16,15 @@ class JoomleagueViewNextMatch extends JLGView
 		$tableconfig = $model->getTemplateConfig( "ranking" );
 
 		$this->assignRef( 'project',			$model->getProject() );
+		/*
+    * league extended data
+    */
+    $paramsdata_league = $this->project->league_extended;
+    $paramsdefs_league = JLG_PATH_ADMIN.DS.'assets'.DS.'extended'.DS.'league.xml';
+    $extended_league = new JLGExtraParams($paramsdata_league,$paramsdefs_league);
+    $this->assignRef('league_extended',$extended_league);
+    $this->assign('show_debug_info', JComponentHelper::getParams('com_joomleague')->get('show_debug_info',0) );
+    
 		$this->assignRef( 'config',			$config );
 		$this->assignRef( 'tableconfig',		$tableconfig );
 		$this->assignRef( 'overallconfig',		$model->getOverallConfig() );
