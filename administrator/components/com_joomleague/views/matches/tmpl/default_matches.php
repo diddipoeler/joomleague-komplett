@@ -103,6 +103,7 @@ JHTML::_('behavior.mootools');
               
 							
 						?>
+                        <th class="title" nowrap="nowrap" ><?php echo JTEXT::_('JL_ADMIN_MATCHES_COUNT_RESULT'); ?></th>
 						<th class="title" nowrap="nowrap" ><?php echo JTEXT::_('JL_ADMIN_MATCHES_HOME_TEAM'); ?></th>
 						<th class="title" nowrap="nowrap" ><?php echo JTEXT::_('JL_ADMIN_MATCHES_AWAY_TEAM'); ?></th>
 						<th style="  "><?php echo JTEXT::_('JL_ADMIN_MATCHES_RESULT'); ?></th>
@@ -235,10 +236,19 @@ JHTML::_('behavior.mootools');
 							</td>
 							<?php 
 							}
-              
-              
-              
-              
+                            // diddipoeler
+                            // set count result
+             $arr = array(
+		JHTML::_('select.option', 0, JText::_('JL_GLOBAL_NO') ),
+		JHTML::_('select.option', 1, JText::_('JL_GLOBAL_YES') ),
+	);
+                            ?>
+							<td style="text-align:center; ">
+								<?php
+                            echo JHTML::_('select.genericlist', $arr, 'count_result'.$row->id, 'class="inputbox select-count_result" size="1"'.$append, 'value', 'text', $row->count_result );
+              ?>
+							</td>
+							<?php
                  
 							?>
 							<td style="text-align: right; " nowrap="nowrap">
