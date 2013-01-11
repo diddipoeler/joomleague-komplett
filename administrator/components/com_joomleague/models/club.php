@@ -220,16 +220,69 @@ class JoomleagueModelClub extends JoomleagueModelItem
     and tablename like '".$this->jltable."'";
 	$this->_db->setQuery($query);    
     $result = $this->_db->loadObjectList();    
-        
-        
+
         
     return $result;    
     }
     
+    function storeUserfields()
+    {
+    global $mainframe, $option;
+    $field = array();
+    $mainframe	=& JFactory::getApplication();
+    $post=JRequest::get('post');
+		$cid=JRequest::getVar('cid',array(0),'post','array');
+		$post['id']=(int) $cid[0];
+		
+		$userfields = $this->getUserfields();
+            foreach( $userfields as $userfield )
+            {
+                $fieldname = $userfield->fieldname; 
+                if (array_key_exists($fieldname, $post)) 
+                {
+                $field[] = $fieldname."='".$post[$fieldname]."'";
+                }
+            }
+    $fields = implode(",",$field);
+    $query = "UPDATE	".$this->jltable." SET ".$fields." WHERE id = ".$post['id'];
+		$this->_db->setQuery($query);
+			if(!$this->_db->query())
+			{
+				$this->setError($this->_db->getErrorMsg());
+				$mainframe->enqueueMessage(JText::_('JL_ADMIN_CLUB_SAVE_USER_FIELDS_NO'),'ERROR');
+				return false;
+			}				
+      else
+      {
+      $mainframe->enqueueMessage(JText::_('JL_ADMIN_CLUB_SAVE_USER_FIELDS_YES'),'');
+				return true;
+      }
+      	
+    
+    }
+  
+  function JLgetLatLongGeoCoords($address)
+{
+    global $mainframe, $option;
+    $mainframe	=& JFactory::getApplication();
+    $coords = array();
+    $mainframe->enqueueMessage(JText::_('JL_ADMIN_CLUB_GET_GOOGLE_MAP_LONGITUDE_LATITUDE'),'NOTICE');
+    
+    $url = 'http://maps.google.com/maps/geo?q='.urlencode($address).'&output=csv&sensor=false';
+    $get = file_get_contents($url);
+    $records = explode(",",$get);
+    
+//     echo 'JLgetLatLongGeoCoords records url<pre>',print_r($url,true),'</pre><br>';
+//     echo 'JLgetLatLongGeoCoords records<pre>',print_r($records,true),'</pre><br>'; 
+    return $records;
+    } 
+    
+     
 	function JLgetGeoCoords($address)
 {
-    $coords = array();
-    
+    global $mainframe, $option;
+    $mainframe	=& JFactory::getApplication();
+      
     /*
       OBSOLETE, now using utf8_encode
       
@@ -251,6 +304,7 @@ class JoomleagueModelClub extends JoomleagueModelItem
     $geoCodeURL = "http://maps.google.com/maps/api/geocode/json?address=".
                   urlencode($address)."&sensor=false";
     
+    //echo 'JLgetGeoCoords records geoCodeURL<pre>',print_r($geoCodeURL,true),'</pre><br>';
     //$result = json_decode(file_get_contents($geoCodeURL), true);
     
     $initial = curl_init();
@@ -279,7 +333,18 @@ $result = json_decode($file_content, true);
     }
     */
     
+    if ( $result['status'] == 'OVER_QUERY_LIMIT' )
+    {
+    $mainframe->enqueueMessage(JText::_('GOOGLE MAP STATUS: OVER_QUERY_LIMIT'),'ERROR');
+    return '';
+    }
+    else
+    {
     return $result;
+    }
+    
+    
+    
 }
 	/**
 	* Method to return a playgrounds array (id,name)

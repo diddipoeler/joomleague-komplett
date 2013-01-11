@@ -130,6 +130,124 @@ class JoomleagueModelPlayground extends JoomleagueModelItem
 		return true;
 	}
 
+  function JLgetLatLongGeoCoords($address)
+{
+    global $mainframe, $option;
+    $mainframe	=& JFactory::getApplication();
+    $coords = array();
+    $mainframe->enqueueMessage(JText::_('JL_ADMIN_CLUB_GET_GOOGLE_MAP_LONGITUDE_LATITUDE'),'NOTICE');
+    
+    $url = 'http://maps.google.com/maps/geo?q='.urlencode($address).'&output=csv&sensor=false';
+    $get = file_get_contents($url);
+    $records = explode(",",$get);
+    
+//     echo 'JLgetLatLongGeoCoords records url<pre>',print_r($url,true),'</pre><br>';
+//     echo 'JLgetLatLongGeoCoords records<pre>',print_r($records,true),'</pre><br>'; 
+    return $records;
+    }  
+
+function JLgetGeoCoords($address)
+{
+    global $mainframe, $option;
+    $mainframe	=& JFactory::getApplication();
+      
+    /*
+      OBSOLETE, now using utf8_encode
+      
+      // replace special characters (eg. German "Umlaute")
+      $address = str_replace("ä", "ae", $address);
+      $address = str_replace("ö", "oe", $address);
+      $address = str_replace("ü", "ue", $address);
+      $address = str_replace("Ä", "Ae", $address);
+      $address = str_replace("Ö", "Oe", $address);
+      $address = str_replace("Ü", "Ue", $address);
+      $address = str_replace("ß", "ss", $address);
+    */
+    
+    //$address = utf8_encode($address);
+    
+    //echo 'getGeoCoords address -> '.$address.'<br>';
+    
+    // call geoencoding api with param json for output
+    $geoCodeURL = "http://maps.google.com/maps/api/geocode/json?address=".
+                  urlencode($address)."&sensor=false";
+    
+    //echo 'JLgetGeoCoords records geoCodeURL<pre>',print_r($geoCodeURL,true),'</pre><br>';
+    //$result = json_decode(file_get_contents($geoCodeURL), true);
+    
+    $initial = curl_init();
+curl_setopt($initial, CURLOPT_URL, $geoCodeURL);
+curl_setopt($initial, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($initial, CURLOPT_CONNECTTIMEOUT, 5);
+$file_content = curl_exec($initial);
+curl_close($initial);
+$result = json_decode($file_content, true);
+
+/*
+    $xml = simplexml_load_string($geoCodeURL);
+    $xml = simplexml_load_file($geoCodeURL);
+    echo 'getGeoCoords xml<br><pre>';
+    print_r($xml);
+    echo '</pre><br>';
+*/    
+    
+    /*
+    $coords['status'] = $result["status"];
+    
+    if ( isset($result["results"][0]) )
+    {        
+    $coords['lat'] = $result["results"][0]["geometry"]["location"]["lat"];
+    $coords['lng'] = $result["results"][0]["geometry"]["location"]["lng"];
+    }
+    */
+    
+    if ( $result['status'] == 'OVER_QUERY_LIMIT' )
+    {
+    $mainframe->enqueueMessage(JText::_('GOOGLE MAP STATUS: OVER_QUERY_LIMIT'),'ERROR');
+    return '';
+    }
+    else
+    {
+    return $result;
+    }
+    
+    
+    
+}
+
+function getAddressString( )
+	{
+		$playground = $this->_data;
+		if ( !isset ( $playground ) ) { return null; }
+
+		$address_parts = array();
+		if (!empty($playground->address))
+		{
+			$address_parts[] = $playground->address;
+		}
+		if (!empty($playground->state))
+		{
+			$address_parts[] = $playground->state;
+		}
+		if (!empty($playground->location))
+		{
+			if (!empty($playground->zipcode))
+			{
+				$address_parts[] = $playground->zipcode. ' ' .$playground->location;
+			}
+			else
+			{
+				$address_parts[] = $playground->location;
+			}
+		}
+		if (!empty($playground->country))
+		{
+			$address_parts[] = Countries::getShortCountryName($playground->country);
+		}
+		$address = implode(', ', $address_parts);
+		return $address;
+	}
+      
 	/**
 	* Method to return the query that will obtain all ordering versus playgrounds
 	* It can be used to fill a list box with value/text data.

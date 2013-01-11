@@ -13,6 +13,16 @@ class JoomleagueViewClubPlan extends JLGView
 		$project =& $model->getProject();
 		$config=$model->getTemplateConfig($this->getName());
 		$this->assignRef('project',$project);
+		
+		/*
+    * league extended data
+    */
+    $paramsdata_league = $this->project->league_extended;
+    $paramsdefs_league = JLG_PATH_ADMIN.DS.'assets'.DS.'extended'.DS.'league.xml';
+    $extended_league = new JLGExtraParams($paramsdata_league,$paramsdefs_league);
+    $this->assignRef('league_extended',$extended_league);
+    $this->assign('show_debug_info', JComponentHelper::getParams('com_joomleague')->get('show_debug_info',0) );
+    
 		$this->assignRef('overallconfig',$model->getOverallConfig());
 		$this->assignRef('config',$config);
 		$this->assignRef('showclubconfig',$showclubconfig);

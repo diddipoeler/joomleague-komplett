@@ -185,7 +185,7 @@ class JoomleagueViewRanking extends JLGView {
 		$document->setTitle( $pageTitle );
 		$this->assign('show_debug_info', JComponentHelper::getParams('com_joomleague')->get('show_debug_info',0) );
 
-		//$model = $this->getModel( "teams" );
+		// diddipoeler
 		$mdlTeams = JModel::getInstance("Teams", "JoomleagueModel");
 		$this->assignRef( 'allteams', $mdlTeams->getTeams() );
 		
@@ -238,7 +238,23 @@ class JoomleagueViewRanking extends JLGView {
 			$address_parts[] = Countries::getShortCountryName($row->club_country);
 		}
 		$row->address_string = implode(', ', $address_parts);
-    $this->map->addMarkerByAddress($row->address_string, $row->team_name, '"<a href="'.$row->club_www.'" target="_blank">'.$row->club_www.'</a>"', "http://maps.google.com/mapfiles/kml/pal2/icon49.png");		
+    //$this->map->addMarkerByAddress($row->address_string, $row->team_name, '"<a href="'.$row->club_www.'" target="_blank">'.$row->club_www.'</a>"', "http://maps.google.com/mapfiles/kml/pal2/icon49.png");		
+    
+    $paramsdata	= $row->club_extended;
+		$paramsdefs	= JLG_PATH_ADMIN . DS . 'assets' . DS . 'extended' . DS . 'club.xml';
+		$extended	= new JLGExtraParams( $paramsdata, $paramsdefs );
+		foreach ( $extended->getGroups() as $key => $groups )
+		{
+		$lat = $extended->get('JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE');
+    $lng = $extended->get('JL_ADMINISTRATIVE_AREA_LEVEL_1_LONGITUDE');
+		}
+		
+    if ( $lat && $lng )
+    {
+    $this->map->addMarker($lat, $lng, $row->club_name, $row->address_string);
+    }
+    
+    
     }
     
   

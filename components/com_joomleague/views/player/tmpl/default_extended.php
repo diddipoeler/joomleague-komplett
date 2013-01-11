@@ -79,11 +79,8 @@ switch ( $this->teamPlayer->position_name )
 {
 case 'JL_P_GOALKEEPER':
 case 'Torwart':
-<<<<<<< HEAD
 case 'Torhüter':
-=======
 case 'TorhÃ¼ter':
->>>>>>> d598d3813572d2c21b32e226dfb4ab2d646779b4
 $image_class = 'hp1';
 break;
 case 'JL_P_DEFENDER':
@@ -96,11 +93,8 @@ $image_class = 'hp6';
 break;
 case 'JL_P_FORWARD':
 case 'Sturm':
-<<<<<<< HEAD
 case 'Stürmer':
-=======
 case 'StÃ¼rmer':
->>>>>>> d598d3813572d2c21b32e226dfb4ab2d646779b4
 $image_class = 'hp14';
 break;
 }

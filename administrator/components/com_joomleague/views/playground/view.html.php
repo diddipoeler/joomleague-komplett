@@ -98,6 +98,55 @@ class JoomleagueViewPlayground extends JLGView
 		$paramsdefs=JPATH_COMPONENT.DS.'assets'.DS.'extended'.DS.'playground.xml';
 		$extended=new JLGExtraParams($paramsdata,$paramsdefs);
 
+    $this->assignRef( 'address_string',	$model->getAddressString() );
+    $this->assignRef( 'address_geocode',	$model->JLgetGeoCoords($this->address_string) );
+    
+    foreach ( $extended->getGroups() as $key => $groups )
+		{
+		
+    if ( $this->address_geocode )
+		{
+		foreach ( $this->address_geocode['results'][0]['address_components'] as $georesult )
+		{
+    
+    if ( $georesult['types'][0] == 'administrative_area_level_1' )
+    {
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_1_LONG_NAME', $georesult['long_name']);
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_1_SHORT_NAME', $georesult['short_name']);
+    }
+    if ( $georesult['types'][0] == 'administrative_area_level_2' )
+    {
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_2_LONG_NAME', $georesult['long_name']);
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_2_SHORT_NAME', $georesult['short_name']);
+    }
+    if ( $georesult['types'][0] == 'administrative_area_level_3' )
+    {
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_3_LONG_NAME', $georesult['long_name']);
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_3_SHORT_NAME', $georesult['short_name']);
+    }
+    
+    if ( $georesult['types'][0] == 'locality' )
+    {
+    $extended->set('JL_LOCALITY_LONG_NAME', $georesult['long_name']);
+    }
+    if ( $georesult['types'][0] == 'sublocality' )
+    {
+    $extended->set('JL_SUBLOCALITY_LONG_NAME', $georesult['long_name']);
+    }
+    
+    }
+    }
+		else
+		{
+    $this->assignRef( 'address_geocode_lat_long',	$model->JLgetLatLongGeoCoords($this->address_string) );
+    $lat = $this->address_geocode_lat_long['2'];
+    $lng = $this->address_geocode_lat_long['3'];
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE', $lat);
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_1_LONGITUDE', $lng);
+    }
+    
+    }
+    
 		$this->assignRef('extended',$extended);
 		$this->assignRef('imageselect',$imageselect);
 		$this->assignRef('lists',$lists);

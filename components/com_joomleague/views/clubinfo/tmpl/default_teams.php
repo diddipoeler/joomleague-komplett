@@ -1,7 +1,7 @@
 <?php defined( '_JEXEC' ) or die( 'Restricted access' ); ?>
 
 	
-
+<div class="no-column">
 <div class="contentpaneopen">
 		<div class="contentheading">
 			<?php echo JText::_('JL_CLUBINFO_TEAMS'); ?>
@@ -44,4 +44,5 @@
 	?>
 </div>
 </table>
+</div>
 </div>

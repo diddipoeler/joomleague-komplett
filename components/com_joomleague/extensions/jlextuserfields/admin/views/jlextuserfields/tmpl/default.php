@@ -45,7 +45,7 @@ JToolBarHelper::cancel();
 				{
 					
           $row=&$this->tablefields[$i];	
-          $link=JRoute::_('index.php?option=com_joomleague&controller=jlextuserfields&task=editField&cid[]='.$row->id.'&jltableid='.$jltableid   );
+          $link=JRoute::_('index.php?option=com_joomleague&controller=jlextuserfield&task=editField&cid[]='.$row->id.'&jltableid='.$jltableid   );
            $checked = JHTML::_('grid.checkedout',$row,$i);
 // 					$published = JHTML::_('grid.published',$row,$i);
           		

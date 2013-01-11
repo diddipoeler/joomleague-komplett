@@ -17,6 +17,10 @@ class JoomleagueViewClubInfo extends JLGView
 		$club		= $model->getClub() ;
 		$config		= $model->getTemplateConfig( $this->getName() );
 
+    // select userfields
+    $userfields = $model->getUserfields();
+    $this->assignRef('userfields',$userfields);
+        
 		$this->assignRef( 'project',		$model->getProject() );
 		$this->assignRef( 'overallconfig',	$model->getOverallConfig() );
 		$this->assignRef( 'config',			$config );
@@ -28,6 +32,15 @@ class JoomleagueViewClubInfo extends JLGView
 		$paramsdefs	= JLG_PATH_ADMIN . DS . 'assets' . DS . 'extended' . DS . 'club.xml';
 		$extended	= new JLGExtraParams( $paramsdata, $paramsdefs );
 
+    /*
+    * league extended data
+    */
+    $paramsdata_league = $this->project->league_extended;
+    $paramsdefs_league = JLG_PATH_ADMIN.DS.'assets'.DS.'extended'.DS.'league.xml';
+    $extended_league = new JLGExtraParams($paramsdata_league,$paramsdefs_league);
+    $this->assignRef('league_extended',$extended_league);
+    $this->assign('show_debug_info', JComponentHelper::getParams('com_joomleague')->get('show_debug_info',0) );
+    
     if ( ($this->config['show_club_rssfeed']) == 1 )
 	  {
     $mod_name               = "mod_jw_srfr"; 
@@ -81,6 +94,13 @@ class JoomleagueViewClubInfo extends JLGView
 
     if (($this->config['show_maps'])==1)
 	  {
+	  
+	  foreach ( $extended->getGroups() as $key => $groups )
+		{
+		$lat = $extended->get('JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE');
+    $lng = $extended->get('JL_ADMINISTRATIVE_AREA_LEVEL_1_LONGITUDE');
+		}
+		
 	  $this->map = new simpleGMapAPI();
   $this->geo = new simpleGMapGeocoder();
   $this->map->setWidth($this->mapconfig['width']);
@@ -100,6 +120,10 @@ class JoomleagueViewClubInfo extends JLGView
   $this->map->setInfoWindowTrigger('CLICK');
   
   $this->map->addMarkerByAddress($this->address_string, $this->club->name, '"<a href="'.$this->club->website.'" target="_blank">'.$this->club->website.'</a>"', "http://maps.google.com/mapfiles/kml/pal2/icon49.png");  
+  if ( $lat && $lng )
+  {
+  $this->map->addMarker($lat, $lng, $this->club->name, $this->address_string );
+  }
   
   $document->addScript($this->map->JLprintGMapsJS());
   $document->addScriptDeclaration($this->map->JLshowMap(false));

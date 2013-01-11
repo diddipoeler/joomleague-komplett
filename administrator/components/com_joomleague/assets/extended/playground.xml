@@ -7,6 +7,16 @@
 				description="Nickname">
 		</param>
 
+
+    <param 	name="JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE" type="text" 
+				label="JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE_LABEL"
+				description="JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE_DESC">
+		</param>
+		<param 	name="JL_ADMINISTRATIVE_AREA_LEVEL_1_LONGITUDE" type="text" 
+				label="JL_ADMINISTRATIVE_AREA_LEVEL_1_LONGITUDE_LABEL"
+				description="JL_ADMINISTRATIVE_AREA_LEVEL_1_LONGITUDE_DESC">
+		</param>
+		
 <param name="JL_EXT_SIS_PLAYGROUND_NUMBER" type="text" label="JL_EXT_SIS_PLAYGROUND_NUMBER" description="JL_EXT_SIS_DESC_PLAYGROUND_NUMBER" size="100"/>
 		
 	</params>

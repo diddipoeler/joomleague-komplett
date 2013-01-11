@@ -3,6 +3,8 @@
 JHTML::_('behavior.tooltip');
 jimport('joomla.html.pane');
 
+//echo 'address_string<pre>',print_r($this->address_string,true),'</pre><br>';
+//echo 'address_geocode<pre>',print_r($this->address_geocode,true),'</pre><br>';
 
 // Set toolbar items for the page
 $edit=JRequest::getVar('edit',true);

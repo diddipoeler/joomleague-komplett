@@ -324,12 +324,46 @@ var $jltable = '#__joomleague_person';
     and tablename like '".$this->jltable."'";
 	$this->_db->setQuery($query);    
     $result = $this->_db->loadObjectList();    
-        
-        
-        
+
     return $result;    
     }
 
+    function storeUserfields()
+    {
+    global $mainframe, $option;
+    $field = array();
+    $mainframe	=& JFactory::getApplication();
+    $post=JRequest::get('post');
+		$cid=JRequest::getVar('cid',array(0),'post','array');
+		$post['id']=(int) $cid[0];
+		
+		$userfields = $this->getUserfields();
+            foreach( $userfields as $userfield )
+            {
+                $fieldname = $userfield->fieldname; 
+                if (array_key_exists($fieldname, $post)) 
+                {
+                $field[] = $fieldname."='".$post[$fieldname]."'";
+                }
+            }
+    $fields = implode(",",$field);
+    $query = "UPDATE	".$this->jltable." SET ".$fields." WHERE id = ".$post['id'];
+		$this->_db->setQuery($query);
+			if(!$this->_db->query())
+			{
+				$this->setError($this->_db->getErrorMsg());
+				$mainframe->enqueueMessage(JText::_('JL_ADMIN_PERSON_SAVE_USER_FIELDS_NO'),'ERROR');
+				return false;
+			}				
+      else
+      {
+      $mainframe->enqueueMessage(JText::_('JL_ADMIN_PERSON_SAVE_USER_FIELDS_YES'),'');
+				return true;
+      }
+      	
+    
+    }
+    
 	/**
 	 * Method to return a joomla users array (id,name)
 	 *

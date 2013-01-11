@@ -22,6 +22,7 @@ class JoomleagueModelClubInfo extends JoomleagueModelProject
 	var $projectid = 0;
 	var $clubid = 0;
 	var $club = null;
+	var $jltable = '#__joomleague_club';
 
 	function __construct( )
 	{
@@ -37,7 +38,16 @@ class JoomleagueModelClubInfo extends JoomleagueModelProject
 		{
 			if ( $this->clubid > 0 )
 			{
-				$query = ' SELECT c.* '
+			$query = "SHOW COLUMNS FROM ".$this->jltable;
+        $this->_db->setQuery($query);
+        $result2 = $this->_db->loadAssocList('Field');
+        foreach( $result2 as $key => $value )
+        {
+        $fields[] = 'c.'.$value['Field'];   
+        }
+        $fields = implode(",",$fields);
+        
+				$query = ' SELECT '.$fields
 				       . ' FROM #__joomleague_club AS c '
 				       . ' WHERE c.id = '. $this->_db->Quote($this->clubid)
 				            ;
@@ -170,6 +180,19 @@ class JoomleagueModelClubInfo extends JoomleagueModelProject
 		return $allowed;
 	}
 
+  function getUserfields()
+    {
+    $query = "SELECT * FROM #__joomleague_jltable_fields 
+    where userfield = 1 
+    and tablename like '".$this->jltable."'";
+	$this->_db->setQuery($query);    
+    $result = $this->_db->loadObjectList();    
+        
+        
+        
+    return $result;    
+    }
+    
 	function getGoogleApiKey( )
 	{
 		$params =& JComponentHelper::getParams('com_joomleague');

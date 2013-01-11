@@ -153,7 +153,8 @@ function createColumn( $table, $column, $type)
 			if( !$ret ) 
       {
 				$this->_error .= get_class( $this )."::createColumn failed <br />" . $this->_db->getErrorMsg();
-				return false;
+				$mainframe->enqueueMessage('createColumn<pre>'.print_r($this->_db->getErrorMsg(),true).'</pre><br>','Error');
+        return false;
 			} 
       else 
       {
@@ -190,13 +191,16 @@ function updateColumn( $table, $column, $type)
 		$mainframe	=& JFactory::getApplication();
 		//$database = &JFactory::getDBO();
 
+    
+			
 		$sql="ALTER TABLE `".$table."` CHANGE `".$column."` `".$column."` ".$type;
 		$this->_db->setQuery($sql);
 		$ret = $this->_db->query();
 		if( !$ret ) 
     {
 			$this->_error .= get_class( $this )."::updateColumn failed <br />" . $this->_db->getErrorMsg();
-			return false;
+			$mainframe->enqueueMessage('updateColumn<pre>'.print_r($this->_db->getErrorMsg(),true).'</pre><br>','Error');
+      return false;
 		} 
     else 
     {

@@ -21,6 +21,7 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
 	{
 		$output[intval($this->config['show_order_plinfo'])] = 'info';
 	}
+	
 	if ($this->config['show_extended']==1)
 	{
 		$output[intval($this->config['show_order_extended'])] = 'extended';
@@ -55,6 +56,11 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
 		echo $this->loadTemplate($templ);
 	}
 
+  if ( $this->userfields )
+	{ 
+		echo $this->loadTemplate('userfields');
+	}
+	
 	// Person view END
 
 	echo "<div>";

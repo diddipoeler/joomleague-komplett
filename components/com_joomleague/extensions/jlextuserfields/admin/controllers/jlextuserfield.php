@@ -26,7 +26,7 @@ require_once ( JPATH_COMPONENT . DS . 'controllers' . DS . 'joomleague.php' );
  * @package	Joomleague
  * @since	1.5.0a
  */
-class JoomleagueControllerjlextuserfields extends JoomleagueCommonController
+class JoomleagueControllerjlextuserfield extends JoomleagueCommonController
 {
 
 function __construct()
@@ -101,8 +101,6 @@ function save()
     
 		$model = $this->getModel( 'jlextuserfield' );
 
-
-
 		if ( $model->store( $post ) )
 		{
 		  $insertid = $model->_db->insertid();
@@ -111,49 +109,7 @@ function save()
       $row_field->load($insertid);
       $row_table =& JTable::getInstance('jltabletables', 'Table');
       $row_table->load($jltableid);
-      
-      SWITCH($row_field->fieldtype) 
-      {
-				CASE 'date':
-				CASE 'birthdate':
-				CASE 'dateselect':
-				CASE 'dateselectrange':
-				 $cType='DATE';
-				 $model->createColumn( $row_table->tablename, $row_field->fieldname, $cType." NULL DEFAULT  '0000-00-00'"  );
-				break;
-				CASE 'editorta':
-				CASE 'textarea':
-				CASE 'multiselect':
-				CASE 'multicheckbox':
-				 $cType='MEDIUMTEXT';
-				 $model->createColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				CASE 'checkbox':
-				 $cType='TINYINT';
-				 $model->createColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				CASE 'numericfloat':
-				 $cType='FLOAT';
-				 $model->createColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				CASE 'numericint':
-				 $cType='INT';
-				 $model->createColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				CASE 'VARCHAR':
-				 $cType='VARCHAR';
-				 $model->createColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				default:
-				 $cType='VARCHAR';
-				 $model->createColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-
-			}
-			
-      //$row_field->fieldtype = $cType;
-			
-      //$model->createColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
+      $model->createColumn( $row_table->tablename, $row_field->fieldname, $row_field->fieldtype.'('.$row_field->fieldlengh.')'  );
 			$msg = JText::_( 'JL_ADMIN_USER_FIELDS_CTRL_SAVED' ).' '.$insertid;
 
 		}
@@ -199,49 +155,7 @@ function apply()
       $row_field->load( $post['id'] );
       $row_table =& JTable::getInstance('jltabletables', 'Table');
       $row_table->load($jltableid);
-      
-      SWITCH($row_field->fieldtype) 
-      {
-				CASE 'date':
-				CASE 'birthdate':
-				CASE 'dateselect':
-				CASE 'dateselectrange':
-				 $cType='DATE';
-				 $model->updateColumn( $row_table->tablename, $row_field->fieldname, $cType." NULL DEFAULT  '0000-00-00'"  );
-				break;
-				CASE 'editorta':
-				CASE 'textarea':
-				CASE 'multiselect':
-				CASE 'multicheckbox':
-				 $cType='MEDIUMTEXT';
-				 $model->updateColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				CASE 'checkbox':
-				 $cType='TINYINT';
-				 $model->updateColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				CASE 'numericfloat':
-				 $cType='FLOAT';
-				 $model->updateColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				CASE 'numericint':
-				 $cType='INT';
-				 $model->updateColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				CASE 'VARCHAR':
-				 $cType='VARCHAR';
-				 $model->updateColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-				default:
-				 $cType='VARCHAR';
-				 $model->updateColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
-				break;
-
-			}
-			
-      //$row_field->fieldtype = $cType;
-			
-      //$model->updateColumn( $row_table->tablename, $row_field->fieldname, $cType.'('.$row_field->fieldlengh.')'  );
+      $model->updateColumn( $row_table->tablename, $row_field->fieldname, $row_field->fieldtype.'('.$row_field->fieldlengh.')'  );
       
 			$msg = JText::_( 'JL_ADMIN_USER_FIELDS_CTRL_SAVED' );
 

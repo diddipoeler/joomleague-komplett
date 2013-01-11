@@ -101,6 +101,13 @@ class JoomleagueControllerPerson extends JoomleagueCommonController
 				}
 				$model=$this->getModel('person');
 			}
+			
+			$userfields = $model->getUserfields();
+			if ( $userfields )
+			{
+      $model->storeUserfields();
+      }
+      
 		}
 		else
 		{

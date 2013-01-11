@@ -13,6 +13,10 @@ class JoomleagueViewPerson extends JLGView
 		$model	=& $this->getModel();
 		$config = $model->getTemplateConfig("player");
 
+    // select userfields
+    $userfields = $model->getUserfields();
+    $this->assignRef('userfields',$userfields);
+    
 		// Get the type of persondata to be shown from the query string
 		// pt==1 ==> as player // pt==2 ==> as staffmember  // pt==3 ==> as referee // pt==4 ==> as club-staffmember
 		$showType = JRequest::getVar( 'pt', '1', 'default', 'int' ); if ($showType > 3) { $showType = 1; }

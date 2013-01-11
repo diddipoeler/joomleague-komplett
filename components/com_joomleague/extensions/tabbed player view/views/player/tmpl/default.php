@@ -95,6 +95,14 @@ if (count($this->historyPlayerStaff) > 0)
     				
 }		
 
+if ( $this->userfields )
+	{ 
+	echo $pane->startPanel(JText::_('JL_PERSON_USERFIELDS'),'panel9');
+	echo $this->loadTemplate('userfields');
+	echo $pane->endPanel();
+	}
+
+
 	echo $pane->endPane();
 
 ?>

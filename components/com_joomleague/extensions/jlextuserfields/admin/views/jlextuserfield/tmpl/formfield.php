@@ -15,7 +15,7 @@ else
 JToolBarHelper::title( JText::_( 'JL_ADMIN_USER_FIELDS_FIELDMANAGER_EDIT' ), 'cbe-users' );
 	// for existing items the button is renamed `close` and the apply button is showed
 	JToolBarHelper::apply();
-	JToolBarHelper::cancel( 'cancel', 'Close' );
+	JToolBarHelper::cancel();
 }
 
 ?>
@@ -78,8 +78,12 @@ echo JText::_( 'JL_ADMIN_USER_FIELDS_FIELDTYPE' );
 </label>
 </td>
 <td>
-<input	class="text_area" type="text" name="fieldtype" id="title" size="100" maxlength="250"
-value="<?php echo $this->userfield->fieldtype; ?>" />
+
+<?php 
+//echo $this->userfield->fieldtype; 
+echo $this->lists['type'];
+?>
+
 </td>
 </tr>
 

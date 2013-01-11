@@ -223,6 +223,16 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
     
 	}
 
+  if ( $this->userfields )
+	{ 
+		echo $this->loadTemplate('userfields');
+		
+		echo "<div class='jl_defaultview_spacing'>";
+		echo "&nbsp;";
+		echo "</div>";
+    
+	}
+	
 	if (($this->config['show_maps'])==1)
 	{ 
 		echo $this->loadTemplate('maps');

@@ -21,7 +21,7 @@ foreach ( $this->extended->getGroups() as $group => $groups )
 if ($hasData)
 {
 ?>
-
+<div class="no-column">
 <div class="contentpaneopen">
 		<div class="contentheading">
 			<?php echo JText::_('JL_CLUBINFO_EXTENDED'); ?>
@@ -54,6 +54,7 @@ if ($hasData)
 </table>
 
 <br/>
+</div>
 </div>
 <?php
 }

@@ -13,6 +13,12 @@ class JoomleagueViewPlayer extends JLGView
 		$model =& $this->getModel();
 		$config=$model->getTemplateConfig($this->getName());
 
+
+    // select userfields
+    $userfields = $model->getUserfields();
+    $this->assignRef('userfields',$userfields);
+
+    
 		$person=$model->getPerson();
 		if ($this->getLayout()=='edit'){$this->_loadEditData($config);}
 		$nickname=$person->nickname;

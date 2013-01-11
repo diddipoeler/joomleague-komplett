@@ -31,6 +31,7 @@ window.addEvent('load', function() {
 });
 
 </script>
+<div class="no-column">
 <div class="contentpaneopen">
 <div class="contentheading">
 			<?php echo JText::_('JL_GMAP_DIRECTIONS'); ?>
@@ -55,4 +56,5 @@ echo "\n<div id=\"gmap_canvas\" style=\"width: ".$this->mapconfig['width']."px; 
         
         </script>  
           
+</div>
 </div>

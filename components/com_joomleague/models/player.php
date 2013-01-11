@@ -11,7 +11,8 @@ class JoomleagueModelPlayer extends JoomleagueModelPerson
 	 */
 	var $_playerhistory =null;
 	var $_teamplayers = null;
-
+  var $jltable_tp = '#__joomleague_team_player';
+  
 	function __construct()
 	{
 		parent::__construct();
@@ -20,6 +21,19 @@ class JoomleagueModelPlayer extends JoomleagueModelPerson
 		$this->teamplayerid=JRequest::getInt('pt',0);
 	}
 
+  function getTeamPlayerUserfields()
+    {
+    $query = "SELECT * FROM #__joomleague_jltable_fields 
+    where userfield = 1 
+    and tablename like '".$this->jltable_tp."'";
+	$this->_db->setQuery($query);    
+    $result = $this->_db->loadObjectList();    
+        
+        
+        
+    return $result;    
+    }
+    
 	// Get all teamplayers of the project where the person played in
 	//  (in case the player was transferred team of the project within the season)
 	function getTeamPlayers()

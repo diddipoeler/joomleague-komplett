@@ -13,7 +13,7 @@ class JoomleagueModelPerson extends JoomleagueModelProject
 	var $teamplayerid	= 0;
 	var $person			  = null;
 	var $teamplayer		= null;
-
+  var $jltable = '#__joomleague_person';
   var $debug_info = false;
   
 	/**
@@ -60,9 +60,19 @@ class JoomleagueModelPerson extends JoomleagueModelProject
 	
 	function getPerson()
 	{
+	
 		if ( is_null( $this->person ) )
 		{
-			$query = ' SELECT p.*, '
+		$query = "SHOW COLUMNS FROM ".$this->jltable;
+        $this->_db->setQuery($query);
+        $result2 = $this->_db->loadAssocList('Field');
+        foreach( $result2 as $key => $value )
+        {
+        $fields[] = 'p.'.$value['Field'];   
+        }
+        $fields = implode(",",$fields);
+        
+			$query = ' SELECT '.$fields.', '
 					. ' CASE WHEN CHAR_LENGTH( p.alias ) THEN CONCAT_WS( \':\', p.id, p.alias ) ELSE p.id END AS slug '
 			       	. ' FROM #__joomleague_person AS p '
 					. ' WHERE p.id = '. $this->_db->Quote($this->personid)
@@ -89,6 +99,19 @@ class JoomleagueModelPerson extends JoomleagueModelProject
 		return $this->_inproject;
 	}
 
+  function getUserfields()
+    {
+    $query = "SELECT * FROM #__joomleague_jltable_fields 
+    where userfield = 1 
+    and tablename like '".$this->jltable."'";
+	$this->_db->setQuery($query);    
+    $result = $this->_db->loadObjectList();    
+        
+        
+        
+    return $result;    
+    }
+    
 	function getPositionEventTypes( $positionId = 0 )
 	{
 		$result = array();

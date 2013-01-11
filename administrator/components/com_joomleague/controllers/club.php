@@ -88,6 +88,13 @@ class JoomleagueControllerClub extends JoomleagueCommonController
 				$tpost['club_id']= $teammodel->_db->insertid();
 				$teammodel->store($tpost);
 			}
+			
+			$userfields = $model->getUserfields();
+			if ( $userfields )
+			{
+      $model->storeUserfields();
+      }
+			
 		}
 		else
 		{

@@ -81,6 +81,12 @@ JoomleagueHelper::addTemplatePaths($templatesToLoad, $this);
 			break;
 	}
 
+  if ( $this->userfields )
+	{ 
+		echo $this->loadTemplate('userfields');
+	}
+	
+	
 	echo "<div>";
 		echo $this->loadTemplate( 'backbutton' );
 		echo $this->loadTemplate( 'footer' );

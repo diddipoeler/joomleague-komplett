@@ -53,7 +53,7 @@ class JoomleagueViewPlayground extends JLGView
         
         }
 
-
+        		
 
 
 
@@ -70,6 +70,12 @@ class JoomleagueViewPlayground extends JLGView
 
         //$this->assignRef( 'gmap', $model->getGoogleMap( $this->mapconfig, $this->address_string ) );
         
+        $paramsdata = $this->playground->extended;
+		$paramsdefs = JLG_PATH_ADMIN . DS . 'assets' . DS . 'extended' . DS . 'playground.xml';
+		$extended = new JLGExtraParams( $paramsdata, $paramsdefs );
+
+    	$this->assignRef( 'extended', $extended );
+    	
         if ( ($this->config['show_maps']) == 1 && $this->jl_use_jquery_version == 0 )
 	  {
 	  $this->map = new simpleGMapAPI();
@@ -91,6 +97,17 @@ class JoomleagueViewPlayground extends JLGView
   $this->map->setInfoWindowTrigger('CLICK');
   $this->map->addMarkerByAddress($this->address_string, $this->playground->name, '"<a href="'.$this->playground->website.'" target="_blank">'.$this->playground->website.'</a>"', "http://maps.google.com/mapfiles/kml/pal2/icon49.png");  
   
+  foreach ( $extended->getGroups() as $key => $groups )
+		{
+		$lat = $extended->get('JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE');
+    $lng = $extended->get('JL_ADMINISTRATIVE_AREA_LEVEL_1_LONGITUDE');
+		}
+  
+  if ( $lat && $lng )
+  {
+  $this->map->addMarker($lat, $lng, $this->playground->name, $this->address_string );
+  }
+  
   $document->addScript($this->map->JLprintGMapsJS());
   $document->addScriptDeclaration($this->map->JLshowMap(false));
   
@@ -102,11 +119,7 @@ class JoomleagueViewPlayground extends JLGView
         // $gm = $this->getModel( 'googlemap' );
         // $this->assignRef('gm', $gm->getGoogleMap( $model->getMapConfig(), $model->getAddressString() ) );
 
-		$paramsdata = $this->playground->extended;
-		$paramsdefs = JLG_PATH_ADMIN . DS . 'assets' . DS . 'extended' . DS . 'playground.xml';
-		$extended = new JLGExtraParams( $paramsdata, $paramsdefs );
-
-    	$this->assignRef( 'extended', $extended );		
+		
 		
         // Set page title
         $pageTitle = JText::_( 'JL_PLAYGROUND_PAGE_TITLE' );
