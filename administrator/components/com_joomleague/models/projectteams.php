@@ -219,6 +219,10 @@ class JoomleagueModelProjectteams extends JoomleagueModelList
 			$tblProjectteam->homegoals_finally =	$data['homegoals_finally' .$cid[$x]];
 			$tblProjectteam->guestgoals_finally =	$data['guestgoals_finally' . $cid[$x]];
 			$tblProjectteam->diffgoals_finally =	$data['diffgoals_finally' . $cid[$x]];
+            
+            // diddipoeler
+            $tblProjectteam->use_finally =			$data['use_finally' . $cid[$x]];
+            $tblProjectteam->is_in_score =			$data['is_in_score' . $cid[$x]];
 				
 			if (!$tblProjectteam->check())
 			{

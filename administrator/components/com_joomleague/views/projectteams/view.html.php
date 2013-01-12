@@ -286,6 +286,12 @@ class JoomleagueViewProjectteams extends JLGView
 		}
 		$lists['divisions']=$divisions;
 		unset($divisions);
+        
+        $arr = array(
+		JHTML::_('select.option', 0, JText::_('JL_GLOBAL_NO') ),
+		JHTML::_('select.option', 1, JText::_('JL_GLOBAL_YES') ),
+	);
+        $this->assignRef('noyes',$arr);
 
 		$projectws	=& $this->get('Data','projectws');
 

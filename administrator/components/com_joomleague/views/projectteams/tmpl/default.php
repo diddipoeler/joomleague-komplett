@@ -148,6 +148,9 @@ $this->addTemplatePath(JPATH_COMPONENT.DS.'views'.DS.'adminmenu');
 						<th style="vertical-align:top;white-space:nowrap;">
 							<?php echo JHTML::_('grid.sort','JL_ADMIN_PROJECTTEAMS_PICTURE','tl.picture',$this->lists['order_Dir'],$this->lists['order']); ?>
 						</th>
+                        <th class="title" style="vertical-align:top; "><?php echo JText::_('JL_ADMIN_PROJECTTEAMS_USE_FINAL_POINTS'); ?></th>
+                        <th class="title" style="vertical-align:top; "><?php echo JText::_('JL_ADMIN_PROJECTTEAMS_IS_IN_SCORE'); ?></th>
+                        
 						<th class="title" style="vertical-align:top; "><?php echo JText::_('JL_ADMIN_PROJECTTEAMS_INITIAL_POINTS'); ?></th>
 						<th class="title" style="vertical-align:top; "><?php echo JText::_('JL_ADMIN_PROJECTTEAMS_MA'); ?></th>						
 						<th class="title" style="vertical-align:top; "><?php echo JText::_('JL_ADMIN_PROJECTTEAMS_PLUS_P'); ?></th>
@@ -277,6 +280,31 @@ $this->addTemplatePath(JPATH_COMPONENT.DS.'views'.DS.'adminmenu');
 								}
 								?>
 							</td>
+                            
+                            <td>
+                            <?php
+                            $append = '';
+                            //echo JHTML::_('select.genericlist', $this->noyes, 'use_finally'.$row->id, 'class="inputbox" size="1" '.$append, 'value', 'text', $row->use_finally );
+                            echo JHTML::_(	'select.genericlist',
+													$this->noyes,
+													'use_finally'.$row->id,
+													$inputappend.'class="inputbox" size="1" onchange="document.getElementById(\'cb' .
+													$i.'\').checked=true"'.$append,
+													'value','text',$row->use_finally);
+                            ?>
+                            </td>
+                            <td>
+                            <?php
+                            $append = '';
+                            //echo JHTML::_('select.genericlist', $this->noyes, 'is_in_score'.$row->id, 'class="inputbox" size="1" '.$append, 'value', 'text', $row->is_in_score );
+                            echo JHTML::_(	'select.genericlist',
+													$this->noyes,
+													'is_in_score'.$row->id,
+													$inputappend.'class="inputbox" size="1" onchange="document.getElementById(\'cb' .
+													$i.'\').checked=true"'.$append,
+													'value','text',$row->is_in_score);?>
+                            </td>
+                            
 							<td style="text-align:center;">
 								<input<?php echo $inputappend; ?>	type="text" size="1" class="inputbox"
 																	name="start_points<?php echo $row->id; ?>"
