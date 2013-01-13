@@ -110,8 +110,10 @@ echo JText::_( 'JL_ADMIN_USER_FIELDS_FIELDVISIBLE' );
 </label>
 </td>
 <td>
-<input	class="text_area" type="text" name="visible" id="title" size="100" maxlength="250"
-value="<?php echo $this->userfield->visible; ?>" />
+<?php
+echo JHTML::_('select.genericlist', $this->noyes, 'visible', 'class="inputbox select-count_result" size="1"', 'value', 'text', $this->userfield->visible );
+?>
+
 </td>
 </tr>
 

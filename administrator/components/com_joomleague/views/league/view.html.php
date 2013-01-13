@@ -89,6 +89,20 @@ class JoomleagueViewLeague extends JLGView
 		$imageselect = ImageSelect::getSelector('picture','picture_preview','leagues',$object->picture, $default);
 		$this->assignRef( 'imageselect', $imageselect);
 
+    $associations[]=JHTML::_('select.option','0',JText::_('JL_GLOBAL_SELECT_ASSOCIATION'));
+		if ($res =& $model->getAssociations($object->country))
+		{
+			$associations=array_merge($associations,$res);
+		}
+		$lists['associations']=JHTML::_(	'select.genericlist',
+										$associations,
+										'associations',
+										'class="inputbox" size="1"',
+										'value',
+										'text',
+										$object->associations);
+		unset($associations);
+		
     /*
     promotion to 
     */

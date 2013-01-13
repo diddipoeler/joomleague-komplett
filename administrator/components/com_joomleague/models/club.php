@@ -272,6 +272,9 @@ class JoomleagueModelClub extends JoomleagueModelItem
     $get = file_get_contents($url);
     $records = explode(",",$get);
     
+    $url2 = 'http://maps.google.com/maps/geo?q='.urlencode($address).'&output=xml&sensor=false';
+    //echo 'JLgetLatLongGeoCoords url2<pre>',print_r($url2,true),'</pre><br>';
+    
 //     echo 'JLgetLatLongGeoCoords records url<pre>',print_r($url,true),'</pre><br>';
 //     echo 'JLgetLatLongGeoCoords records<pre>',print_r($records,true),'</pre><br>'; 
     return $records;
@@ -282,6 +285,10 @@ class JoomleagueModelClub extends JoomleagueModelItem
 {
     global $mainframe, $option;
     $mainframe	=& JFactory::getApplication();
+    
+    $url2 = 'http://maps.google.com/maps/geo?q='.urlencode($address).'&output=xml&sensor=false';
+    $get = file_get_contents($url2);
+    //echo 'JLgetGeoCoords url2<pre>',print_r($get,true),'</pre><br>';
       
     /*
       OBSOLETE, now using utf8_encode

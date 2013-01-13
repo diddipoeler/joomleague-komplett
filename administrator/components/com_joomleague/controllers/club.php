@@ -73,7 +73,10 @@ class JoomleagueControllerClub extends JoomleagueCommonController
 		$cid=JRequest::getVar('cid',array(0),'post','array');
 		$post['id']=(int) $cid[0];
 		$model=$this->getModel('club');
-		if ($model->store($post))
+
+        //echo 'club save post<pre>',print_r($post['extended'],true),'</pre><br>';
+        
+        if ($model->store($post))
 		{
 			$msg=JText::_('JL_ADMIN_CLUB_CTRL_SAVED');
 			$createTeam=JRequest::getVar('createTeam');

@@ -109,25 +109,31 @@ class JoomleagueViewJLextuserfield extends JLGView
     $stylelink = '<link rel="stylesheet" href="'.JURI::root().'components/com_joomleague/extensions/jlextuserfields/admin/assets/css/cpanel.css'.'" type="text/css" />' ."\n";
     $document->addCustomTag($stylelink);
     
+    $arr = array(
+		JHTML::_('select.option', 0, JText::_('JL_GLOBAL_NO') ),
+		JHTML::_('select.option', 1, JText::_('JL_GLOBAL_YES') ),
+	);
+        $this->assignRef('noyes',$arr);
+        
     $types[] = JHTML::_('select.option',  'VARCHAR', 'Textfeld' );
-    $types[] = JHTML::_('select.option',  'checkbox', 'Check Box (Single)' );
-	$types[] = JHTML::_('select.option',  'multicheckbox', 'Check Box (Muliple)' );
+    //$types[] = JHTML::_('select.option',  'checkbox', 'Check Box (Single)' );
+	//$types[] = JHTML::_('select.option',  'multicheckbox', 'Check Box (Muliple)' );
 	$types[] = JHTML::_('select.option',  'date', 'Date' );
-	$types[] = JHTML::_('select.option',  'birthdate', 'Date (with allowed Range1)' );          //fix 2011-04-01 CBE-TEAM range
-	$types[] = JHTML::_('select.option',  'dateselect', 'Date (triple DropDown)' );
+	//$types[] = JHTML::_('select.option',  'birthdate', 'Date (with allowed Range1)' );          //fix 2011-04-01 CBE-TEAM range
+	//$types[] = JHTML::_('select.option',  'dateselect', 'Date (triple DropDown)' );
 	//$types[] = JHTML::_('select.option',  'dateselectrange', 'Date (triple DropDown & Range)' );
-	$types[] = JHTML::_('select.option',  'select', 'Drop Down (Single Select)' );
-	$types[] = JHTML::_('select.option',  'multiselect', 'Drop Down (Multi-Select)' );
-	$types[] = JHTML::_('select.option',  'emailaddress', 'Email Address' );
+	//$types[] = JHTML::_('select.option',  'select', 'Drop Down (Single Select)' );
+	//$types[] = JHTML::_('select.option',  'multiselect', 'Drop Down (Multi-Select)' );
+	//$types[] = JHTML::_('select.option',  'emailaddress', 'Email Address' );
 	//$types[] = JHTML::_('select.option',  'password', 'Password Field' );
-	$types[] = JHTML::_('select.option',  'editorta', 'Editor Text Area' );
-	$types[] = JHTML::_('select.option',  'textarea', 'Text Area' );
-	$types[] = JHTML::_('select.option',  'text', 'Text Field' );
-	$types[] = JHTML::_('select.option',  'radio', 'Radio Button' );
-	$types[] = JHTML::_('select.option',  'webaddress', 'Web Address' );
-	$types[] = JHTML::_('select.option',  'numericfloat', 'Number Field (Float)' );
+	//$types[] = JHTML::_('select.option',  'editorta', 'Editor Text Area' );
+	//$types[] = JHTML::_('select.option',  'textarea', 'Text Area' );
+	//$types[] = JHTML::_('select.option',  'text', 'Text Field' );
+	//$types[] = JHTML::_('select.option',  'radio', 'Radio Button' );
+	//$types[] = JHTML::_('select.option',  'webaddress', 'Web Address' );
+	//$types[] = JHTML::_('select.option',  'numericfloat', 'Number Field (Float)' );
 	$types[] = JHTML::_('select.option',  'numericint', 'Number Field (Integer)' );
-	$types[] = JHTML::_('select.option',  'spacer', 'Spacer Line' );
+	//$types[] = JHTML::_('select.option',  'spacer', 'Spacer Line' );
 	
 	$lists['type'] = JHTML::_('select.genericlist',  $types, 'fieldtype', 'class="inputbox" size="'.sizeof($types).'" onchange="selType(this.options[this.selectedIndex].value);"', 'value', 'text', $userfield->fieldtype );
 

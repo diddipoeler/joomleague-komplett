@@ -225,5 +225,19 @@ class JoomleagueModelLeague extends JoomleagueModelItem
 		return $leagueObject->id;
 	}
 
+  function getAssociations($country)
+	{
+		$query="SELECT id AS value, name AS text FROM #__joomleague_associations 
+    WHERE country='$country' 
+    ORDER BY text ASC";
+		$this->_db->setQuery($query);
+		if (!$result=$this->_db->loadObjectList())
+		{
+			$this->setError($this->_db->getErrorMsg());
+			return false;
+		}
+		return $result;
+	}
+	
 }
 ?>

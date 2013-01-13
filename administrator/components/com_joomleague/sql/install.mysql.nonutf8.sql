@@ -31,6 +31,25 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_jltable_fields` (
   )
 ENGINE = MyISAM;
 
+--
+-- Tabellenstruktur für Tabelle `jos_joomleague_associations`
+--
+
+CREATE TABLE IF NOT EXISTS `jos_joomleague_associations` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(75) NOT NULL default '',
+  `alias` varchar(75) NOT NULL default '',
+  `country` varchar(3) default NULL,
+  `ordering` int(11) NOT NULL default '0',
+  `checked_out` int(11) NOT NULL default '0',
+  `checked_out_time` datetime NOT NULL default '0000-00-00 00:00:00',
+  `short_name` varchar(75) NOT NULL default '',
+  `middle_name` varchar(75) NOT NULL default '',
+  `website` varchar(250) NOT NULL default '',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `name` (`name`,`country`)
+) ENGINE=MyISAM ;
+
 -- -----------------------------------------------------
 -- Table `#__joomleague_club`
 -- -----------------------------------------------------
@@ -68,6 +87,8 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_club` (
   `new_club_id` INT(11) NOT NULL DEFAULT '0' ,
   `enable_sb` TINYINT(4) NOT NULL DEFAULT '0' ,
   `sb_catid` INT(11) NOT NULL DEFAULT '0' ,
+  `trikot_home` VARCHAR(255) NOT NULL DEFAULT 'media/com_joomleague/placeholders/placeholder_small.gif' ,
+  `trikot_away` VARCHAR(255) NOT NULL DEFAULT 'media/com_joomleague/placeholders/placeholder_small.gif' ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `name` (`name` ASC)
   )

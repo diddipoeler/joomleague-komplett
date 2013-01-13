@@ -52,6 +52,11 @@
 				<input class="text_area" type="text" name="folded_year" id="folded_year" size="32" maxlength="75" value="<?php echo $this->object->folded_year; ?>" />
 			</td>
 		</tr>
+    
+    <tr>
+			<td valign="top" align="right" class="key"><label for="ordering"><?php echo JText::_('JL_ADMIN_LEAGUE_ASSOCIATIONS'); ?></label></td>
+			<td><?php echo $this->lists['associations']; ?></td>
+		</tr>
         		
 		<tr>
 			<td valign="top" align="right" class="key"><label for="ordering"><?php echo JText::_('JL_ADMIN_LEAGUE_ORDERING'); ?></label></td>

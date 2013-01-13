@@ -38,6 +38,8 @@ class TableCountries extends JLTable
   var $ordering;
 	var $checked_out;
 	var $checked_out_time;
+    var $confederation;
+    var $subconfederation;
 	
 /**
 	 * Constructor

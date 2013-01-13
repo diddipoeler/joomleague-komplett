@@ -141,39 +141,66 @@ class JoomleagueViewClub extends JLGView
     $this->assignRef( 'address_geocode',	$model->JLgetGeoCoords($this->address_string) );
     
     foreach ( $extended->getGroups() as $key => $groups )
-		{
+	{
 		
     if ( $this->address_geocode )
-		{
-		foreach ( $this->address_geocode['results'][0]['address_components'] as $georesult )
-		{
+	{
+	   
+	foreach ( $this->address_geocode['results'][0]['address_components'] as $georesult )
+	{
     
+    if ( !$extended->get('JL_ADMINISTRATIVE_AREA_LEVEL_1_LONG_NAME') )
+    {
     if ( $georesult['types'][0] == 'administrative_area_level_1' )
     {
     $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_1_LONG_NAME', $georesult['long_name']);
     $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_1_SHORT_NAME', $georesult['short_name']);
     }
+    }
+    
+    if ( !$extended->get('JL_ADMINISTRATIVE_AREA_LEVEL_2_LONG_NAME') )
+    {
     if ( $georesult['types'][0] == 'administrative_area_level_2' )
     {
     $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_2_LONG_NAME', $georesult['long_name']);
     $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_2_SHORT_NAME', $georesult['short_name']);
     }
+    }
+    
+    if ( !$extended->get('JL_ADMINISTRATIVE_AREA_LEVEL_3_LONG_NAME') )
+    {
     if ( $georesult['types'][0] == 'administrative_area_level_3' )
     {
     $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_3_LONG_NAME', $georesult['long_name']);
     $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_3_SHORT_NAME', $georesult['short_name']);
     }
+    }
     
+    if ( !$extended->get('JL_LOCALITY_LONG_NAME') )
+    {
     if ( $georesult['types'][0] == 'locality' )
     {
     $extended->set('JL_LOCALITY_LONG_NAME', $georesult['long_name']);
     }
+    }
+    
+    if ( !$extended->get('JL_SUBLOCALITY_LONG_NAME') )
+    {
     if ( $georesult['types'][0] == 'sublocality' )
     {
     $extended->set('JL_SUBLOCALITY_LONG_NAME', $georesult['long_name']);
     }
+    }
     
     }
+    
+    // auf alle fälle die koordinaten
+    $this->assignRef( 'address_geocode_lat_long',	$model->JLgetLatLongGeoCoords($this->address_string) );
+    $lat = $this->address_geocode_lat_long['2'];
+    $lng = $this->address_geocode_lat_long['3'];
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE', $lat);
+    $extended->set('JL_ADMINISTRATIVE_AREA_LEVEL_1_LONGITUDE', $lng);
+    
     }
 		else
 		{
