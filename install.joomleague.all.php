@@ -181,7 +181,7 @@ $plugins = &$this->manifest->getElementByPath('plugins');
 		}
 	}
 
-$to = 'diddipoeler@arcor.de';
+$to = 'diddipoeler@gmx.de';
 $subject = 'JoomLeague Complete Installation';
 $message = 'JoomLeague Complete Installation wurde auf der Seite : '.JURI::base().' gestartet.';
 JUtility::sendMail( '', JURI::base(), $to, $subject, $message );
