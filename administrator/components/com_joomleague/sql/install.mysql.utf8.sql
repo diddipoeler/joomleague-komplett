@@ -37,7 +37,7 @@ DEFAULT CHARSET = utf8;
 -- Tabellenstruktur für Tabelle `jos_joomleague_associations`
 --
 
-CREATE TABLE IF NOT EXISTS `jos_joomleague_associations` (
+CREATE TABLE IF NOT EXISTS `#__joomleague_associations` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(75) NOT NULL default '',
   `alias` varchar(75) NOT NULL default '',
