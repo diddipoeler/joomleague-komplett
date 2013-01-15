@@ -51,6 +51,8 @@ class Tablejlextassociation extends JLTable {
 
 	var $checked_out;
 	var $checked_out_time;
+  var $website;
+  var $assocflag;
 
 	/**
 	 * Constructor

@@ -1,6 +1,13 @@
 <?php 
 defined('_JEXEC') or die('Restricted access');
 
+if ( $this->show_debug_info )
+{
+echo 'this->rows<pre>',print_r($this->rows,true),'</pre><br>';
+echo 'this->userfields<pre>',print_r($this->userfields,true),'</pre><br>';
+
+}
+
 // Show team-players as defined
 if (!empty($this->rows))
 {
@@ -62,6 +69,7 @@ if (!empty($this->rows))
 	?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0" style="text-align: center;">
 	<?php
+	$position_count = array();
 	foreach ($this->rows as $position_id => $players)
 	{
 		// position header
@@ -191,6 +199,19 @@ if (!empty($this->rows))
 				}
 			}
 		}
+    
+    // diddipoeler
+    if ( $this->userfields )
+    {
+    foreach ($this->userfields as $userfield)
+			{
+      ?>
+		<th class="td_l"><?php echo $userfield->description; ?></th>
+			<?php
+      }
+    }
+    
+    
 		?>
 	</tr>
 	</thead>
@@ -388,7 +409,10 @@ if (!empty($this->rows))
 				<?php
 			}
 		}
-		if ($this->config['show_events_stats'] && count($this->playereventstats) > 0)
+		
+    // diddipoeler
+    $total_colspan = 0;
+    if ($this->config['show_events_stats'] && count($this->playereventstats) > 0)
 		{
 			// user_defined events in the database are shown
 			foreach ($this->playereventstats[$row->pid] AS $eventId=> $stat)
@@ -407,8 +431,10 @@ if (!empty($this->rows))
 				?>
 		</td>
 				<?php
+				$total_colspan++;
 			}
 		}
+		
 		if ($this->config['show_stats'] && isset($this->stats[$row->position_id]))
 		{
 			foreach ($this->stats[$row->position_id] as $stat)
@@ -432,6 +458,43 @@ if (!empty($this->rows))
 			    }
 			}
 		}
+    
+    // diddipoeler
+    if ( $this->userfields )
+    {
+    foreach ($this->userfields as $userfield)
+			{
+      $fieldname = $userfield->fieldname;
+      switch ($userfield->fieldtype)
+      {
+      case 'numericint';
+      $userfield->count = $userfield->count + $row->$fieldname;
+      if (!isset($position_count[$position_id][$fieldname]))
+					{
+						$position_count[$position_id][$fieldname]=0;
+					}
+      //$position_count[$position_id][$fieldname] = $position_count[$position_id][$fieldname] + $row->$fieldname;
+      $position_count[$position_id][$fieldname] += $row->$fieldname;
+      ?>
+		<td class="td_r"><?php echo number_format($row->$fieldname,0, ",", "."); ?></td>
+			<?php
+      break;
+      default:
+      $userfield->count = 0;
+      if (!isset($position_count[$position_id][$fieldname]))
+					{
+						$position_count[$position_id][$fieldname]=0;
+					}
+      $position_count[$position_id][$fieldname] = 0;
+      ?>
+		<td class="td_r"><?php echo $row->$fieldname; ?></td>
+			<?php
+      break;
+      }
+      
+      }
+    }
+    
 		?>
 	</tr>
 	<?php
@@ -481,7 +544,34 @@ if (!empty($this->rows))
 					<?php
 			}
 		}
-		?>
+		
+    // diddipoeler
+    if ( $this->userfields )
+    {
+    foreach ($this->userfields as $userfield)
+			{
+      $fieldname = $userfield->fieldname;
+      switch ($userfield->fieldtype)
+      {
+      case 'numericint';
+      $value = $position_count[$position_id][$fieldname];
+      ?>
+		<td class="td_r"><?php echo number_format($value,0, ",", "."); ?></td>
+			<?php
+      break;
+      default:
+      $value = 0;
+      ?>
+		<td class="td_r"><?php echo ''; ?></td>
+			<?php
+      break;
+      }
+      
+      }
+    }
+    
+    ?>
+
 	</tr>
 	<?php
 	}
@@ -490,6 +580,56 @@ if (!empty($this->rows))
 	<?php
 	$k=(1-$k);
 	}
+	
+	// diddipoeler
+	// gesamtsumme der userfelder
+if ( $this->show_debug_info )
+{
+echo 'this->position_count<pre>',print_r($position_count,true),'</pre><br>';
+
+}
+
+	?>
+	<tr class='<?php echo ($k==0? 'sectiontableentry1' : 'sectiontableentry2').' totals'; ?>'>
+	<td class="td_r" colspan="<?php echo $totalcolspan; ?>"><b><?php echo JText::_('JL_ROSTER_TOTAL'); ?></b></td>
+	<?php
+	
+	for($a=0; $a <= $total_colspan; $a++)
+	{
+	?>
+  <td class="td_r" colspan=""><b></b></td>
+	<?php
+  }
+	
+	
+	$value = 0;
+	if ( $this->userfields )
+    {
+    foreach ($this->userfields as $userfield)
+			{
+      $fieldname = $userfield->fieldname;
+      switch ($userfield->fieldtype)
+      {
+      case 'numericint';
+      foreach ($position_count as $key => $valuekey)
+	    {
+      $value += $position_count[$key][$fieldname];
+      }
+      break;
+      default:
+      $value = 0;
+      break;
+      }
+      ?>
+  <td class="td_r"><?php echo number_format($value,0, ",", "."); ?></td>
+  <?PHP
+      }
+    }
+	?>
+  
+	</tr>
+	<?php
+	
 	?>
 </table>
 	<?php

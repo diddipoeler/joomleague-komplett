@@ -69,14 +69,31 @@ class JoomleagueControllerClub extends JoomleagueCommonController
 		// Check for request forgeries
 		JRequest::checkToken() or die('JL_GLOBAL_INVALID_TOKEN');
 		$msg='';
+		$address_parts = array();
 		$post=JRequest::get('post');
 		$cid=JRequest::getVar('cid',array(0),'post','array');
 		$post['id']=(int) $cid[0];
 		$model=$this->getModel('club');
-
-        //echo 'club save post<pre>',print_r($post['extended'],true),'</pre><br>';
+		
+		$address_parts[] = $post['address'];
+		$address_parts[] = $post['state'];
+		$address_parts[] = $post['zipcode'];
+		$address_parts[] = $post['location'];
+		$address_parts[] = Countries::getShortCountryName($post['country']);
+		$address_string =	implode(', ', $address_parts);;
+    //$address_string =	$model->getAddressString();
+    //echo 'club save post<pre>',print_r($post['extended'],true),'</pre><br>';
+    //echo 'club save post latitude<pre>',print_r($post['extended']['JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE'],true),'</pre><br>';
+    //echo 'club save address_string<pre>',print_r($address_string,true),'</pre><br>';
+    
+    // auf alle fälle die koordinaten
+    $address_geocode_lat_long =	$model->JLgetLatLongGeoCoords($address_string) ;
+    $lat = $address_geocode_lat_long['2'];
+    $lng = $address_geocode_lat_long['3'];
+    $post['extended']['JL_ADMINISTRATIVE_AREA_LEVEL_1_LATITUDE'] = $lat;
+    $post['extended']['JL_ADMINISTRATIVE_AREA_LEVEL_1_LONGITUDE'] = $lng;
         
-        if ($model->store($post))
+    if ($model->store($post))
 		{
 			$msg=JText::_('JL_ADMIN_CLUB_CTRL_SAVED');
 			$createTeam=JRequest::getVar('createTeam');

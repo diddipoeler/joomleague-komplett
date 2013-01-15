@@ -68,6 +68,15 @@ class JoomleagueViewjlextassociation extends JLGView
 			$object->order=0;
 		}
 
+    $assocflags = $model->getAssocFlags();
+    $options = array();
+    foreach ( $assocflags as $key => $value )
+    {
+    $options[] = JHTML::_('select.option', $value, $value );
+    }
+    $lists['assocflag'] = JHTML::_('select.genericlist', $options, 'assocflag', 'class="inputbox"', 'value', 'text', $object->assocflag);
+    
+    
 		//build the html select list for countries
 		$countries[]=JHTML::_('select.option','',JText::_('JL_ADMIN_ASSOCIATION_SELECT_COUNTRY'));
 		if ($res =& Countries::getCountryOptions()){$countries=array_merge($countries,$res);}

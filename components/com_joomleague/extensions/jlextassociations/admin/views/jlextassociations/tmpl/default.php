@@ -49,6 +49,9 @@ JHTML::_('behavior.tooltip');
 						echo JHTML::_('grid.sort','JL_ADMIN_ASSOCIATIONS_COUNTRY','objassoc.country',$this->lists['order_Dir'],$this->lists['order']);
 						?>
 					</th>
+          
+          <th width="5" style="vertical-align: top; "><?php echo JText::_('JL_ADMIN_ASSOCIATION_FLAG'); ?></th>
+          
 					<th width="85" nowrap="nowrap" style="vertical-align: top; ">
 						<?php
 						echo JHTML::_('grid.sort','JL_GLOBAL_ORDER','objassoc.ordering',$this->lists['order_Dir'],$this->lists['order']);
@@ -99,7 +102,16 @@ JHTML::_('behavior.tooltip');
 						<td><?php echo $row->name; ?></td>
 						<td><?php echo $row->short_name; ?></td>
 						<td style="text-align:center; "><?php echo Countries::getCountryFlag($row->country); ?></td>
-						<td class="order">
+						<td style="text-align:center; ">
+            <?php
+            $path = JURI::root().'media/com_joomleague/flags_associations/'.$row->assocflag;
+          $attributes='';
+					$html = '<img src="'.$path.'" alt="'.$row->name.'" ';
+		      $html .= 'title="'.$row->name.'" '.$attributes.' />';
+					echo $html;
+            ?>
+            </td>
+            <td class="order">
 							<span>
 								<?php echo $this->pagination->orderUpIcon($i,$i > 0,'orderup','JL_GLOBAL_ORDER_UP',$ordering); ?>
 							</span>

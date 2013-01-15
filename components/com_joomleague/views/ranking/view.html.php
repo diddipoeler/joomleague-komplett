@@ -251,7 +251,16 @@ class JoomleagueViewRanking extends JLGView {
 		
     if ( $lat && $lng )
     {
-    $this->map->addMarker($lat, $lng, $row->club_name, $row->address_string);
+    $path = JURI::root().'media/com_joomleague/map_icons/'.'icon49.png'; 
+    //$path = Countries::getIso3Flag($row->club_country);
+    $adressecountry_flag = Countries::getCountryFlag($row->club_country);
+    $picture = $row->logo_big;
+    $club_logo = JoomleagueHelper::getPictureThumb($picture, 
+								$row->club_name,
+								150,
+								150,
+								1);
+    $this->map->addMarker($lat, $lng, $row->club_name, $adressecountry_flag.' '.$row->address_string.'<br>',$path);
     }
     
     

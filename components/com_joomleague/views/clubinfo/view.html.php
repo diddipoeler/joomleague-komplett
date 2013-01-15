@@ -119,10 +119,10 @@ class JoomleagueViewClubInfo extends JLGView
   $this->map->setInfoWindowBehaviour('SINGLE_CLOSE_ON_MAPCLICK');
   $this->map->setInfoWindowTrigger('CLICK');
   
-  $this->map->addMarkerByAddress($this->address_string, $this->club->name, '"<a href="'.$this->club->website.'" target="_blank">'.$this->club->website.'</a>"', "http://maps.google.com/mapfiles/kml/pal2/icon49.png");  
+  //$this->map->addMarkerByAddress($this->address_string, $this->club->name, '"<a href="'.$this->club->website.'" target="_blank">'.$this->club->website.'</a>"', "http://maps.google.com/mapfiles/kml/pal2/icon49.png");  
   if ( $lat && $lng )
   {
-  $this->map->addMarker($lat, $lng, $this->club->name, $this->address_string );
+  $this->map->addMarker($lat, $lng, $this->club->name, $this->address_string,JURI::root().'media/com_joomleague/map_icons/'.'icon49.png' );
   }
   
   $document->addScript($this->map->JLprintGMapsJS());

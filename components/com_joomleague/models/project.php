@@ -67,13 +67,16 @@ class JoomleagueModelProject extends JModel
 		if (is_null($this->_project) && $this->projectid > 0)
 		{
 			$query='SELECT p.*, l.country,l.picture as league_picture,l.name as league_name,
-			l.extended as league_extended,
+			l.extended as league_extended,assoc.name as assocname,assoc.assocflag as assocflag,
 					CASE WHEN CHAR_LENGTH( p.alias )
 					THEN CONCAT_WS( \':\', p.id, p.alias )
 					ELSE p.id
 					END AS slug
 					FROM #__joomleague_project AS p
-					LEFT JOIN #__joomleague_league AS l ON p.league_id = l.id 
+					LEFT JOIN #__joomleague_league AS l 
+          ON p.league_id = l.id 
+          LEFT JOIN #__joomleague_associations AS assoc 
+          ON l.associations = assoc.id
 					WHERE p.id='. $this->_db->Quote($this->projectid);
 			$this->_db->setQuery($query,0,1);
 			$this->_project = $this->_db->loadObject();

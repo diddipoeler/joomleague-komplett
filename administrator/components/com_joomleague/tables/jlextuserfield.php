@@ -45,6 +45,8 @@ class Tablejlextuserfield extends JTable
 	var $description;
 	var $checked_out;
 	var $checked_out_time;
+  var $count;
+  
 	
 
 	/**

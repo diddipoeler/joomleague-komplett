@@ -32,6 +32,12 @@
 			<td valign="top" align="right" class="key"><label for="ordering"><?php echo JText::_('JL_ADMIN_ASSOCIATION_COUNTRY'); ?></label></td>
 			<td><?php echo $this->lists['countries']; ?>&nbsp;<?php echo Countries::getCountryFlag($this->object->country); ?>&nbsp;(<?php echo $this->object->country; ?>)</td>
 		</tr>
+    
+    <tr>
+			<td valign="top" align="right" class="key"><label for="ordering"><?php echo JText::_('JL_ADMIN_ASSOCIATION_FLAG'); ?></label></td>
+			<td><?php echo $this->lists['assocflag']; ?></td>
+		</tr>
+    
 		<tr>
 			<td valign="top" align="right" class="key"><label for="ordering"><?php echo JText::_('JL_ADMIN_ASSOCIATION_ORDERING'); ?></label></td>
 			<td><?php echo $this->lists['ordering']; ?></td>

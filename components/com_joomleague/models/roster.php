@@ -10,7 +10,8 @@ class JoomleagueModelRoster extends JoomleagueModelProject
 	var $projectteamid=0;
 	var $projectteam=null;
 	var $team=null;
-
+  var $jltable_person = '#__joomleague_person';
+  
 	/**
 	 * caching for team in out stats
 	 * @var array
@@ -33,6 +34,19 @@ class JoomleagueModelRoster extends JoomleagueModelProject
 		$this->getProjectTeam();
 	}
 
+  function getUserfields()
+    {
+    $query = "SELECT * FROM #__joomleague_jltable_fields 
+    where userfield = 1 
+    and visible = 1 
+    and tablename like '".$this->jltable_person."'";
+	  $this->_db->setQuery($query);    
+    $result = $this->_db->loadObjectList();    
+
+    return $result;    
+    }
+    
+    
   function getTrainingdata()
 	{
   $projectteam =& $this->getprojectteam();
@@ -123,13 +137,25 @@ class JoomleagueModelRoster extends JoomleagueModelProject
 		$projectteam =& $this->getprojectteam();
 		if (empty($this->_players))
 		{
-			$query='	SELECT	pr.firstname, 
+    $userfields = $this->getUserfields();
+    
+			$query = '	SELECT	pr.firstname, 
 								pr.nickname,
 								pr.lastname,
 								pr.country,
 								pr.birthday,
-								pr.deathday,
-								tp.id AS playerid,
+								pr.deathday,';
+			if ( $userfields )
+      {
+      foreach ( $userfields as $userfield)
+      {
+      $fields[] = 'pr.'.$userfield->fieldname;
+      }
+      $fields = implode(",",$fields);
+      $query .= $fields.',';
+      }
+      					
+      $query .= 'tp.id AS playerid,
 								pr.id AS pid,
 								pr.picture AS ppic,
 								tp.jerseynumber AS position_number,

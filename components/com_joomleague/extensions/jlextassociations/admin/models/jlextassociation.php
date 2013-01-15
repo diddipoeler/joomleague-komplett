@@ -13,6 +13,9 @@
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.model');
+jimport('joomla.filesystem.folder');
+jimport('joomla.filesystem.file');
+
 require_once (JPATH_COMPONENT.DS.'models'.DS.'item.php');
 
 /**
@@ -100,6 +103,9 @@ class JoomleagueModeljlextassociation extends JoomleagueModelItem
 			$object->checked_out_time	= 0;
 			$object->extended			= null;
 			$object->ordering			= 0;
+      
+      $object->website			= null;
+      $object->assocflag			= 'placeholder_flags.png';
 			$this->_data				= $object;
 
 			return (boolean) $this->_data;
@@ -107,6 +113,26 @@ class JoomleagueModeljlextassociation extends JoomleagueModelItem
 		return true;
 	}
 
+
+  function getAssocFlags()
+  {
+  global $mainframe, $option;
+  $mainframe	=& JFactory::getApplication();
+  //$baseFolder = JURI::root().'media/com_joomleague/flags_associations';
+  $baseFolder = JPATH_SITE.'/media/com_joomleague/flags_associations';
+  $mainframe->enqueueMessage(JText::_(''.$baseFolder),'NOTICE');
+  
+//   $mainframe->enqueueMessage(JText::_(''.JPATH_BASE),'NOTICE');
+//   $mainframe->enqueueMessage(JText::_(''.JURI::root()),'NOTICE');
+//   $mainframe->enqueueMessage(JText::_(''.JURI::base()),'NOTICE');
+  
+  $files = JFolder::files($baseFolder, '', false, false, array('index.html', '.svn') );
+  
+  //echo 'getAssocFlags<pre>',print_r($files,true),'</pre><br>';
+  
+  return $files;
+  }
+  
 	/**
 	 * Method to add a league if not already exists
 	 *

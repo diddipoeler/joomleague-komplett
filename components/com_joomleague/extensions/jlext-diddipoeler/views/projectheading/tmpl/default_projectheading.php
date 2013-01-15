@@ -12,6 +12,8 @@ echo 'division<pre>',print_r($this->division,true),'</pre><br>';
 echo 'divisions<pre>',print_r($this->divisions,true),'</pre><br>';
 echo 'teams<pre>',print_r($this->teams,true),'</pre><br>';
 
+echo 'project<pre>',print_r($this->project,true),'</pre><br>';
+
 }
 
 $nbcols = 2;
@@ -41,9 +43,7 @@ if ( $this->overallconfig['show_project_heading'] == "1" && $this->project)
 ?>
 
 	<?php
-	
-	
-			
+		
 			if ( $this->project->country && $this->overallconfig['show_project_country_info'] == "1" )
             {
 			
@@ -134,6 +134,25 @@ echo "</table>";
 				</tr>
 				<?php	
 			   	}
+        
+        // diddipoeler  
+        if ( $this->overallconfig['show_project_association'] == "1" && $this->project->assocname )
+				{
+					?>
+				<tr class="contentheading">
+					<td colspan="<?php echo $nbcols; ?>">
+					<?php
+          $path = JURI::root().'media/com_joomleague/flags_associations/'.$this->project->assocflag;
+          $attributes='';
+					$html = '<img src="'.$path.'" alt="'.$this->project->assocname.'" ';
+		      $html .= 'title="'.$this->project->assocname.'" '.$attributes.' />';
+					echo $html . ' ' . $this->project->assocname;
+					?>
+					</td>
+				</tr>
+				<?php	
+			   	}  
+          
 				?>
 				<tr class="contentheading">
 					<?php

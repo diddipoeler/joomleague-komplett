@@ -4,7 +4,11 @@
 if (count($this->games))
 {
 	?>
-<h2><?php echo JText::_('JL_PERSON_GAMES_HISTORY'); ?></h2>
+<h2>
+
+<?php echo JText::_('JL_PERSON_GAMES_HISTORY'); ?>
+
+</h2>
 <table width="96%" align="center" border="0" cellpadding="0"
 	cellspacing="0">
 	<tr>

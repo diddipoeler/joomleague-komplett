@@ -13,9 +13,16 @@
 			<option value="1">JL_GLOBAL_YES</option>
 		</param>
 		
-		<param	name="show_project_country" type="radio" default="0"
+		<param	name="show_project_country" type="radio" default="1"
 			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_PROJECT_COUNTRY"
 			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_PROJECT_COUNTRY">
+			<option value="0">JL_GLOBAL_NO</option>
+			<option value="1">JL_GLOBAL_YES</option>
+		</param>
+    
+    <param	name="show_project_association" type="radio" default="1"
+			label="JL_FES_OVERALL_PARAM_LABEL_SHOW_PROJECT_ASSOCIATION"
+			description="JL_FES_OVERALL_PARAM_DESCR_SHOW_PROJECT_ASSOCIATION">
 			<option value="0">JL_GLOBAL_NO</option>
 			<option value="1">JL_GLOBAL_YES</option>
 		</param>

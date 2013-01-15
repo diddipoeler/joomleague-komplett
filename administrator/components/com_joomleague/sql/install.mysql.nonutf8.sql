@@ -26,6 +26,7 @@ CREATE  TABLE IF NOT EXISTS `#__joomleague_jltable_fields` (
   `description` VARCHAR(100) NOT NULL DEFAULT '' ,
   `checked_out` INT(11) NOT NULL DEFAULT '0' ,
   `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' ,
+  `count` INT(11) NOT NULL DEFAULT '0' ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `name` (`tablename`,`fieldname`)
   )
@@ -46,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `#__joomleague_associations` (
   `short_name` varchar(75) NOT NULL default '',
   `middle_name` varchar(75) NOT NULL default '',
   `website` varchar(250) NOT NULL default '',
+  `assocflag` VARCHAR(255) NOT NULL DEFAULT 'placeholder_flags.png' ,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`,`country`)
 ) ENGINE=MyISAM ;
